@@ -1,4 +1,8 @@
+Below is my proposed wireframe:
 ![Image of wireframe](/planning/wireframe.jpg)
+
+Below is my proposed wireframe:
+![Image of ERD](/planning/ERD.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
