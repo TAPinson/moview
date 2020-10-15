@@ -1,7 +1,7 @@
 Below is my proposed wireframe:
 ![Image of wireframe](/planning/wireframe.jpg)
 
-Below is my proposed wireframe:
+Below is my proposed ERD:
 ![Image of ERD](/planning/ERD.png)
 
 
