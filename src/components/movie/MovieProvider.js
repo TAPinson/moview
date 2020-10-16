@@ -16,6 +16,8 @@ export const MovieProvider = (props) => {
         .then(setMovies)
     }
 
+    
+
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{

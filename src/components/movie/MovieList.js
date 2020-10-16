@@ -24,6 +24,8 @@ export const MovieList = () => {
     }
 
     return (	
+        <>
+        
 		<div className="movies">
 		    {console.log("MovieList: Render")}
         {   
@@ -32,5 +34,6 @@ export const MovieList = () => {
 			})
         }
         </div>
+        </>
     )
 }
