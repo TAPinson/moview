@@ -1,17 +1,47 @@
 {
   "users": [
     {
-      "id": 1,
       "username": "moviewer",
       "password": "sudo",
       "email": "viewer@movies.com",
-      "partnerId": 0
+      "partnerId": 0,
+      "id": 1
     },
     {
       "username": "sudo",
       "password": "sudo",
       "email": "sudo@sudo",
       "partnerId": 0,
+      "id": 2
+    }
+  ],
+  "selections": [
+    {
+      "userId": 1,
+      "movieId": 1,
+      "watched": false,
+      "tmdbObject": {},
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "movieId": 2,
+      "watched": false,
+      "tmdbObject": {},
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "movieId": 1,
+      "userId": 1,
+      "comment": "What a great movie!",
+      "id": 1
+    },
+    {
+      "movieId": 2,
+      "userId": 1,
+      "comment": "I loved this movie!",
       "id": 2
     }
   ]

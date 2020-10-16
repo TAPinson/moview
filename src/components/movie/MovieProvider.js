@@ -16,12 +16,21 @@ export const MovieProvider = (props) => {
         .then(setMovies)
     }
 
-    
+    const getRandomMovies = () => {
+        let randomPage = Math.floor(Math.random() * 500) + 1; // returns a random integer from 1 to 500
+        console.log("fetch")
+        // Fetch 
+        return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&page=${randomPage}`)
+        .then(res => res.json())
+        .then(setMovies)
+    }
+
+
 
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies
+            movies, getMovies, getRandomMovies
         }}>
             {props.children}
         </MovieContext.Provider>
