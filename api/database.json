@@ -1,43 +1,18 @@
 {
-  "animals": [
+  "users": [
     {
       "id": 1,
-      "name": "Doodles",
-      "breed": "Poodle",
-      "customerId": 1,
-      "locationId": 2
-    },
-    {
-      "id": 2,
-      "name": "Puddles",
-      "breed": "Poodle",
-      "customerId": 1,
-      "locationId": 2
-    }
-  ],
-  "customers": [
-    {
-      "id": 1,
-      "name": "Hannah Hall",
-      "address": "7002 Chestnut Ct"
-    },
-    {
-      "email": "viewer@movies.com",
+      "username": "moviewer",
       "password": "sudo",
-      "name": "Moview User",
-      "id": 2
-    }
-  ],
-  "locations": [
-    {
-      "id": 1,
-      "name": "Nashville North",
-      "address": "8422 Johnson Pike"
+      "email": "viewer@movies.com",
+      "partnerId": 0
     },
     {
-      "id": 2,
-      "name": "Nashville South",
-      "address": "209 Emory Drive"
+      "username": "sudo",
+      "password": "sudo",
+      "email": "sudo@sudo",
+      "partnerId": 0,
+      "id": 2
     }
   ]
 }
