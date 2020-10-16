@@ -7,8 +7,10 @@ export const MovieFinder = () => {
 
     return (
         <>
-        <div className="finderViewer">
-            <h1>This will be the primary display window</h1>
-        </div>
+        <section class="finderContainer">
+            <div className="finderViewer">
+                <h1>Movie Display</h1>
+            </div>
+        </section>
         </>
     )}

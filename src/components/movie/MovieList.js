@@ -5,12 +5,12 @@ import "./Movie.css"
 
 export const MovieList = () => {
    // This state changes when `getMovies()` is invoked below
-    const { movies, getMovies } = useContext(MovieContext)
+    const { movies, getMovies, getRandomMovies } = useContext(MovieContext)
     
 	//useEffect - reach out to the world for something
     useEffect(() => {
 		//console.log("MovieList: useEffect - getMovies")
-        getMovies()
+        getRandomMovies()
 		
     }, [])
 
