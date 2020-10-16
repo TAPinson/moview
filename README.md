@@ -2,7 +2,7 @@ Below is my proposed wireframe:
 ![Image of wireframe](/planning/wireframe.jpg)
 
 Below is my proposed ERD:
-![Image of ERD](/planning/ERD.png)
+![Image of ERD](/planning/ApprovedERD.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
