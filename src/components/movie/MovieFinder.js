@@ -17,7 +17,7 @@ export const MovieFinder = () => {
         })
         let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; // returns a random integer from 1 to 20
         let movie = results[token]
-        if (movie.poster_path) {
+        if (movie) {
             const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
             const userId = parseInt(localStorage.getItem("user"))
             return (
@@ -48,6 +48,8 @@ export const MovieFinder = () => {
                 </>
             )
 
+        } else {
+            getRandomMovies()
         }
         
         
