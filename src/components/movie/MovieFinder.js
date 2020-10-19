@@ -12,21 +12,23 @@ export const MovieFinder = () => {
         getRandomMovies()
     }, [])
     
-    let results = []
+    // Bring the results of the random movies into variable
     const movieResults = movies.results
 
+    // Initialize variable outside of function so it is available later
     let searchTerms = ""
+    // Keep value of input box as variable "searchTerms"
     const searchTermFinder = (event) => {
         searchTerms = event.target.value
-        
     }
-
+    // Initialize variable outide of map so it is available later
+    let results = []
+    // Push all of the result objects in the movies object to the results array
     if (movieResults) {
         movieResults.map((each) => {
             results.push(each)
         })
 
-   
         // Somewhere below here I have to figure out the logic to discern between random movies and search results
         let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; // returns a random integer from 1 to 20
         // Replace 0 below with token for totally random results
