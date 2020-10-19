@@ -21,7 +21,12 @@ export const MovieProvider = (props) => {
         let randomPage = Math.floor(Math.random() * 500) + 1; // returns a random integer from 1 to 500
         return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&page=${randomPage}`)
         .then(res => res.json())
-        .then(setMovies)
+       
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            movies.found = false
+            setMovies(movies)
+        })
     }
 
     // Add a selection to the database
@@ -61,13 +66,13 @@ export const MovieProvider = (props) => {
     }
 
     const searchByTitle = terms => {
-
         const termsCleaned = terms.replace(/\s/g, '+')
         console.log(termsCleaned)
-        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}`)
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}&include_adult=true`)
         .then(res => res.json())
         .then(parsedMovies => {
             let movies = parsedMovies
+            movies.found = true
             console.log(movies)
             setMovies(movies)
         })

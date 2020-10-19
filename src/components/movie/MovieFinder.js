@@ -1,14 +1,12 @@
 import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "./MovieProvider"
-
 import "./Movie.css"
-
-
 
 export const MovieFinder = () => {
     const { movies, getRandomMovies, addSelection, searchByTitle } = useContext(MovieContext)
     const [ movie , setMovie] = useState({})
     useEffect(() => {
+        // Start the application off with a selection of random movies
         getRandomMovies()
     }, [])
     
@@ -28,13 +26,69 @@ export const MovieFinder = () => {
         movieResults.map((each) => {
             results.push(each)
         })
-
-        // Somewhere below here I have to figure out the logic to discern between random movies and search results
-        let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; // returns a random integer from 1 to 20
-        // Replace 0 below with token for totally random results
-        let movie = results[0]
-        // Somewhere above here I have to figure out the logic to discern between random movies and search results
-        if (movie) {
+        if (movies.found === false){
+            console.log("Displayed movies are random")
+            // Get a random number between 1 and 20
+            let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; 
+            // Use the token to display a random movie
+            let movie = results[token]
+            // Create the URL we will use for the movie poster
+            const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
+            // Find the logged in user
+            const userId = parseInt(localStorage.getItem("user"))
+            return (
+                <>
+                <section className="finderContainer">
+                    <div className="finderViewer">
+                        <h1>{movie.title}</h1>
+                        <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+                        <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
+                        <button onClick={() => {
+                            const selection = {
+                                userId,
+                                watched: false,
+                                tmdbObject: movie
+                            }
+                            addSelection(selection)
+                            .then(() =>{
+                                getRandomMovies()
+                            })
+                            }}>Like
+                        </button>
+                        <button onClick={() => {
+                            getRandomMovies()
+                            }}>Pass
+                        </button>
+                        <form className="titleSearchForm">
+                            <fieldset className="titleSearchField">
+                                <input type="text"
+                                        id="titleSearchInput"
+                                        name="terms"
+                                        required
+                                        className="form-control"
+                                        placeholder="Search By Title"
+                                        onChange={searchTermFinder}
+                                         />
+                                
+                            </fieldset>
+                            <button type="submit"
+                                    onClick={evt => {
+                                        evt.preventDefault() // Prevent browser from submitting the form
+                                        searchByTitle(searchTerms)
+                                    }}
+                                    className="titleSearchBtn">
+                                     Search
+                            </button>
+                        </form>
+                    </div>
+                </section>
+                </>
+            )
+        }
+         else if (movies.found === true) {
+             console.log("Displayed Movies are Search Results")
+            // Select the first result, as it is the closest match
+            let movie = results[0]
             const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
             const userId = parseInt(localStorage.getItem("user"))
             return (
@@ -69,18 +123,12 @@ export const MovieFinder = () => {
                                         className="form-control"
                                         placeholder="Search By Title"
                                         onChange={searchTermFinder}
-                                        
                                          />
-                                
                             </fieldset>
                             <button type="submit"
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
-                                     
-                                      
                                         searchByTitle(searchTerms)
-                                       
-                            
                                     }}
                                     className="titleSearchBtn">
                                      Search
@@ -90,9 +138,6 @@ export const MovieFinder = () => {
                 </section>
                 </>
             )
-
-        } else {
-            getRandomMovies()
         }
     }
     return (
