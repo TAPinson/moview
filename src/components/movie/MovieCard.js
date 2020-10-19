@@ -3,7 +3,7 @@ import { MovieContext } from "./MovieProvider"
 import "./Movie.css"
 
 export const MovieBrowse = ({ movie }) => {
-    const { movies, getMovies, getRandomMovies, myLikes, addSelection } = useContext(MovieContext)
+    const { addSelection, deleteSelection } = useContext(MovieContext)
     
     console.log(movie)
     const loggedInUser = parseInt(localStorage.getItem("user"))
@@ -29,6 +29,7 @@ export const MovieBrowse = ({ movie }) => {
 )}
 
 export const MovieCard = ({ movie }) => {
+    const { deleteSelection } = useContext(MovieContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     return (
         <section className="movieBox">
@@ -36,5 +37,10 @@ export const MovieCard = ({ movie }) => {
             <div className="movie__overview"><strong>Overview:</strong> {movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+            <button onClick={() => {
+                        deleteSelection(movie.id)
+                        //getRandomMovies()
+                        }}>Delete
+                    </button>
         </section>
 )}

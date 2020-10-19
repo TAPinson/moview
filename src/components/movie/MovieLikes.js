@@ -9,7 +9,6 @@ export const MovieLikes = () => {
     
 	//useEffect - reach out to the world for something
     useEffect(() => {
-		//console.log("MovieList: useEffect - getMovies")
         myLikes()
 		
     }, [])
