@@ -3,12 +3,15 @@ import { MovieContext } from "./MovieProvider"
 
 import "./Movie.css"
 
+
+
 export const MovieFinder = () => {
     const { movies, getRandomMovies, addSelection, searchByTitle } = useContext(MovieContext)
     const [ movie , setMovie] = useState({})
     useEffect(() => {
         getRandomMovies()
     }, [])
+    
     let results = []
     const movieResults = movies.results
 
@@ -22,8 +25,11 @@ export const MovieFinder = () => {
         movieResults.map((each) => {
             results.push(each)
         })
+
+   
         // Somewhere below here I have to figure out the logic to discern between random movies and search results
         let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; // returns a random integer from 1 to 20
+        // Replace 0 below with token for totally random results
         let movie = results[0]
         // Somewhere above here I have to figure out the logic to discern between random movies and search results
         if (movie) {

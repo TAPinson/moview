@@ -318,78 +318,6 @@
       "userId": 2,
       "watched": true,
       "tmdbObject": {
-        "popularity": 157.802,
-        "vote_count": 30,
-        "video": false,
-        "poster_path": "/vtoJKxGC02uAUUbKnDsho3EYMPA.jpg",
-        "id": 309013,
-        "adult": false,
-        "backdrop_path": "/jgHLsBJEcL8zPxaV5yUSV1b5eaF.jpg",
-        "original_language": "en",
-        "original_title": "Scream at the Devil",
-        "genre_ids": [
-          9648,
-          53
-        ],
-        "title": "Scream at the Devil",
-        "vote_average": 5.4,
-        "overview": "A beautiful schizophrenic woman is pushed over the edge by her husbands elicit affairs and when her hallucinations become reality the Devil comes to take his due. Is Miriam insane or has the Devil come to collect on her promise?",
-        "release_date": "2015-10-30"
-      },
-      "id": 29
-    },
-    {
-      "userId": 2,
-      "watched": true,
-      "tmdbObject": {
-        "popularity": 12.368,
-        "vote_count": 127,
-        "video": false,
-        "poster_path": "/rW6rXvT6AeNC4AUBC2HJiiLpwly.jpg",
-        "id": 48844,
-        "adult": false,
-        "backdrop_path": "/A7JLOMnim2y26Vt06vwvz7HmORM.jpg",
-        "original_language": "en",
-        "original_title": "The Search for Santa Paws",
-        "genre_ids": [
-          12,
-          10751
-        ],
-        "title": "The Search for Santa Paws",
-        "vote_average": 6.2,
-        "overview": "In the tradition of disney's classic holiday tales comes a heartwarming movie about the power of giving and the true meaning of christmas. Discover how the legendary friendship of Santa Claus and Santa Paws began in the inspiring original film, The Search For Santa Paws. When Santa and his new best friend, Paws, discover that the boys and girls of the world have lost the spirit of the season, they take a trip to New York City. But after Santa loses his memory, it's up to Paws, a faithful orphan named Quinn, her new friend Will and a wonderful group of magical talking dogs to save St. Nick and show the world what Christmas is really all about.",
-        "release_date": "2010-10-12"
-      },
-      "id": 30
-    },
-    {
-      "userId": 2,
-      "watched": true,
-      "tmdbObject": {
-        "popularity": 16.421,
-        "vote_count": 976,
-        "video": false,
-        "poster_path": "/cSPg3ArMIyvg2ao4qptIPWK0B0l.jpg",
-        "id": 87826,
-        "adult": false,
-        "backdrop_path": "/c40vSfDjCvCMlonGW8eUCHZqiaK.jpg",
-        "original_language": "en",
-        "original_title": "Here Comes the Boom",
-        "genre_ids": [
-          28,
-          35
-        ],
-        "title": "Here Comes the Boom",
-        "vote_average": 6.1,
-        "overview": "A high school biology teacher moonlights as a mixed-martial arts fighter in an effort to raise money to save the school's music program.",
-        "release_date": "2012-10-11"
-      },
-      "id": 31
-    },
-    {
-      "userId": 2,
-      "watched": true,
-      "tmdbObject": {
         "popularity": 32.995,
         "vote_count": 981,
         "video": false,
@@ -488,32 +416,6 @@
         "poster_path": "/jT9L05KLeQIhfbxqeViwbGLxT59.jpg"
       },
       "id": 39
-    },
-    {
-      "userId": 2,
-      "watched": true,
-      "tmdbObject": {
-        "popularity": 28.536,
-        "vote_count": 3147,
-        "video": false,
-        "poster_path": "/goHDZUnqZJ7FN4h48Qh6MzJNExl.jpg",
-        "id": 17979,
-        "adult": false,
-        "backdrop_path": "/p98z8tZ9G8PdKpaq15kXPHvwtvv.jpg",
-        "original_language": "en",
-        "original_title": "A Christmas Carol",
-        "genre_ids": [
-          16,
-          18,
-          14,
-          10751
-        ],
-        "title": "A Christmas Carol",
-        "vote_average": 6.8,
-        "overview": "Miser Ebenezer Scrooge is awakened on Christmas Eve by spirits who reveal to him his own miserable existence, what opportunities he wasted in his youth, his current cruelties, and the dire fate that awaits him if he does not change his ways. Scrooge is faced with his own story of growing bitterness and meanness, and must decide what his own future will hold: death or redemption.",
-        "release_date": "2009-11-04"
-      },
-      "id": 40
     },
     {
       "userId": 2,
@@ -762,32 +664,6 @@
         "poster_path": "/m0KrgL5uGJRGyGG7LBkyKrqxB8q.jpg"
       },
       "id": 51
-    },
-    {
-      "userId": 2,
-      "watched": true,
-      "tmdbObject": {
-        "popularity": 20.179,
-        "id": 13179,
-        "video": false,
-        "vote_count": 927,
-        "vote_average": 6.7,
-        "title": "Tinker Bell",
-        "release_date": "2008-10-27",
-        "original_language": "en",
-        "original_title": "Tinker Bell",
-        "genre_ids": [
-          16,
-          10751,
-          12,
-          14
-        ],
-        "backdrop_path": "/uMDrlSv4QFsRhb3K5VWHWP7ykZO.jpg",
-        "adult": false,
-        "overview": "Journey into the secret world of Pixie Hollow and hear Tinker Bell speak for the very first time as the astonishing story of Disney's most famous fairy is finally revealed in the all-new motion picture \"Tinker Bell.\"",
-        "poster_path": "/utNljH8opJIeQcQU14W2aoi2K4C.jpg"
-      },
-      "id": 53
     },
     {
       "userId": 2,
