@@ -171,52 +171,27 @@
     },
     {
       "userId": 1,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
-        "popularity": 21.831,
-        "vote_count": 247,
+        "popularity": 11.92,
+        "vote_count": 252,
         "video": false,
-        "poster_path": "/7V1N8vMPNDw6be3MDiA4DC0s4Bv.jpg",
-        "id": 487083,
+        "poster_path": "/etxcq4qiFNi5p0q71APw8MNzPPT.jpg",
+        "id": 17710,
         "adult": false,
-        "backdrop_path": "/kE6CAAJBtECOnDXyx4suUU79TCP.jpg",
+        "backdrop_path": "/1pEMcogCLU2z9s3Vl10UUKswLLk.jpg",
         "original_language": "en",
-        "original_title": "Paradise Hills",
+        "original_title": "Hey Arnold! The Movie",
         "genre_ids": [
-          14,
-          878,
-          53
+          16,
+          10751
         ],
-        "title": "Paradise Hills",
-        "vote_average": 6.2,
-        "overview": "A young woman is sent to Paradise Hills to be reformed, only to learn that the high-class facility's beautiful facade hides a sinister secret.",
-        "release_date": "2019-08-29"
+        "title": "Hey Arnold! The Movie",
+        "vote_average": 6.4,
+        "overview": "When a powerful developer named Mr. Scheck wants to knock down all the stores and houses in Arnold's neighborhood to build a huge \"mall-plex\", it looks likes the neighborhood is doomed to disappear. But with the help of a superhero and a mysterious deep-voiced stranger, Arnold and Gerald will need to recover a crucial document in order to save their beloved neighborhood.",
+        "release_date": "2002-06-28"
       },
-      "id": 18
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 10.924,
-        "id": 214597,
-        "video": false,
-        "vote_count": 159,
-        "vote_average": 4.7,
-        "title": "Fright Night 2: New Blood",
-        "release_date": "2013-08-31",
-        "original_language": "en",
-        "original_title": "Fright Night 2: New Blood",
-        "genre_ids": [
-          27,
-          35
-        ],
-        "backdrop_path": "/hoL2ncXPok6r1Ds0imOEanF36xU.jpg",
-        "adult": false,
-        "overview": "By day Gerri Dandridge is a sexy professor, but by night she transforms into a real-life vampire with an unquenchable thirst for human blood. When a group of high school students travel abroad to study in Romania, they find themselves ensnared in her chilling web of lust and terror. Charlie and 'Evil' Ed must stop Gerri from drinking and bathing in the blood of a 'new moon virgin', who just so happens to be Charlie’s ex-girlfriend.",
-        "poster_path": "/cp2959zvia5B3wgsv4pOurHndvb.jpg"
-      },
-      "id": 19
+      "id": 20
     }
   ],
   "comments": [

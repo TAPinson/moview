@@ -43,6 +43,9 @@ export const MovieFinder = () => {
                             tmdbObject: movie
                         }
                         addSelection(selection)
+                        .then(() =>{
+                            getRandomMovies()
+                        })
                         //getRandomMovies()
                         }}>Like
                     </button>
