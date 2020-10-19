@@ -51,15 +51,7 @@ export const MovieFinder = () => {
         } else {
             getRandomMovies()
         }
-        
-        
-        
-        
-
-
-    } 
-    
-
+    }
     return (
         <>
         <section className="finderContainer">
@@ -68,4 +60,5 @@ export const MovieFinder = () => {
             </div>
         </section>
         </>
-    )}
+    )
+}

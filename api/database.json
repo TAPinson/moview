@@ -316,32 +316,6 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 18.135,
-        "vote_count": 1184,
-        "video": false,
-        "poster_path": "/wkLF73oenC1n1DDKKU7oyLKVcMa.jpg",
-        "id": 4824,
-        "adult": false,
-        "backdrop_path": "/7Uy70PBqGFYCE9cZWir9D8meix.jpg",
-        "original_language": "en",
-        "original_title": "The Jackal",
-        "genre_ids": [
-          28,
-          12,
-          80,
-          53
-        ],
-        "title": "The Jackal",
-        "vote_average": 6.3,
-        "overview": "Hired by a powerful member of the Russian mafia to avenge an FBI sting that left his brother dead, a psychopathic hitman known only as The Jackal proves an elusive target for the people charged with the task of bringing him down: a deputy FBI director, a Russian MVK Major,  and a jailed IRA terrorist who can recognize him.",
-        "release_date": "1997-11-14"
-      },
-      "id": 28
-    },
-    {
-      "userId": 2,
       "watched": true,
       "tmdbObject": {
         "popularity": 157.802,
@@ -414,31 +388,6 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 25.538,
-        "vote_count": 830,
-        "video": false,
-        "poster_path": "/nOXuOeD07nZPT29IgiGT0S8PZH.jpg",
-        "id": 505058,
-        "adult": false,
-        "backdrop_path": "/2Dk9WG8R0PYlgZjo5F9iheKybpO.jpg",
-        "original_language": "en",
-        "original_title": "Unfriended: Dark Web",
-        "genre_ids": [
-          27,
-          9648,
-          53
-        ],
-        "title": "Unfriended: Dark Web",
-        "vote_average": 6.3,
-        "overview": "​When a 20-something finds a cache of hidden files on his new laptop, he and his friends are unwittingly thrust into the depths of the dark web. They soon discover someone has been watching their every move and will go to unimaginable lengths to protect the dark web.",
-        "release_date": "2018-07-19"
-      },
-      "id": 32
-    },
-    {
-      "userId": 2,
       "watched": true,
       "tmdbObject": {
         "popularity": 32.995,
@@ -466,54 +415,6 @@
       "userId": 2,
       "watched": false,
       "tmdbObject": {
-        "popularity": 12.66,
-        "vote_count": 119,
-        "video": false,
-        "poster_path": "/4njlXZMPomnI3WtpRtbaJTiWPDH.jpg",
-        "id": 347881,
-        "adult": false,
-        "backdrop_path": "/aiq9iiG7BbERdu4xlUg6S4Cbjy7.jpg",
-        "original_language": "en",
-        "original_title": "The Confirmation",
-        "genre_ids": [
-          35,
-          18
-        ],
-        "title": "The Confirmation",
-        "vote_average": 6.3,
-        "overview": "A divorced father reconnects with his son when they track down a stolen toolbox over the course of a weekend.",
-        "release_date": "2016-03-18"
-      },
-      "id": 34
-    },
-    {
-      "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 28.534,
-        "id": 50546,
-        "video": false,
-        "vote_count": 3883,
-        "vote_average": 6.6,
-        "title": "Just Go with It",
-        "release_date": "2011-02-10",
-        "original_language": "en",
-        "original_title": "Just Go with It",
-        "genre_ids": [
-          35,
-          10749
-        ],
-        "backdrop_path": "/sRJXffIo0tY2acAUlIThoopsxia.jpg",
-        "adult": false,
-        "overview": "A plastic surgeon, romancing a much younger schoolteacher, enlists his loyal assistant to pretend to be his soon to be ex-wife, in order to cover up a careless lie. When more lies backfire, the assistant's kids become involved, and everyone heads off for a weekend in Hawaii that will change all their lives.",
-        "poster_path": "/ez1EDULOCUUCySHOZU6tz97qbtM.jpg"
-      },
-      "id": 35
-    },
-    {
-      "userId": 2,
-      "watched": false,
-      "tmdbObject": {
         "popularity": 15.331,
         "vote_count": 1429,
         "video": false,
@@ -536,32 +437,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 53.706,
-        "vote_count": 3552,
-        "video": false,
-        "poster_path": "/p70dq1YxabemdZDm5K6Q8G10wSn.jpg",
-        "id": 311324,
-        "adult": false,
-        "backdrop_path": "/aYuYAAE7Va8zQxeM0A2X4FmGQsU.jpg",
-        "original_language": "en",
-        "original_title": "The Great Wall",
-        "genre_ids": [
-          28,
-          12,
-          14
-        ],
-        "title": "The Great Wall",
-        "vote_average": 5.9,
-        "overview": "European mercenaries searching for black powder become embroiled in the defense of the Great Wall of China against a horde of monstrous creatures.",
-        "release_date": "2016-12-16"
-      },
-      "id": 37
-    },
-    {
-      "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 15.685,
         "vote_count": 142,
@@ -588,7 +464,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 23.483,
         "id": 65291,
@@ -615,7 +491,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 28.536,
         "vote_count": 3147,
@@ -664,7 +540,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 36.562,
         "vote_count": 1380,
@@ -684,29 +560,6 @@
         "release_date": "2007-08-31"
       },
       "id": 42
-    },
-    {
-      "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 15.438,
-        "vote_count": 1129,
-        "video": false,
-        "poster_path": "/Ar1nT0XBXsenpwpwC4kvIUohLlX.jpg",
-        "id": 208134,
-        "adult": false,
-        "backdrop_path": "/pY1t81Lo2ctRX0hGxPvwuFb7RF6.jpg",
-        "original_language": "en",
-        "original_title": "Jackass Presents: Bad Grandpa",
-        "genre_ids": [
-          35
-        ],
-        "title": "Jackass Presents: Bad Grandpa",
-        "vote_average": 6,
-        "overview": "86-year-old Irving Zisman is on a journey across America with the most unlikely companion: his 8 year-old grandson, Billy.",
-        "release_date": "2013-10-22"
-      },
-      "id": 43
     },
     {
       "userId": 2,
@@ -734,6 +587,157 @@
         "poster_path": "/wCvdRynGJQWaOi2qwQP5nDdFxjM.jpg"
       },
       "id": 44
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 17.768,
+        "vote_count": 1629,
+        "video": false,
+        "poster_path": "/gwfgYA9wGpV4QLB0LrcexwfwC19.jpg",
+        "id": 80035,
+        "adult": false,
+        "backdrop_path": "/1I8fB7ZEaHMf9tX3tAM7JrU5k3y.jpg",
+        "original_language": "en",
+        "original_title": "The Watch",
+        "genre_ids": [
+          28,
+          35,
+          9648,
+          878
+        ],
+        "title": "The Watch",
+        "vote_average": 5.5,
+        "overview": "Four everyday suburban guys come together as an excuse to escape their humdrum lives one night a week. But when they accidentally discover that their town has become overrun with aliens posing as ordinary suburbanites, they have no choice but to save their neighborhood - and the world - from total extermination.",
+        "release_date": "2012-07-26"
+      },
+      "id": 45
+    },
+    {
+      "userId": 2,
+      "watched": true,
+      "tmdbObject": {
+        "popularity": 14.066,
+        "id": 8386,
+        "video": false,
+        "vote_count": 572,
+        "vote_average": 6.3,
+        "title": "How High",
+        "release_date": "2001-12-21",
+        "original_language": "en",
+        "original_title": "How High",
+        "genre_ids": [
+          35
+        ],
+        "backdrop_path": "/uEgfa0YwZBn9vyFq80tDK3ZHKFp.jpg",
+        "adult": false,
+        "overview": "Multi-platinum rap superstars Redman and Method Man star as Jamal and Silas, two regular guys who smoke something magical, ace their college entrance exams and wind up at Harvard. Ivy League ways are strange but Silas and Jamal take it in a stride -- until their supply of supernatural smoke runs dry. That's when they have to start living by their wits and rely on their natural resources to make the grade.",
+        "poster_path": "/dlZZLrQZrEiOvtJ5rqX9Lj9nww4.jpg"
+      },
+      "id": 46
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 21.812,
+        "vote_count": 394,
+        "video": false,
+        "poster_path": "/zYTm9Zjrf4uLL1mT4UJg4j2Mugu.jpg",
+        "id": 45162,
+        "adult": false,
+        "backdrop_path": "/74H4XXU0q22TSrkPmlqkcWoX5ZZ.jpg",
+        "original_language": "en",
+        "original_title": "Superman/Batman: Apocalypse",
+        "genre_ids": [
+          28,
+          12,
+          16,
+          878,
+          10751
+        ],
+        "title": "Superman/Batman: Apocalypse",
+        "vote_average": 7.1,
+        "overview": "Batman discovers a mysterious teen-aged girl with superhuman powers and a connection to Superman. When the girl comes to the attention of Darkseid, the evil overlord of Apokolips, events take a decidedly dangerous turn.",
+        "release_date": "2010-09-28"
+      },
+      "id": 47
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 66.357,
+        "vote_count": 0,
+        "video": false,
+        "poster_path": "/uAUCHOYwFKQvSRZByP8rCgWKwT.jpg",
+        "id": 497698,
+        "adult": false,
+        "backdrop_path": "/va57B6HQg0DHBYvT4Y9R4WPu4fn.jpg",
+        "original_language": "en",
+        "original_title": "Black Widow",
+        "genre_ids": [
+          28,
+          12,
+          18,
+          53
+        ],
+        "title": "Black Widow",
+        "vote_average": 0,
+        "overview": "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.",
+        "release_date": "2021-04-29"
+      },
+      "id": 48
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 35.07,
+        "vote_count": 1140,
+        "video": false,
+        "poster_path": "/rpS7ROczWulqfaXG2klYapULXKm.jpg",
+        "id": 533642,
+        "adult": false,
+        "backdrop_path": "/vHse4QK31Vc3X7BKKU5GOQhYxv6.jpg",
+        "original_language": "en",
+        "original_title": "Child's Play",
+        "genre_ids": [
+          27
+        ],
+        "title": "Child's Play",
+        "vote_average": 6.1,
+        "overview": "Karen, a single mother, gifts her son Andy a Buddi doll for his birthday, unaware of its more sinister nature. A contemporary re-imagining of the 1988 horror classic.",
+        "release_date": "2019-06-19"
+      },
+      "id": 49
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 31.457,
+        "id": 258509,
+        "video": false,
+        "vote_count": 1132,
+        "vote_average": 6.1,
+        "title": "Alvin and the Chipmunks: The Road Chip",
+        "release_date": "2015-12-17",
+        "original_language": "en",
+        "original_title": "Alvin and the Chipmunks: The Road Chip",
+        "genre_ids": [
+          12,
+          16,
+          35,
+          10751
+        ],
+        "backdrop_path": "/r5uE0qZt7d9lVlNar2MAD7cvxEb.jpg",
+        "adult": false,
+        "overview": "Through a series of misunderstandings, Alvin, Simon and Theodore come to believe that Dave is going to propose to his new girlfriend in New York City - and dump them. They have three days to get to him and stop the proposal.",
+        "poster_path": "/w28T1UfscIYUl9V8yLugdoJg5Z6.jpg"
+      },
+      "id": 50
     }
   ],
   "comments": [
