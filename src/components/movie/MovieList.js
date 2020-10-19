@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
-import { MovieBrowse, MovieCard } from "./MovieCard"
+import { MovieBrowse } from "./MovieCard"
 import "./Movie.css"
 
 export const MovieList = () => {
    // This state changes when `getMovies()` is invoked below
-    const { movies, getMovies, getRandomMovies } = useContext(MovieContext)
+    const { movies, getRandomMovies } = useContext(MovieContext)
     
 	//useEffect - reach out to the world for something
     useEffect(() => {

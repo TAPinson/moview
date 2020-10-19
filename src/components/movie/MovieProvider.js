@@ -59,10 +59,23 @@ export const MovieProvider = (props) => {
         })
     }
 
+    const searchByTitle = terms => {
+
+        const termsCleaned = terms.replace(/\s/g, '+')
+        console.log(termsCleaned)
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}`)
+        .then(res => res.json())
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            console.log(movies)
+            setMovies(movies)
+        })
+    }
+
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection
+            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle
         }}>
             {props.children}
         </MovieContext.Provider>

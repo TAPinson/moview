@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom'
 import "./Login.css"
 
 export const Register = (props) => {
-    const firstName = useRef()
-    const lastName = useRef()
     const email = useRef()
     const password = useRef()
     const verifyPassword = useRef()

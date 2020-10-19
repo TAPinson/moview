@@ -1,14 +1,12 @@
 import React, {useContext, useEffect} from "react"
 import { MovieContext } from "./MovieProvider"
 import "./Movie.css"
-import { MovieLikes } from "./MovieLikes"
-import { useHistory, useParams } from 'react-router-dom';
 
 const loggedInUser = parseInt(localStorage.getItem("user"))
 
 // This is used to display movies not yet selected by the user and retrieved from the API
 export const MovieBrowse = ({ movie }) => {
-    const { addSelection, deleteSelection } = useContext(MovieContext)
+    const { addSelection } = useContext(MovieContext)
     
     console.log(movie)
     

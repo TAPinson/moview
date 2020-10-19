@@ -23,3 +23,21 @@
     text-align: center;
     background-color: goldenrod;
 }
+
+#titleSearchInput{
+    width: 100%;
+}
+
+.titleSearchField {
+    width: 75%;
+}
+
+.titleSearchForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+.titleSearchBtn {
+    height: 60%;
+    margin-top: 2em;
+}
