@@ -1,14 +1,32 @@
-import React from "react"
-
+import React, { useContext, useEffect } from "react"
+import { MovieContext } from "./MovieProvider"
+import { MovieCard } from "./MovieCard"
 import "./Movie.css"
 
 export const MovieWatched = () => {
-  
-
-    return (
+   // This state changes when `getMovies()` is invoked below
+    const { movies, getMovies, getRandomMovies, MyLikes } = useContext(MovieContext)
+    
+	//useEffect - reach out to the world for something
+    useEffect(() => {
+        MyLikes()
+		
+    }, [])
+    console.log(movies)
+    const loggedInUser = parseInt(localStorage.getItem("user"))
+    const myMovies = movies.filter((movie) => {
+        return movie.userId === loggedInUser && movie.watched === true
+    })
+    return (	
         <>
-        <div>
-            <h1>This will be where movies marked as "watched" will go</h1>
+        
+		<div className="movies">
+		    {console.log("MovieList: Render")}
+        {   
+			myMovies.map(movie => {
+				return <MovieCard key={movie.id} movie={movie} />
+			})
+        }
         </div>
         </>
     )}

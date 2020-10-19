@@ -4,11 +4,14 @@ import "./Movie.css"
 import { MovieLikes } from "./MovieLikes"
 import { useHistory, useParams } from 'react-router-dom';
 
+const loggedInUser = parseInt(localStorage.getItem("user"))
+
+// This is used to display movies not yet selected by the user and retrieved from the API
 export const MovieBrowse = ({ movie }) => {
     const { addSelection, deleteSelection } = useContext(MovieContext)
     
     console.log(movie)
-    const loggedInUser = parseInt(localStorage.getItem("user"))
+    
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`
     
     return (
@@ -30,9 +33,10 @@ export const MovieBrowse = ({ movie }) => {
         </section>
 )}
 
+// This is used to display movies already selected by the user and being retrieved from JSON Server
 export const MovieCard = ({ movie }) => {
  
-    const { deleteSelection, MyLikes } = useContext(MovieContext)
+    const { deleteSelection, MyLikes, updateSelection } = useContext(MovieContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
 
     useEffect(() => {
@@ -47,11 +51,24 @@ export const MovieCard = ({ movie }) => {
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
             <button onClick={() => {
-                        deleteSelection(movie.id)
-                        .then(() => {
-                            MyLikes()
-                        })
-                        }}>Delete
-                    </button>
+                deleteSelection(movie.id)
+                .then(() => {
+                    MyLikes()
+                    })
+                }}>Delete
+            </button>
+            <button onClick={() => {
+                const watchedMovie = {
+                    userId: loggedInUser,
+                    watched: true,
+                    tmdbObject: movie.tmdbObject,
+                    id: movie.id
+                }
+                updateSelection(watchedMovie)
+                .then(() => {
+                    MyLikes()
+                })
+                }}>Mark Watched
+            </button>
         </section>
 )}

@@ -15,7 +15,7 @@ export const MovieLikes = () => {
     console.log(movies)
     const loggedInUser = parseInt(localStorage.getItem("user"))
     const myMovies = movies.filter((movie) => {
-        return movie.userId === loggedInUser
+        return movie.userId === loggedInUser && movie.watched === false
     })
     return (	
         <>

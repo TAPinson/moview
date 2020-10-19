@@ -18,7 +18,7 @@
   "selections": [
     {
       "userId": 1,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 20.217,
         "vote_count": 916,
@@ -43,7 +43,7 @@
     },
     {
       "userId": 1,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 464.445,
         "vote_count": 5905,
@@ -69,7 +69,7 @@
     },
     {
       "userId": 1,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 636.211,
         "vote_count": 6047,
@@ -94,7 +94,7 @@
     },
     {
       "userId": 1,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 36.708,
         "vote_count": 8880,
@@ -117,6 +117,106 @@
         "release_date": "1989-11-22"
       },
       "id": 15
+    },
+    {
+      "userId": 1,
+      "watched": true,
+      "tmdbObject": {
+        "popularity": 285.803,
+        "vote_count": 8501,
+        "video": false,
+        "poster_path": "/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg",
+        "id": 429617,
+        "adult": false,
+        "backdrop_path": "/5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
+        "original_language": "en",
+        "original_title": "Spider-Man: Far from Home",
+        "genre_ids": [
+          28,
+          12,
+          878
+        ],
+        "title": "Spider-Man: Far from Home",
+        "vote_average": 7.6,
+        "overview": "Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.",
+        "release_date": "2019-06-28"
+      },
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 21.87,
+        "vote_count": 278,
+        "video": false,
+        "poster_path": "/ptvbHUWpU8Nh6vrmSvjx4ESDgfC.jpg",
+        "id": 83201,
+        "adult": false,
+        "backdrop_path": "/9XEIpZkQZb3aE2HkjRn6dfOMWea.jpg",
+        "original_language": "en",
+        "original_title": "Puss in Boots: The Three Diablos",
+        "genre_ids": [
+          12,
+          16,
+          35,
+          10751
+        ],
+        "title": "Puss in Boots: The Three Diablos",
+        "vote_average": 6.5,
+        "overview": "Puss in Boots is on a mission to recover the Princess' stolen ruby from the notorious French thief, Whisperer. Reluctantly accompanied by three little kittens, Three Diablos, Puss must tame them before they endanger the mission.",
+        "release_date": "2012-02-07"
+      },
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 21.831,
+        "vote_count": 247,
+        "video": false,
+        "poster_path": "/7V1N8vMPNDw6be3MDiA4DC0s4Bv.jpg",
+        "id": 487083,
+        "adult": false,
+        "backdrop_path": "/kE6CAAJBtECOnDXyx4suUU79TCP.jpg",
+        "original_language": "en",
+        "original_title": "Paradise Hills",
+        "genre_ids": [
+          14,
+          878,
+          53
+        ],
+        "title": "Paradise Hills",
+        "vote_average": 6.2,
+        "overview": "A young woman is sent to Paradise Hills to be reformed, only to learn that the high-class facility's beautiful facade hides a sinister secret.",
+        "release_date": "2019-08-29"
+      },
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 10.924,
+        "id": 214597,
+        "video": false,
+        "vote_count": 159,
+        "vote_average": 4.7,
+        "title": "Fright Night 2: New Blood",
+        "release_date": "2013-08-31",
+        "original_language": "en",
+        "original_title": "Fright Night 2: New Blood",
+        "genre_ids": [
+          27,
+          35
+        ],
+        "backdrop_path": "/hoL2ncXPok6r1Ds0imOEanF36xU.jpg",
+        "adult": false,
+        "overview": "By day Gerri Dandridge is a sexy professor, but by night she transforms into a real-life vampire with an unquenchable thirst for human blood. When a group of high school students travel abroad to study in Romania, they find themselves ensnared in her chilling web of lust and terror. Charlie and 'Evil' Ed must stop Gerri from drinking and bathing in the blood of a 'new moon virgin', who just so happens to be Charlie’s ex-girlfriend.",
+        "poster_path": "/cp2959zvia5B3wgsv4pOurHndvb.jpg"
+      },
+      "id": 19
     }
   ],
   "comments": [
