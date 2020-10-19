@@ -42,7 +42,7 @@ export const MovieProvider = (props) => {
         })
     }
 
-    const myLikes = () => {
+    const MyLikes = () => {
         return fetch(`http://localhost:8088/selections`)
         .then(res => res.json())
         .then(setMovies)
@@ -51,7 +51,7 @@ export const MovieProvider = (props) => {
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, myLikes, deleteSelection
+            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection
         }}>
             {props.children}
         </MovieContext.Provider>

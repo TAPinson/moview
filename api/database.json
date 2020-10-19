@@ -20,80 +20,6 @@
       "userId": 1,
       "watched": false,
       "tmdbObject": {
-        "popularity": 12.029,
-        "id": 255268,
-        "video": false,
-        "vote_count": 116,
-        "vote_average": 6,
-        "title": "Bad Ass 2: Bad Asses",
-        "release_date": "2014-04-08",
-        "original_language": "en",
-        "original_title": "Bad Ass 2: Bad Asses",
-        "genre_ids": [
-          28
-        ],
-        "backdrop_path": "/7kMyf5OBV4gLfQrV1sFZRHluH3v.jpg",
-        "adult": false,
-        "overview": "Vietnam vet Frank Vega now runs an East L.A. community center where he trains young boxers to survive in and out of the ring. But when his prize student falls in with the wrong crowd and turns up dead, Frank teams up with his pal Bernie to take matters into their own fists and prove that justice never gets old.",
-        "poster_path": "/h51RmbFvlkIszrAjJD40H2jLd9W.jpg"
-      },
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 11.269,
-        "vote_count": 309,
-        "video": false,
-        "poster_path": "/kfYawa9SF9MQ3ae0TXAfhDLFGv7.jpg",
-        "id": 25059,
-        "adult": false,
-        "backdrop_path": "/sMukEdOweNU9UveS1FPTnzVpB9p.jpg",
-        "original_language": "en",
-        "original_title": "Homeward Bound II: Lost in San Francisco",
-        "genre_ids": [
-          12,
-          35,
-          18,
-          10751
-        ],
-        "title": "Homeward Bound II: Lost in San Francisco",
-        "vote_average": 6.5,
-        "overview": "When the pets accidentally get separated from their vacationing owners, Chance, Shadow, and Sassy navigate the mean streets of San Francisco, trying to find their home across the Golden Gate Bridge. But the road is blocked by a series of hazards, both man and beast.",
-        "release_date": "1996-03-08"
-      },
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 20.224,
-        "vote_count": 1994,
-        "video": false,
-        "poster_path": "/yVl7zidse4KiWtGMqHFtZCx4X3N.jpg",
-        "id": 1669,
-        "adult": false,
-        "backdrop_path": "/ysYBfA0VcbJic9CURRmR1QwWaKw.jpg",
-        "original_language": "en",
-        "original_title": "The Hunt for Red October",
-        "genre_ids": [
-          28,
-          12,
-          53
-        ],
-        "title": "The Hunt for Red October",
-        "vote_average": 7.4,
-        "overview": "A new, technologically-superior Soviet sub, the Red October, is heading for the U.S. coast under the command of Captain Marko Ramius. The American government thinks Ramius is planning to attack. A lone CIA analyst has a different idea: he thinks Ramius is planning to defect, but he has only a few hours to find him and prove it — because the entire Russian naval and air commands are trying to find him, too.",
-        "release_date": "1990-03-02"
-      },
-      "id": 5
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
         "popularity": 20.217,
         "vote_count": 916,
         "video": false,
@@ -114,6 +40,83 @@
         "release_date": "2013-01-03"
       },
       "id": 6
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 464.445,
+        "vote_count": 5905,
+        "video": false,
+        "poster_path": "/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg",
+        "id": 454626,
+        "adult": false,
+        "backdrop_path": "/stmYfCUGd8Iy6kAMBr6AmWqx8Bq.jpg",
+        "original_language": "en",
+        "original_title": "Sonic the Hedgehog",
+        "genre_ids": [
+          28,
+          35,
+          878,
+          10751
+        ],
+        "title": "Sonic the Hedgehog",
+        "vote_average": 7.5,
+        "overview": "Based on the global blockbuster videogame franchise from Sega, Sonic the Hedgehog tells the story of the world’s speediest hedgehog as he embraces his new home on Earth. In this live-action adventure comedy, Sonic and his new best friend team up to defend the planet from the evil genius Dr. Robotnik and his plans for world domination.",
+        "release_date": "2020-02-12"
+      },
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 636.211,
+        "vote_count": 6047,
+        "video": false,
+        "poster_path": "/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg",
+        "id": 495764,
+        "adult": false,
+        "backdrop_path": "/9xNOiv6DZZjH7ABoUUDP0ZynouU.jpg",
+        "original_language": "en",
+        "original_title": "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)",
+        "genre_ids": [
+          28,
+          35,
+          80
+        ],
+        "title": "Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)",
+        "vote_average": 7.2,
+        "overview": "Harley Quinn joins forces with a singer, an assassin and a police detective to help a young girl who had a hit placed on her after she stole a rare diamond from a crime lord.",
+        "release_date": "2020-02-05"
+      },
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 36.708,
+        "vote_count": 8880,
+        "video": false,
+        "poster_path": "/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg",
+        "id": 165,
+        "adult": false,
+        "backdrop_path": "/skQN2UMQKQnOTmwplcYMx6ZF4jS.jpg",
+        "original_language": "en",
+        "original_title": "Back to the Future Part II",
+        "genre_ids": [
+          12,
+          35,
+          878,
+          10751
+        ],
+        "title": "Back to the Future Part II",
+        "vote_average": 7.7,
+        "overview": "Marty and Doc are at it again in this wacky sequel to the 1985 blockbuster as the time-traveling duo head to 2015 to nip some McFly family woes in the bud. But things go awry thanks to bully Biff Tannen and a pesky sports almanac. In a last-ditch attempt to set things straight, Marty finds himself bound for 1955 and face to face with his teenage parents -- again.",
+        "release_date": "1989-11-22"
+      },
+      "id": 15
     }
   ],
   "comments": [

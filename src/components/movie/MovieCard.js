@@ -1,6 +1,8 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import { MovieContext } from "./MovieProvider"
 import "./Movie.css"
+import { MovieLikes } from "./MovieLikes"
+import { useHistory, useParams } from 'react-router-dom';
 
 export const MovieBrowse = ({ movie }) => {
     const { addSelection, deleteSelection } = useContext(MovieContext)
@@ -29,8 +31,15 @@ export const MovieBrowse = ({ movie }) => {
 )}
 
 export const MovieCard = ({ movie }) => {
-    const { deleteSelection } = useContext(MovieContext)
+ 
+    const { deleteSelection, MyLikes } = useContext(MovieContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
+
+    useEffect(() => {
+        MyLikes()
+		
+    }, [])
+
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
@@ -39,7 +48,9 @@ export const MovieCard = ({ movie }) => {
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
             <button onClick={() => {
                         deleteSelection(movie.id)
-                        //getRandomMovies()
+                        .then(() => {
+                            MyLikes()
+                        })
                         }}>Delete
                     </button>
         </section>
