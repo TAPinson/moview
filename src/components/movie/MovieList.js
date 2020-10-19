@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
-import { MovieCard } from "./MovieCard"
+import { MovieBrowse, MovieCard } from "./MovieCard"
 import "./Movie.css"
 
 export const MovieList = () => {
@@ -21,8 +21,9 @@ export const MovieList = () => {
             results.push(each)
         })
         console.log(results)
+        
     }
-
+    
     return (	
         <>
         
@@ -30,7 +31,7 @@ export const MovieList = () => {
 		    {console.log("MovieList: Render")}
         {   
 			results.map(movie => {
-				return <MovieCard key={movie.id} movie={movie} />
+				return <MovieBrowse key={movie.id} movie={movie} />
 			})
         }
         </div>

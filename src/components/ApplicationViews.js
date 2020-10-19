@@ -8,6 +8,7 @@ import { MovieLikes } from "./movie/MovieLikes"
 import { MovieWatched } from "./movie/MovieWatched"
 import { ViewerAccount } from "./auth/ViewerAccount"
 import { Logout } from "./auth/Logout"
+import { MovieBrowse } from "./movie/MovieCard"
 
 export const ApplicationViews = (props) => {
     return (

@@ -25,12 +25,26 @@ export const MovieProvider = (props) => {
         .then(setMovies)
     }
 
+    const addSelection = selection => {
+        return fetch("http://localhost:8088/selections", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(selection)
+        })
+    }
 
+    const myLikes = () => {
+        return fetch(`http://localhost:8088/selections`)
+        .then(res => res.json())
+        .then(setMovies)
+    }
 
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies
+            movies, getMovies, getRandomMovies, addSelection, myLikes
         }}>
             {props.children}
         </MovieContext.Provider>

@@ -18,17 +18,155 @@
   "selections": [
     {
       "userId": 1,
-      "movieId": 1,
       "watched": false,
-      "tmdbObject": {},
+      "tmdbObject": {
+        "popularity": 24.406,
+        "vote_count": 3693,
+        "video": false,
+        "poster_path": "/wVbeL6fkbTKSmNfalj4VoAUUqJv.jpg",
+        "id": 861,
+        "adult": false,
+        "backdrop_path": "/hVbgfpmedasebOF3H0kZkinXafa.jpg",
+        "original_language": "en",
+        "original_title": "Total Recall",
+        "genre_ids": [
+          28,
+          12,
+          878
+        ],
+        "title": "Total Recall",
+        "vote_average": 7.2,
+        "overview": "Construction worker Douglas Quaid discovers a memory chip in his brain during a virtual-reality trip. He also finds that his past has been invented to conceal a plot of planetary domination. Soon, he's off to Mars to find out who he is and who planted the chip.",
+        "release_date": "1990-06-01"
+      },
       "id": 1
     },
     {
       "userId": 1,
-      "movieId": 2,
       "watched": false,
-      "tmdbObject": {},
+      "tmdbObject": {
+        "popularity": 13.326,
+        "vote_count": 41,
+        "video": false,
+        "poster_path": "/5Ax4cefdnjzUC0b2pbegjKmW4lF.jpg",
+        "id": 422153,
+        "adult": false,
+        "backdrop_path": "/y2W7Q80soxOvqQHcYjmweI1Scy0.jpg",
+        "original_language": "en",
+        "original_title": "Hulk: Where Monsters Dwell",
+        "genre_ids": [
+          28,
+          16,
+          14,
+          878
+        ],
+        "title": "Hulk: Where Monsters Dwell",
+        "vote_average": 6.8,
+        "overview": "This All Hallows’ Eve, Nightmare is bent on conquering our waking world by crossing through the Dream Dimension, and converting each dreamer into a monster. Can Dr. Strange, Hulk and the Howling Commandos hold the line and put an end to his nefarious scheme?",
+        "release_date": "2016-10-21"
+      },
       "id": 2
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 12.029,
+        "id": 255268,
+        "video": false,
+        "vote_count": 116,
+        "vote_average": 6,
+        "title": "Bad Ass 2: Bad Asses",
+        "release_date": "2014-04-08",
+        "original_language": "en",
+        "original_title": "Bad Ass 2: Bad Asses",
+        "genre_ids": [
+          28
+        ],
+        "backdrop_path": "/7kMyf5OBV4gLfQrV1sFZRHluH3v.jpg",
+        "adult": false,
+        "overview": "Vietnam vet Frank Vega now runs an East L.A. community center where he trains young boxers to survive in and out of the ring. But when his prize student falls in with the wrong crowd and turns up dead, Frank teams up with his pal Bernie to take matters into their own fists and prove that justice never gets old.",
+        "poster_path": "/h51RmbFvlkIszrAjJD40H2jLd9W.jpg"
+      },
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 11.269,
+        "vote_count": 309,
+        "video": false,
+        "poster_path": "/kfYawa9SF9MQ3ae0TXAfhDLFGv7.jpg",
+        "id": 25059,
+        "adult": false,
+        "backdrop_path": "/sMukEdOweNU9UveS1FPTnzVpB9p.jpg",
+        "original_language": "en",
+        "original_title": "Homeward Bound II: Lost in San Francisco",
+        "genre_ids": [
+          12,
+          35,
+          18,
+          10751
+        ],
+        "title": "Homeward Bound II: Lost in San Francisco",
+        "vote_average": 6.5,
+        "overview": "When the pets accidentally get separated from their vacationing owners, Chance, Shadow, and Sassy navigate the mean streets of San Francisco, trying to find their home across the Golden Gate Bridge. But the road is blocked by a series of hazards, both man and beast.",
+        "release_date": "1996-03-08"
+      },
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 42.498,
+        "vote_count": 385,
+        "video": false,
+        "poster_path": "/woo56L6LYYoM89DYBCU2C6LO1at.jpg",
+        "id": 535167,
+        "adult": false,
+        "backdrop_path": "/3jKynKnUtRERxBFAcvZ8AvkTo4c.jpg",
+        "original_language": "zh",
+        "original_title": "流浪地球",
+        "genre_ids": [
+          28,
+          18,
+          878
+        ],
+        "title": "The Wandering Earth",
+        "vote_average": 6.3,
+        "overview": "When the Sun begins to expand in such a way that it will inevitably engulf and destroy the Earth in a hundred years, united mankind finds a way to avoid extinction by propelling the planet out of the Solar System using gigantic engines, moving it to a new home located four light years away, an epic journey that will last thousands of years.",
+        "release_date": "2019-02-05"
+      },
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 22.223,
+        "vote_count": 629,
+        "video": false,
+        "poster_path": "/mI3Oxpub6vNQ71FIR2GS4d8XXgj.jpg",
+        "id": 408220,
+        "adult": false,
+        "backdrop_path": "/a7gDe2aEA9KeFT980FVYJcwoohL.jpg",
+        "original_language": "en",
+        "original_title": "Justice League Dark",
+        "genre_ids": [
+          28,
+          16,
+          14,
+          878,
+          53
+        ],
+        "title": "Justice League Dark",
+        "vote_average": 7.3,
+        "overview": "Beings with supernatural powers join together to fight against supernatural villains.",
+        "release_date": "2017-01-24"
+      },
+      "id": 6
     }
   ],
   "comments": [
