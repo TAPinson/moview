@@ -11,7 +11,7 @@
       "username": "sudo",
       "password": "sudo",
       "email": "sudo@sudo",
-      "partnerId": 3,
+      "partnerId": 1,
       "id": 2
     },
     {
@@ -749,25 +749,53 @@
       "userId": 2,
       "watched": false,
       "tmdbObject": {
-        "popularity": 43.22,
-        "id": 348,
+        "popularity": 13.514,
+        "vote_count": 893,
         "video": false,
-        "vote_count": 9605,
-        "vote_average": 8.1,
-        "title": "Alien",
-        "release_date": "1979-05-25",
-        "original_language": "en",
-        "original_title": "Alien",
-        "genre_ids": [
-          27,
-          878
-        ],
-        "backdrop_path": "/AmR3JG1VQVxU8TfAvljUhfSFUOx.jpg",
+        "poster_path": "/v8gI95Eio7kAjixyqYHxNKmJTmm.jpg",
+        "id": 12107,
         "adult": false,
-        "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
-        "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
+        "backdrop_path": "/dpUlNuior0blwTBknptqQMBLoXh.jpg",
+        "original_language": "en",
+        "original_title": "Nutty Professor II: The Klumps",
+        "genre_ids": [
+          35,
+          14,
+          878,
+          10749
+        ],
+        "title": "Nutty Professor II: The Klumps",
+        "vote_average": 5,
+        "overview": "The hilarity begins when professor Sherman Klump finds romance with fellow DNA specialist, Denise Gaines, and discovers a brilliant formula that reverses aging. But Sherman's thin and obnoxious alter ego, Buddy Love, wants out...and a big piece of the action. And when Buddy gets loose, things get seriously nutty.",
+        "release_date": "2000-07-27"
       },
       "id": 68
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 13.514,
+        "vote_count": 893,
+        "video": false,
+        "poster_path": "/v8gI95Eio7kAjixyqYHxNKmJTmm.jpg",
+        "id": 12107,
+        "adult": false,
+        "backdrop_path": "/dpUlNuior0blwTBknptqQMBLoXh.jpg",
+        "original_language": "en",
+        "original_title": "Nutty Professor II: The Klumps",
+        "genre_ids": [
+          35,
+          14,
+          878,
+          10749
+        ],
+        "title": "Nutty Professor II: The Klumps",
+        "vote_average": 5,
+        "overview": "The hilarity begins when professor Sherman Klump finds romance with fellow DNA specialist, Denise Gaines, and discovers a brilliant formula that reverses aging. But Sherman's thin and obnoxious alter ego, Buddy Love, wants out...and a big piece of the action. And when Buddy gets loose, things get seriously nutty.",
+        "release_date": "2000-07-27"
+      },
+      "id": 69
     }
   ],
   "comments": [

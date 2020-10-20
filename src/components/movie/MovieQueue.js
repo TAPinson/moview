@@ -50,7 +50,7 @@ export const MovieQueue = () => {
             </>
         )
     } 
-    else {
+    if (userObject === undefined){
         return (	
             <>
             <h1>No Movies</h1>

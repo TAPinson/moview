@@ -66,21 +66,17 @@ export const MovieProvider = (props) => {
 
     const searchByTitle = terms => {
         const termsCleaned = terms.replace(/\s/g, '+')
-        console.log(termsCleaned)
         return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}&include_adult=true`)
         .then(res => res.json())
         .then(parsedMovies => {
             let movies = parsedMovies
             movies.found = true
-            console.log(movies.results)
             if (movies.results.length === 0){
                 window.alert("No results with that criteria")
                 getRandomMovies()
             } else {
                 setMovies(movies)
-
             }
-            
         })
     }
 
