@@ -4,7 +4,7 @@
       "username": "moviewer",
       "password": "sudo",
       "email": "viewer@movies.com",
-      "partnerId": 0,
+      "partnerId": 2,
       "id": 1
     },
     {
@@ -720,6 +720,54 @@
         "release_date": "1995-11-10"
       },
       "id": 66
+    },
+    {
+      "userId": 1,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 43.22,
+        "id": 348,
+        "video": false,
+        "vote_count": 9605,
+        "vote_average": 8.1,
+        "title": "Alien",
+        "release_date": "1979-05-25",
+        "original_language": "en",
+        "original_title": "Alien",
+        "genre_ids": [
+          27,
+          878
+        ],
+        "backdrop_path": "/AmR3JG1VQVxU8TfAvljUhfSFUOx.jpg",
+        "adult": false,
+        "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+        "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
+      },
+      "id": 67
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 43.22,
+        "id": 348,
+        "video": false,
+        "vote_count": 9605,
+        "vote_average": 8.1,
+        "title": "Alien",
+        "release_date": "1979-05-25",
+        "original_language": "en",
+        "original_title": "Alien",
+        "genre_ids": [
+          27,
+          878
+        ],
+        "backdrop_path": "/AmR3JG1VQVxU8TfAvljUhfSFUOx.jpg",
+        "adult": false,
+        "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+        "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
+      },
+      "id": 68
     }
   ],
   "comments": [
