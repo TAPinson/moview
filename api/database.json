@@ -418,7 +418,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 11.276,
         "id": 10837,
@@ -468,7 +468,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 21.812,
         "vote_count": 394,
@@ -495,7 +495,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 66.357,
         "vote_count": 0,
@@ -521,7 +521,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 35.07,
         "vote_count": 1140,
@@ -544,7 +544,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 223.454,
         "vote_count": 5774,
@@ -569,7 +569,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 3.3,
         "id": 448357,
@@ -592,7 +592,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 21.837,
         "id": 2270,
@@ -618,53 +618,7 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 13.858,
-        "vote_count": 629,
-        "video": false,
-        "poster_path": "/wIHiWN7kCELUZzbCMpMcxNC8HlS.jpg",
-        "id": 10802,
-        "adult": false,
-        "backdrop_path": "/1grl4j1SyyyofnKM9w5RojziUSP.jpg",
-        "original_language": "en",
-        "original_title": "Showgirls",
-        "genre_ids": [
-          18
-        ],
-        "title": "Showgirls",
-        "vote_average": 5.2,
-        "overview": "A young drifter named Nomi arrives in Las Vegas to become a dancer and soon sets about clawing and pushing her way to become a top showgirl.",
-        "release_date": "1995-09-22"
-      },
-      "id": 57
-    },
-    {
-      "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 14.647,
-        "id": 1542,
-        "video": false,
-        "vote_count": 1875,
-        "vote_average": 7.4,
-        "title": "Office Space",
-        "release_date": "1999-02-19",
-        "original_language": "en",
-        "original_title": "Office Space",
-        "genre_ids": [
-          35
-        ],
-        "backdrop_path": "/vNnRMxksen1cJNl3e0C9Zig4cUf.jpg",
-        "adult": false,
-        "overview": "Three office workers strike back at their evil employers by hatching a hapless attempt to embezzle money.",
-        "poster_path": "/gA49wTJMIr3TUM6fEDkjeGxkYgZ.jpg"
-      },
-      "id": 58
-    },
-    {
-      "userId": 2,
-      "watched": false,
+      "watched": true,
       "tmdbObject": {
         "popularity": 19.54,
         "vote_count": 916,
@@ -710,6 +664,29 @@
         "release_date": "1994-02-04"
       },
       "id": 60
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 19.439,
+        "vote_count": 700,
+        "video": false,
+        "poster_path": "/p9vCAVhDK375XyobVcKqzqzsUHE.jpg",
+        "id": 501907,
+        "adult": false,
+        "backdrop_path": "/w0tJot6O0UtLVBRIPAdg3dQ2oNO.jpg",
+        "original_language": "en",
+        "original_title": "A Beautiful Day in the Neighborhood",
+        "genre_ids": [
+          18
+        ],
+        "title": "A Beautiful Day in the Neighborhood",
+        "vote_average": 7.1,
+        "overview": "An award-winning cynical journalist, Lloyd Vogel, begrudgingly accepts an assignment to write an Esquire profile piece on the beloved television icon Fred Rogers. After his encounter with Rogers, Vogel's perspective on life is transformed.",
+        "release_date": "2019-09-07"
+      },
+      "id": 61
     }
   ],
   "comments": [

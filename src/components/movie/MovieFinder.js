@@ -28,12 +28,11 @@ export const MovieFinder = () => {
         })
         if (movies.found === false){
             console.log("Displayed movies are random")
-            // Get a random number between 1 and 20
-            let token = Math.floor(Math.random() * (20 - 0 + 1)) + 0; 
+            // Get a random number between 1 and 19 - Page 20 never contains any movies
+            let token = Math.floor(Math.random() * (19 - 0 + 1)) + 0; 
+            console.log(token)
             // Use the token to display a random movie
             let movie = results[token]
-            // Create the URL we will use for the movie poster
-            const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
             // Find the logged in user
             const userId = parseInt(localStorage.getItem("user"))
             return (
@@ -41,7 +40,7 @@ export const MovieFinder = () => {
                 <section className="finderContainer">
                     <div className="finderViewer">
                         <h1>{movie.title}</h1>
-                        <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+                        <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
                         <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
                         <button onClick={() => {
                             const selection = {
@@ -96,7 +95,7 @@ export const MovieFinder = () => {
                 <section className="finderContainer">
                     <div className="finderViewer">
                         <h1>{movie.title}</h1>
-                        <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+                        <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
                         <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
                         <button onClick={() => {
                             const selection = {

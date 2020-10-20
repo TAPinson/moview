@@ -19,7 +19,7 @@
 
 .finderViewer {
     width: 800px;
-    height: 800px;
+    height: auto;
     text-align: center;
     background-color: goldenrod;
 }
