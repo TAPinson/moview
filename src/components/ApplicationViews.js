@@ -6,8 +6,9 @@ import { MovieFinder } from "./movie/MovieFinder"
 import { MovieQueue } from "./movie/MovieQueue"
 import { MovieLikes } from "./movie/MovieLikes"
 import { MovieWatched } from "./movie/MovieWatched"
-import { ViewerAccount } from "./auth/ViewerAccount"
+import { ViewerAccount } from "./account/ViewerAccount"
 import { Logout } from "./auth/Logout"
+import { UserProvider } from './account/UserProvider'
 
 
 export const ApplicationViews = (props) => {
@@ -45,10 +46,11 @@ export const ApplicationViews = (props) => {
                 </Route>
             </MovieProvider>
 
-          
+            <UserProvider>
             <Route exact path="/account">
                 <ViewerAccount />
             </Route>
+            </UserProvider>
 
             <Route exact path="/logout">
                 <Logout />

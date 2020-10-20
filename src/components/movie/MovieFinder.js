@@ -28,7 +28,7 @@ export const MovieFinder = () => {
         })
         if (movies.found === false){
             console.log("Displayed movies are random")
-            // Get a random number between 1 and 19 - Page 20 never contains any movies
+            // Get a random number between 1 and 19 - Object 20 never contains a movie
             let token = Math.floor(Math.random() * (19 - 0 + 1)) + 0; 
             console.log(token)
             // Use the token to display a random movie
