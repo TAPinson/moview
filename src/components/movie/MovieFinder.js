@@ -27,10 +27,8 @@ export const MovieFinder = () => {
             results.push(each)
         })
         if (movies.found === false){
-            console.log("Displayed movies are random")
             // Get a random number between 1 and 19 - Object 20 never contains a movie
             let token = Math.floor(Math.random() * (19 - 0 + 1)) + 0; 
-            console.log(token)
             // Use the token to display a random movie
             let movie = results[token]
             // Find the logged in user
@@ -85,7 +83,6 @@ export const MovieFinder = () => {
             )
         }
          else if (movies.found === true) {
-             console.log("Displayed Movies are Search Results")
             // Select the first result, as it is the closest match
             let movie = results[0]
             const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`

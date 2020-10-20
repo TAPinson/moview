@@ -8,7 +8,7 @@ export const MovieQueue = () => {
    // This state changes when `getMovies()` is invoked below
     const { movies, MyLikes } = useContext(MovieContext)
     const { users, getUsers  } = useContext(UserContext)
-    const { user, setUser  } = useContext(UserContext)
+
 
 	//useEffect - reach out to the world for something
     useEffect(() => {
@@ -49,15 +49,19 @@ export const MovieQueue = () => {
             </div>
             </>
         )
+    } 
+    else {
+        return (	
+            <>
+            <h1>No Movies</h1>
+            <div className="movies">
+            {   
+                myMovies.map(movie => {
+                    return <MovieCard key={movie.id} movie={movie} />
+                })
+            }
+            </div>
+            </>
+        )
     }
-    return (	
-        <>
-		<div className="movies">
-        {   
-			myMovies.map(movie => {
-				return <MovieCard key={movie.id} movie={movie} />
-			})
-        }
-        </div>
-        </>
-    )}
+}

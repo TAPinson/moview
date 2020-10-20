@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
-import { MovieCard, WatchedCard } from "./MovieCard"
+import { WatchedCard } from "./MovieCard"
 import "./Movie.css"
 
 export const MovieWatched = () => {

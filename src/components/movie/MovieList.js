@@ -4,12 +4,9 @@ import { MovieBrowse } from "./MovieCard"
 import "./Movie.css"
 
 export const MovieList = () => {
-   // This state changes when `getMovies()` is invoked below
     const { movies, getRandomMovies } = useContext(MovieContext)
     
-	//useEffect - reach out to the world for something
     useEffect(() => {
-		//console.log("MovieList: useEffect - getMovies")
         getRandomMovies()
 		
     }, [])
