@@ -8,8 +8,6 @@ const loggedInUser = parseInt(localStorage.getItem("user"))
 export const MovieBrowse = ({ movie }) => {
     const { addSelection } = useContext(MovieContext)
     
-    console.log(movie)
-    
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`
     
     return (

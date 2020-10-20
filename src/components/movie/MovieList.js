@@ -20,15 +20,11 @@ export const MovieList = () => {
         movieResults.map((each) => {
             results.push(each)
         })
-        console.log(results)
-        
     }
     
     return (	
         <>
-        
 		<div className="movies">
-		    {console.log("MovieList: Render")}
         {   
 			results.map(movie => {
 				return <MovieBrowse key={movie.id} movie={movie} />

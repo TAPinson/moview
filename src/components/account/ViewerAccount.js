@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react"
 import {UserContext} from './UserProvider'
 import "./account.css"
 
-
-
 export const ViewerAccount = () => {
     const { user, getUser, getUsers, users, updateUser } = useContext(UserContext)
     
@@ -46,10 +44,10 @@ export const ViewerAccount = () => {
         return (
             <>
             <div className="userBox">
-                <h1>This will be where you edit account details</h1>
+                <h1>Pick or Update Your Partner:</h1>
                     <div>Username: {user.username}</div>
                     <div>Email: {user.email}</div>
-                    <div>Partner: {user.partnerId}</div>
+                    <div>Partner: {partnerUser.username}</div>
                     <form>
                         <fieldset>
                             <input type="text"
@@ -57,17 +55,16 @@ export const ViewerAccount = () => {
                                     name="partnerId"
                                     required
                                     className="form-control"
-                                    defaultValue={partnerUser.username}
-                                    onChange={searchTermFinder} 
-                            />
+                                    placeholder="New Partner Username"
+                                    onChange={searchTermFinder} />
                         </fieldset>
                         <button type="submit"
-                                        onClick={evt => {
-                                            evt.preventDefault() // Prevent browser from submitting the form
-                                            constructUser(searchTerms)
-                                        }}
-                                        className="partnerSaveBtn">
-                                         Save
+                                onClick={evt => {
+                                    evt.preventDefault() // Prevent browser from submitting the form
+                                    constructUser(searchTerms)
+                                }}
+                                className="partnerSaveBtn">
+                                Save
                         </button>
                     </form>
             </div>
@@ -77,10 +74,10 @@ export const ViewerAccount = () => {
         return (
             <>
             <div className="userBox">
-                <h1>This will be where you edit account details</h1>
+                <h1>Pick or Update Your Partner:</h1>
                     <div>Username: {user.username}</div>
                     <div>Email: {user.email}</div>
-                    <div>Partner: {user.partnerId}</div>
+                    <div>Partner: Partner Not Picked</div>
                     <form>
                         <fieldset>
                             <input type="text"
@@ -88,16 +85,16 @@ export const ViewerAccount = () => {
                                     name="partnerId"
                                     required
                                     className="form-control"
-                                    onChange={searchTermFinder} 
-                            />
+                                    onChange={searchTermFinder}
+                                    placeholder="New Partner Username" />
                         </fieldset>
                         <button type="submit"
-                                        onClick={evt => {
-                                            evt.preventDefault() // Prevent browser from submitting the form
-                                            constructUser(searchTerms)
-                                        }}
-                                        className="partnerSaveBtn">
-                                         Save
+                                onClick={evt => {
+                                    evt.preventDefault() // Prevent browser from submitting the form
+                                    constructUser(searchTerms)
+                                }}
+                                className="partnerSaveBtn">
+                                Save
                         </button>
                     </form>
             </div>
