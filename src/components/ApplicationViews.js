@@ -29,9 +29,11 @@ export const ApplicationViews = (props) => {
             </MovieProvider>
 
             <MovieProvider>
-                <Route exact path="/queue">
-                    <MovieQueue />
-                </Route>
+                <UserProvider>
+                    <Route exact path="/queue">
+                        <MovieQueue />
+                    </Route>
+                </UserProvider>
             </MovieProvider>
 
             <MovieProvider>
