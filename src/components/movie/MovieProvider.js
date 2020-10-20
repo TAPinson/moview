@@ -72,8 +72,15 @@ export const MovieProvider = (props) => {
         .then(parsedMovies => {
             let movies = parsedMovies
             movies.found = true
-            console.log(movies)
-            setMovies(movies)
+            console.log(movies.results)
+            if (movies.results.length === 0){
+                window.alert("No results with that criteria")
+                getRandomMovies()
+            } else {
+                setMovies(movies)
+
+            }
+            
         })
     }
 
