@@ -20,16 +20,24 @@ export const ViewerAccount = () => {
         const pairedPartner = users.filter((each) => {
             return each.username === partner
         })
-        const partnerId = pairedPartner[0].id
-        // Construct the updated user object to PUT
-        const userWithPartner = {
-            username: user.username,
-            password: user.password,
-            email: user.email,
-            partnerId: partnerId,
-            id: user.id
+        // Use resultCheck to ensure a partner is returned
+        const resultCheck = pairedPartner.length
+        if (resultCheck > 0) {
+            const partnerId = pairedPartner[0].id
+        
+            // Construct the updated user object to PUT
+            const userWithPartner = {
+                username: user.username,
+                password: user.password,
+                email: user.email,
+                partnerId: partnerId,
+                id: user.id
+            }
+            updateUser(userWithPartner)
+
+        } else {
+            alert("That is not a valid user")
         }
-        updateUser(userWithPartner)
     }
 
     //Use users partnerId to retrieve the whole object of the partner
