@@ -16,16 +16,17 @@ export const MovieBrowse = ({ movie }) => {
             <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
-            <button onClick={() => {
-                        const selection = {
-                            userId: loggedInUser,
-                            watched: false,
-                            tmdbObject: movie
+            <div>
+                <button className="likedMark" onClick={() => {
+                    const selection = {
+                        userId: loggedInUser,
+                        watched: false,
+                        tmdbObject: movie
                         }
-                        addSelection(selection)
-                        //getRandomMovies()
-                        }}>Like
-                    </button>
+                    addSelection(selection)
+                    }}>Add to Queue
+                </button>
+            </div>
         </section>
 )}
 
@@ -43,29 +44,31 @@ export const MovieCard = ({ movie }) => {
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
-            <div className="movie__overview"><strong>Overview:</strong> {movie.tmdbObject.overview}</div>
+            <div className="movie__overview"><strong></strong> {movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
-            <button onClick={() => {
-                deleteSelection(movie.id)
-                .then(() => {
-                    MyLikes()
+            <div>
+                <button className="likedDelete"onClick={() => {
+                    deleteSelection(movie.id)
+                    .then(() => {
+                        MyLikes()
                     })
-                }}>Delete
-            </button>
-            <button onClick={() => {
-                const watchedMovie = {
-                    userId: loggedInUser,
-                    watched: true,
-                    tmdbObject: movie.tmdbObject,
-                    id: movie.id
-                }
-                updateSelection(watchedMovie)
-                .then(() => {
-                    MyLikes()
-                })
-                }}>Mark Watched
-            </button>
+                    }}>Delete
+                </button>
+                <button className="likedMark"onClick={() => {
+                    const watchedMovie = {
+                        userId: loggedInUser,
+                        watched: true,
+                        tmdbObject: movie.tmdbObject,
+                        id: movie.id
+                    }
+                    updateSelection(watchedMovie)
+                    .then(() => {
+                        MyLikes()
+                    })
+                    }}>Mark Watched
+                </button>
+            </div>
         </section>
 )}
 
@@ -79,7 +82,7 @@ export const QueueCard = ({ movie }) => {
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
-            <div className="movie__overview"><strong>Overview:</strong> {movie.tmdbObject.overview}</div>
+            <div className="movie__overview">{movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
         </section>
@@ -99,28 +102,30 @@ export const WatchedCard = ({ movie }) => {
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
-            <div className="movie__overview"><strong>Overview:</strong> {movie.tmdbObject.overview}</div>
+            <div className="movie__overview">{movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
-            <button onClick={() => {
-                deleteSelection(movie.id)
-                .then(() => {
-                    MyLikes()
+            <div>
+                <button className="likedDelete" onClick={() => {
+                    deleteSelection(movie.id)
+                    .then(() => {
+                        MyLikes()
                     })
-                }}>Delete
-            </button>
-            <button onClick={() => {
-                const watchedMovie = {
-                    userId: loggedInUser,
-                    watched: false,
-                    tmdbObject: movie.tmdbObject,
-                    id: movie.id
-                }
-                updateSelection(watchedMovie)
-                .then(() => {
-                    MyLikes()
-                })
-                }}>Watch Again
-            </button>
+                    }}>Delete
+                </button>
+                <button className="likedMark"onClick={() => {
+                    const watchedMovie = {
+                        userId: loggedInUser,
+                        watched: false,
+                        tmdbObject: movie.tmdbObject,
+                        id: movie.id
+                    }
+                    updateSelection(watchedMovie)
+                    .then(() => {
+                        MyLikes()
+                    })
+                    }}>Watch Again
+                </button>
+            </div>
         </section>
 )}

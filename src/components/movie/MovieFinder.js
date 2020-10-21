@@ -50,7 +50,7 @@ export const MovieFinder = () => {
                             .then(() =>{
                                 getRandomMovies()
                             })
-                            }}>Like
+                            }}>Add to Queue
                         </button>
                         <button onClick={() => {
                             getRandomMovies()
@@ -104,7 +104,7 @@ export const MovieFinder = () => {
                             .then(() =>{
                                 getRandomMovies()
                             })
-                            }}>Like
+                            }}>Add to Queue
                         </button>
                         <button onClick={() => {
                             getRandomMovies()

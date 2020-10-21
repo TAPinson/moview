@@ -154,30 +154,6 @@
       "userId": 1,
       "watched": true,
       "tmdbObject": {
-        "popularity": 11.92,
-        "vote_count": 252,
-        "video": false,
-        "poster_path": "/etxcq4qiFNi5p0q71APw8MNzPPT.jpg",
-        "id": 17710,
-        "adult": false,
-        "backdrop_path": "/1pEMcogCLU2z9s3Vl10UUKswLLk.jpg",
-        "original_language": "en",
-        "original_title": "Hey Arnold! The Movie",
-        "genre_ids": [
-          16,
-          10751
-        ],
-        "title": "Hey Arnold! The Movie",
-        "vote_average": 6.4,
-        "overview": "When a powerful developer named Mr. Scheck wants to knock down all the stores and houses in Arnold's neighborhood to build a huge \"mall-plex\", it looks likes the neighborhood is doomed to disappear. But with the help of a superhero and a mysterious deep-voiced stranger, Arnold and Gerald will need to recover a crucial document in order to save their beloved neighborhood.",
-        "release_date": "2002-06-28"
-      },
-      "id": 20
-    },
-    {
-      "userId": 1,
-      "watched": true,
-      "tmdbObject": {
         "popularity": 66.34,
         "id": 176,
         "video": false,
@@ -672,31 +648,6 @@
       "id": 64
     },
     {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 87.651,
-        "id": 553600,
-        "video": false,
-        "vote_count": 82,
-        "vote_average": 7.4,
-        "title": "Promare",
-        "release_date": "2019-05-24",
-        "original_language": "ja",
-        "original_title": "プロメア",
-        "genre_ids": [
-          16,
-          28,
-          878
-        ],
-        "backdrop_path": "/eAWuDbZAYQY0PM0hL7zoO3aoF3T.jpg",
-        "adult": false,
-        "overview": "Galo and the Burning Rescue Fire Department face off against BURNISH, a group of mutants who are able to control and wield flames, and the fire disaster they have unleashed on Earth.",
-        "poster_path": "/cCVRivpiVUJ4Wn6gHm8pLXppXla.jpg"
-      },
-      "id": 65
-    },
-    {
       "userId": 2,
       "watched": false,
       "tmdbObject": {
@@ -720,30 +671,6 @@
         "release_date": "1995-11-10"
       },
       "id": 66
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 43.22,
-        "id": 348,
-        "video": false,
-        "vote_count": 9605,
-        "vote_average": 8.1,
-        "title": "Alien",
-        "release_date": "1979-05-25",
-        "original_language": "en",
-        "original_title": "Alien",
-        "genre_ids": [
-          27,
-          878
-        ],
-        "backdrop_path": "/AmR3JG1VQVxU8TfAvljUhfSFUOx.jpg",
-        "adult": false,
-        "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
-        "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
-      },
-      "id": 67
     },
     {
       "userId": 2,
@@ -775,27 +702,26 @@
       "userId": 1,
       "watched": false,
       "tmdbObject": {
-        "popularity": 13.514,
-        "vote_count": 893,
+        "popularity": 15.764,
+        "vote_count": 418,
         "video": false,
-        "poster_path": "/v8gI95Eio7kAjixyqYHxNKmJTmm.jpg",
-        "id": 12107,
+        "poster_path": "/kWHx5eq7PELkF3If7LrrhuBskRG.jpg",
+        "id": 11008,
         "adult": false,
-        "backdrop_path": "/dpUlNuior0blwTBknptqQMBLoXh.jpg",
+        "backdrop_path": "/7TeZu171UfdE7868P6Rl7JYG6kv.jpg",
         "original_language": "en",
-        "original_title": "Nutty Professor II: The Klumps",
+        "original_title": "Major Payne",
         "genre_ids": [
+          12,
           35,
-          14,
-          878,
-          10749
+          10751
         ],
-        "title": "Nutty Professor II: The Klumps",
-        "vote_average": 5,
-        "overview": "The hilarity begins when professor Sherman Klump finds romance with fellow DNA specialist, Denise Gaines, and discovers a brilliant formula that reverses aging. But Sherman's thin and obnoxious alter ego, Buddy Love, wants out...and a big piece of the action. And when Buddy gets loose, things get seriously nutty.",
-        "release_date": "2000-07-27"
+        "title": "Major Payne",
+        "vote_average": 6,
+        "overview": "Major Benson Winifred Payne is being discharged from the Marines. Payne is a killin' machine, but the wars of the world are no longer fought on the battlefield. A career Marine, he has no idea what to do as a civilian, so his commander finds him a job - commanding officer of a local school's JROTC program, a bunch of ragtag losers with no hope.",
+        "release_date": "1995-03-24"
       },
-      "id": 69
+      "id": 70
     }
   ],
   "comments": [
