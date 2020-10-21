@@ -10,12 +10,9 @@ import { ViewerAccount } from "./account/ViewerAccount"
 import { Logout } from "./auth/Logout"
 import { UserProvider } from './account/UserProvider'
 
-
 export const ApplicationViews = (props) => {
     return (
         <>
-            
-
             <MovieProvider>
                 <Route exact path="/">
                     <MovieFinder />
@@ -38,9 +35,9 @@ export const ApplicationViews = (props) => {
 
             <MovieProvider>
                 <UserProvider>
-                <Route exact path="/likes">
-                    <MovieLikes />
-                </Route>
+                    <Route exact path="/likes">
+                        <MovieLikes />
+                    </Route>
                 </UserProvider>
             </MovieProvider>
 
@@ -53,15 +50,14 @@ export const ApplicationViews = (props) => {
             </MovieProvider>
 
             <UserProvider>
-            <Route exact path="/account">
-                <ViewerAccount />
-            </Route>
+                <Route exact path="/account">
+                    <ViewerAccount />
+                </Route>
             </UserProvider>
 
             <Route exact path="/logout">
                 <Logout />
             </Route>
-    
         </>
     )
 }

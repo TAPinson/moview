@@ -82,3 +82,17 @@
 .movieCommentAuthor {
     float: right;
 }
+
+.likeFromBrowse {
+    text-align: center;
+}
+
+.browseMoreMovies {
+    width: 31.5%;
+    height: 30%;
+    margin: 1em;
+    text-align: center;
+    background-color: goldenrod;
+    cursor: pointer;
+}
+

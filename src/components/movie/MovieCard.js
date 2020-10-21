@@ -16,9 +16,9 @@ export const MovieBrowse = ({ movie }) => {
             <h3 className="movie__name">{movie.title}</h3>
             <div className="movie__overview">{movie.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.release_date}</div>
-            <img className="moviePoster" src={imgURL} alt="movie poster"></img>
-            <div>
-                <button className="likedMark" onClick={() => {
+            <div className="moviePoster"><img className="" src={imgURL} alt="movie poster"></img></div>
+            <div className="likeFromBrowse">
+                <button onClick={() => {
                     const selection = {
                         userId: loggedInUser,
                         watched: false,

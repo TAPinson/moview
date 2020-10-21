@@ -27,6 +27,16 @@ export const MovieList = () => {
 				return <MovieBrowse key={movie.id} movie={movie} />
 			})
         }
+        <div className="browseMoreMovies" onClick={() => {
+                    getRandomMovies()
+                    .then(window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'})
+                        )
+                    }
+                    }><h1>Give Me More Movies!</h1>
+        </div>
         </div>
         </>
     )
