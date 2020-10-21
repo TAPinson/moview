@@ -46,7 +46,7 @@
         "overview": "Batman has stopped the reign of terror that The Mutants had cast upon his city.  Now an old foe wants a reunion and the government wants The Man of Steel to put a stop to Batman.",
         "release_date": "2013-01-03"
       },
-      "id": 6
+      "id": 1
     },
     {
       "userId": 1,
@@ -726,16 +726,40 @@
   ],
   "comments": [
     {
-      "movieId": 1,
+      "selectionId": 1,
       "userId": 1,
       "comment": "What a great movie!",
       "id": 1
     },
     {
-      "movieId": 2,
+      "selectionId": 1,
       "userId": 1,
       "comment": "I loved this movie!",
       "id": 2
+    },
+    {
+      "selectionId": 64,
+      "userId": 1,
+      "comment": "Greatest cinematic masterpiece of all time",
+      "id": 3
+    },
+    {
+      "selectionId": 64,
+      "userId": 1,
+      "comment": "test",
+      "id": 5
+    },
+    {
+      "selectionId": 64,
+      "userId": 1,
+      "comment": "aaaaa",
+      "id": 6
+    },
+    {
+      "selectionId": 63,
+      "userId": 1,
+      "comment": "Changed my life!",
+      "id": 7
     }
   ]
 }

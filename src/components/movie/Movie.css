@@ -47,10 +47,20 @@
 }
 
 .likedDelete {
-    float: right;
-    margin-left: 1em;
+    
+    
 }
 
 .likedMark {
-    float: right;
+    margin-left: 2em;
+    
+}
+
+.commentForm {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.submitComment {
+    margin-left: 2em;
 }

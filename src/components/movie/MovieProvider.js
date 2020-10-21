@@ -7,6 +7,7 @@ export const MovieContext = createContext()
 // This component establishes what data can be used.
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
+    const [comments, setComments] = useState([])
 
     const getMovies = () => {
         // Fetch popular movies from 2019
@@ -48,7 +49,7 @@ export const MovieProvider = (props) => {
 
     // Return the database of selectiions
     const MyLikes = () => {
-        return fetch(`http://localhost:8088/selections`)
+        return fetch(`http://localhost:8088/selections?_embed=comments`)
         .then(res => res.json())
         .then(setMovies)
     }
@@ -80,10 +81,29 @@ export const MovieProvider = (props) => {
         })
     }
 
+    
+
+    // Add a selection to the database
+    const addComment = comment => {
+        return fetch("http://localhost:8088/comments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(comment)
+            
+        })
+    }
+
+    
+
+
+
+
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle
+            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment
         }}>
             {props.children}
         </MovieContext.Provider>
