@@ -73,17 +73,17 @@ export const MovieCard = ({ movie }) => {
         addComment(newComment)
         .then(MyLikes())
     }
-
+    // Create some data to use if there are no comments on a movie
     if (movie.comments[0] === undefined){
         movie.comments = [{}]
         movie.comments[0].comment = "No Comments Yet"
         movie.comments[0].id = 0
     }
-
+    // Get the array of movie comments
     let movieComments = movie.comments
-
+    // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
-        return <div key={held.id}>{held.comment}</div>
+        return <div class="movieComment"key={held.id}>{held.comment}</div>
     })
 
     return (

@@ -91,8 +91,8 @@ export const MovieProvider = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(comment)
-            
         })
+        .then(MyLikes())
     }
 
     
