@@ -3,3 +3,7 @@
     border: 1px solid;
     padding: 1em;
 }
+
+#partnerInput {
+    width: 25%;
+}
