@@ -31,39 +31,19 @@ export const MovieBrowse = ({ movie }) => {
         </section>
 )}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // This is used to display movies already selected by the user and being retrieved from JSON Server
 export const MovieCard = ({ movie }) => {
- 
     const { deleteSelection, MyLikes, updateSelection, addComment } = useContext(MovieContext)
     const { users, getUsers } = useContext(UserContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
-
     useEffect(() => {
         MyLikes()
         .then(getUsers())
     }, [])
-
     let commentInput = ""
     const handleControlledInput = (event) => {
         commentInput = event.target.value
     }
-
-   
-
     const constructNewComment = (input) => {
         const userId = parseInt(localStorage.getItem("user"))
         const newComment = {
@@ -71,7 +51,6 @@ export const MovieCard = ({ movie }) => {
             userId: userId,
             comment: input
         }
-        console.log(newComment)
         addComment(newComment)
         .then(MyLikes())
     }
@@ -93,26 +72,22 @@ export const MovieCard = ({ movie }) => {
             return foundUser.username
         }
     }
-
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
         return <div className="movieComment"key={held.id}>
                     "{held.comment}"
-                    <div>
+                    <div className="movieCommentAuthor">
                         ~<i>{findUser(held.userId)}</i>
                     </div>
               </div>
     })
-
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
             <div className="movie__overview"><strong></strong> {movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
-            
-            <img className="moviePoster" src={imgURL} alt="movie poster" />
-            
-            <div>
+            <div className="moviePoster"><img className="posterImage" src={imgURL} alt="movie poster" /></div>
+            <div className="buttonBoxLikes">
                 <button className="likedDelete"onClick={() => {
                     deleteSelection(movie.id)
                     .then(() => {
@@ -133,8 +108,8 @@ export const MovieCard = ({ movie }) => {
                     })
                     }}>Mark Watched
                 </button>
-                <div>{commentCard}</div>
             </div>
+                <div>{commentCard}</div>
                 <form className="commentForm">
                     <fieldset>
                         <input type="text"
@@ -151,22 +126,8 @@ export const MovieCard = ({ movie }) => {
                 </button>
                     </fieldset>
                 </form>
-            
         </section>
 )}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const QueueCard = ({ movie }) => {
     const { deleteSelection, MyLikes, updateSelection } = useContext(MovieContext)
@@ -185,24 +146,100 @@ export const QueueCard = ({ movie }) => {
 )}
 
 // This is used to display movies already selected by the user and being retrieved from JSON Server
-export const WatchedCard = ({ movie }) => {
- 
-    const { deleteSelection, MyLikes, updateSelection } = useContext(MovieContext)
-    const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
+// export const WatchedCard = ({ movie }) => {
+//     const { deleteSelection, MyLikes, updateSelection } = useContext(MovieContext)
+//     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
+//     useEffect(() => {
+//         MyLikes()
+//     }, [])
+//     return (
+//         <section className="movieBox">
+//             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
+//             <div className="movie__overview">{movie.tmdbObject.overview}</div>
+//             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
+//             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+//             <div>
+//                 <button className="likedDelete" onClick={() => {
+//                     deleteSelection(movie.id)
+//                     .then(() => {
+//                         MyLikes()
+//                     })
+//                     }}>Delete
+//                 </button>
+//                 <button className="likedMark"onClick={() => {
+//                     const watchedMovie = {
+//                         userId: loggedInUser,
+//                         watched: false,
+//                         tmdbObject: movie.tmdbObject,
+//                         id: movie.id
+//                     }
+//                     updateSelection(watchedMovie)
+//                     .then(() => {
+//                         MyLikes()
+//                     })
+//                     }}>Watch Again
+//                 </button>
+//             </div>
+//         </section>
+// )}
 
+export const WatchedCard = ({ movie }) => {
+    const { deleteSelection, MyLikes, updateSelection, addComment } = useContext(MovieContext)
+    const { users, getUsers } = useContext(UserContext)
+    const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
         MyLikes()
-		
+        .then(getUsers())
     }, [])
+    let commentInput = ""
+    const handleControlledInput = (event) => {
+        commentInput = event.target.value
+    }
+    const constructNewComment = (input) => {
+        const userId = parseInt(localStorage.getItem("user"))
+        const newComment = {
+            selectionId: movie.id,
+            userId: userId,
+            comment: input
+        }
+        addComment(newComment)
+        .then(MyLikes())
+    }
+    // Create some data to use if there are no comments on a movie
+    if (movie.comments[0] === undefined){
+        movie.comments = [{}]
+        movie.comments[0].comment = "No Comments Yet"
+        movie.comments[0].id = 0
+    }
+    // Get the array of movie comments
+    let movieComments = movie.comments
 
+    // We will call this to get usernames from the comment ID's
+    const findUser = (id) => {
+        const foundUser = users.find((oneUser) => {
+            return oneUser.id === id
+        })
+        if (foundUser !== undefined){
+            return foundUser.username
+        }
+    }
+    // return the HTML to dsplay each comment
+    const commentCard = movieComments.map((held) => {
+        return <div className="movieComment"key={held.id}>
+                    "{held.comment}"
+                    <div className="movieCommentAuthor">
+                        ~<i>{findUser(held.userId)}</i>
+                    </div>
+              </div>
+    })
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
-            <div className="movie__overview">{movie.tmdbObject.overview}</div>
+            <div className="movie__overview"><strong></strong> {movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
-            <img className="moviePoster" src={imgURL} alt="movie poster"></img>
-            <div>
-                <button className="likedDelete" onClick={() => {
+            <div className="moviePoster"><img className="posterImage" src={imgURL} alt="movie poster" /></div>
+            <div className="buttonBoxLikes">
+                <button className="likedDelete"onClick={() => {
                     deleteSelection(movie.id)
                     .then(() => {
                         MyLikes()
@@ -223,5 +260,22 @@ export const WatchedCard = ({ movie }) => {
                     }}>Watch Again
                 </button>
             </div>
+                <div>{commentCard}</div>
+                <form className="commentForm">
+                    <fieldset>
+                        <input type="text"
+                                id="commentTextInput"
+                                name="comment"
+                                required
+                                placeholder="Add a comment..."
+                                onChange={handleControlledInput} />
+                        <button className="submitComment" onClick={evt  => {
+                            evt.preventDefault()
+                            //console.log("click")
+                            constructNewComment(commentInput)
+                    }}>Comment
+                </button>
+                    </fieldset>
+                </form>
         </section>
 )}

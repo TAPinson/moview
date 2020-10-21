@@ -45,9 +45,11 @@ export const ApplicationViews = (props) => {
             </MovieProvider>
 
             <MovieProvider>
-                <Route exact path="/watched">
-                    <MovieWatched />
-                </Route>
+                <UserProvider>
+                    <Route exact path="/watched">
+                        <MovieWatched />
+                    </Route>
+                </UserProvider>
             </MovieProvider>
 
             <UserProvider>

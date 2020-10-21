@@ -49,6 +49,7 @@
 .movieComment {
     margin: 1em;
     border: 1px solid;
+    border-radius: 30px;
     padding: 1em;
 }
 
@@ -64,4 +65,20 @@
 
 .submitComment {
     margin-left: 2em;
+}
+
+#commentTextInput {
+    width: 70%;
+}
+
+.moviePoster {
+    text-align: center;
+}
+
+.buttonBoxLikes {
+    text-align: center;
+}
+
+.movieCommentAuthor {
+    float: right;
 }
