@@ -769,9 +769,15 @@
     },
     {
       "selectionId": 63,
-      "userId": 1,
+      "userId": 2,
       "comment": "This movie popularized the Miami Dolphins",
       "id": 11
+    },
+    {
+      "selectionId": 70,
+      "userId": 1,
+      "comment": "This was a realistic depiction of life in the military! A+",
+      "id": 12
     }
   ]
 }

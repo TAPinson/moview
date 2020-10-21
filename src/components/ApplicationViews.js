@@ -37,9 +37,11 @@ export const ApplicationViews = (props) => {
             </MovieProvider>
 
             <MovieProvider>
+                <UserProvider>
                 <Route exact path="/likes">
                     <MovieLikes />
                 </Route>
+                </UserProvider>
             </MovieProvider>
 
             <MovieProvider>

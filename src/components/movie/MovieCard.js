@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from "react"
 import { MovieContext } from "./MovieProvider"
+import { UserContext } from '../account/UserProvider'
 import "./Movie.css"
 
 const loggedInUser = parseInt(localStorage.getItem("user"))
@@ -48,11 +49,12 @@ export const MovieBrowse = ({ movie }) => {
 export const MovieCard = ({ movie }) => {
  
     const { deleteSelection, MyLikes, updateSelection, addComment } = useContext(MovieContext)
+    const { users, getUsers } = useContext(UserContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
 
     useEffect(() => {
         MyLikes()
-		
+        .then(getUsers())
     }, [])
 
     let commentInput = ""
@@ -81,9 +83,25 @@ export const MovieCard = ({ movie }) => {
     }
     // Get the array of movie comments
     let movieComments = movie.comments
+
+    // We will call this to get usernames from the comment ID's
+    const findUser = (id) => {
+        const foundUser = users.find((oneUser) => {
+            return oneUser.id === id
+        })
+        if (foundUser !== undefined){
+            return foundUser.username
+        }
+    }
+
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
-        return <div class="movieComment"key={held.id}>{held.comment}</div>
+        return <div className="movieComment"key={held.id}>
+                    "{held.comment}"
+                    <div>
+                        ~<i>{findUser(held.userId)}</i>
+                    </div>
+              </div>
     })
 
     return (
@@ -91,8 +109,9 @@ export const MovieCard = ({ movie }) => {
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
             <div className="movie__overview"><strong></strong> {movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
-            <div>Comments: {commentCard}</div>
+            
             <img className="moviePoster" src={imgURL} alt="movie poster" />
+            
             <div>
                 <button className="likedDelete"onClick={() => {
                     deleteSelection(movie.id)
@@ -114,6 +133,7 @@ export const MovieCard = ({ movie }) => {
                     })
                     }}>Mark Watched
                 </button>
+                <div>{commentCard}</div>
             </div>
                 <form className="commentForm">
                     <fieldset>

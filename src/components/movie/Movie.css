@@ -48,6 +48,8 @@
 
 .movieComment {
     margin: 1em;
+    border: 1px solid;
+    padding: 1em;
 }
 
 .likedMark {
