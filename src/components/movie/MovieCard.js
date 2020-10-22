@@ -33,7 +33,7 @@ export const MovieBrowse = ({ movie }) => {
 
 // This is used to display movies already selected by the user and being retrieved from JSON Server
 export const MovieCard = ({ movie }) => {
-    const { deleteSelection, MyLikes, updateSelection, addComment } = useContext(MovieContext)
+    const { deleteSelection, MyLikes, updateSelection, addComment, deleteComment } = useContext(MovieContext)
     const { users, getUsers } = useContext(UserContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
@@ -52,7 +52,9 @@ export const MovieCard = ({ movie }) => {
             comment: input
         }
         addComment(newComment)
-        .then(MyLikes())
+        .then(() => {
+            MyLikes()
+        })
     }
     // Create some data to use if there are no comments on a movie
     if (movie.comments[0] === undefined){
@@ -62,7 +64,6 @@ export const MovieCard = ({ movie }) => {
     }
     // Get the array of movie comments
     let movieComments = movie.comments
-
     // We will call this to get usernames from the comment ID's
     const findUser = (id) => {
         const foundUser = users.find((oneUser) => {
@@ -78,6 +79,14 @@ export const MovieCard = ({ movie }) => {
                     "{held.comment}"
                     <div className="movieCommentAuthor">
                         ~<i>{findUser(held.userId)}</i>
+                    </div>
+                    <div className="commentDelete" onClick={() => {
+                            console.log(held.id)
+                            deleteComment(held.id)
+                            .then(() => {
+                                MyLikes()
+                            })
+                            }}>❌
                     </div>
               </div>
     })
@@ -130,18 +139,46 @@ export const MovieCard = ({ movie }) => {
 )}
 
 export const QueueCard = ({ movie }) => {
-    const { deleteSelection, MyLikes, updateSelection } = useContext(MovieContext)
+    const { MyLikes } = useContext(MovieContext)
+    const { users, getUsers } = useContext(UserContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
         MyLikes()
-		
     }, [])
+
+
+    // We will call this to get usernames from the comment ID's
+    const findUser = (id) => {
+        const foundUser = users.find((oneUser) => {
+            return oneUser.id === id
+        })
+        if (foundUser !== undefined){
+            return foundUser.username
+        }
+    }
+
+    // Get the array of movie comments
+    let movieComments = movie.comments
+
+    // return the HTML to dsplay each comment
+    const commentCard = movieComments.map((held) => {
+        return <div className="movieComment"key={held.id}>
+                    "{held.comment}"
+                    <div className="movieCommentAuthor">
+                        ~<i>{findUser(held.userId)}</i>
+                    </div>
+              </div>
+    })
+
+
+
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
             <div className="movie__overview">{movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
             <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+            <div>{commentCard}</div>
         </section>
 )}
 

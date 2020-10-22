@@ -96,14 +96,19 @@ export const MovieProvider = (props) => {
     }
 
     
-
+    // Delete a selection using the message ID as a recerence
+    const deleteComment = commentID => {
+        return fetch(`http://localhost:8088/comments/${commentID}`, {
+            method: "DELETE"
+        })
+    }
 
 
 
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment
+            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment
         }}>
             {props.children}
         </MovieContext.Provider>

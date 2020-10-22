@@ -51,7 +51,16 @@
     border: 1px solid;
     border-radius: 30px;
     padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+.commentDelete {
+    float: right;
+    cursor: pointer;
+}
+
 
 .likedMark {
     margin-left: 2em;
@@ -80,7 +89,7 @@
 }
 
 .movieCommentAuthor {
-    float: right;
+    
 }
 
 .likeFromBrowse {
