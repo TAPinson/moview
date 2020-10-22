@@ -7,7 +7,6 @@ export const MovieContext = createContext()
 // This component establishes what data can be used.
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
-    const [comments, setComments] = useState([])
 
     const getMovies = () => {
         // Fetch popular movies from 2019

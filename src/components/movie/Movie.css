@@ -61,6 +61,10 @@
     cursor: pointer;
 }
 
+.queueComment {
+    width: 100%;
+    text-align: center;
+}
 
 .likedMark {
     margin-left: 2em;

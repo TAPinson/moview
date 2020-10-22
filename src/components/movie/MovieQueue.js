@@ -36,7 +36,9 @@ export const MovieQueue = () => {
                             }
                         })
                         return myMovie
-                    } 
+                    } else {
+                        return myMovie
+                    }
                 }
             }
         })
