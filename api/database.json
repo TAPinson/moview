@@ -542,6 +542,18 @@
       "userId": 1,
       "comment": "One of Melissas favorite movies!",
       "id": 8
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "selectionId": 16,
+      "comment": "I actually started, but didn't finish this movie."
+    },
+    {
+      "selectionId": 15,
+      "userId": 1,
+      "comment": "Obviously, a CLASSIC!",
+      "id": 10
     }
   ]
 }
