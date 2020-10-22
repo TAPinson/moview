@@ -99,13 +99,6 @@ export const MovieCard = ({ movie }) => {
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
                         <div><i>"{held.comment}"</i></div>
                         <div className="commentControls">
-                            <div className="commentDelete" onClick={() => {
-                                deleteComment(held.id)
-                                .then(() => {
-                                    MyLikes()
-                                })
-                                }}>❌
-                            </div>
                             <div className='App'>
                                 <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>
                                 <Modal className="editModal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
@@ -122,6 +115,13 @@ export const MovieCard = ({ movie }) => {
                                         <button className="modalClose"onClick={() => setModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
+                            </div>
+                            <div className="commentDelete" onClick={() => {
+                                deleteComment(held.id)
+                                .then(() => {
+                                    MyLikes()
+                                })
+                                }}>❌
                             </div>
                         </div>
                     </div>
@@ -275,18 +275,10 @@ export const WatchedCard = ({ movie }) => {
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
                         <div><i>"{held.comment}"</i></div>
                         <div className="commentControls">
-                            <div className="commentDelete" onClick={() => {
-                                deleteComment(held.id)
-                                .then(() => {
-                                    MyLikes()
-                                })
-                                }}>❌
-                            </div>
                             <div className='App'>
                                 <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>
                                 <Modal className="editModal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                                     <h2>Edit Message</h2>
-                                    
                                     <input type="text" className="modalInput" onChange={handleCommentUpdate} defaultValue={held.comment}/>
                                     <button onClick={evt => {
                                         evt.preventDefault()
@@ -298,6 +290,13 @@ export const WatchedCard = ({ movie }) => {
                                         <button className="modalClose"onClick={() => setModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
+                            </div>
+                            <div className="commentDelete" onClick={() => {
+                                deleteComment(held.id)
+                                .then(() => {
+                                    MyLikes()
+                                })
+                                }}>❌
                             </div>
                         </div>
                     </div>
