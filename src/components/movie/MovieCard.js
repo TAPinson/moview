@@ -56,12 +56,6 @@ export const MovieCard = ({ movie }) => {
             MyLikes()
         })
     }
-    // Create some data to use if there are no comments on a movie
-    // if (movie.comments[0] === undefined){
-    //     movie.comments = [{}]
-    //     movie.comments[0].comment = "No Comments Yet"
-    //     movie.comments[0].id = 0
-    // }
     // Get the array of movie comments
     let movieComments = movie.comments
     // We will call this to get usernames from the comment ID's
@@ -73,18 +67,36 @@ export const MovieCard = ({ movie }) => {
             return foundUser.username
         }
     }
+
+    const commentEditor = (comment) => {
+        const newComment = {
+            id: comment.id,
+            selectionId: comment.selectionId,
+            comment: comment.comment
+        }
+
+        console.log(newComment)
+
+    }
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
         return <div key="held.id">
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
                         <div><i>"{held.comment}"</i></div>
-                        <div className="commentDelete" onClick={() => {
-                            deleteComment(held.id)
-                            .then(() => {
-                                MyLikes()
-                            })
-                            }}>❌
+                        <div>
+                            <div className="commentDelete" onClick={() => {
+                                deleteComment(held.id)
+                                .then(() => {
+                                    MyLikes()
+                                })
+                                }}>❌
+                            </div>
+                            <div className="commentDelete" onClick={evt => {
+                                evt.preventDefault()
+                                commentEditor(held)
+                                }}>✏️
+                            </div>
                         </div>
                     </div>
               </div>
@@ -139,12 +151,11 @@ export const MovieCard = ({ movie }) => {
 
 export const QueueCard = ({ movie }) => {
     const { MyLikes } = useContext(MovieContext)
-    const { users, getUsers } = useContext(UserContext)
+    const { users } = useContext(UserContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
         MyLikes()
     }, [])
-
 
     // We will call this to get usernames from the comment ID's
     const findUser = (id) => {
@@ -183,7 +194,7 @@ export const QueueCard = ({ movie }) => {
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
             <div className="movie__overview">{movie.tmdbObject.overview}</div>
             <div className="movie__release"><strong>Released:</strong> {movie.tmdbObject.release_date}</div>
-            <img className="moviePoster" src={imgURL} alt="movie poster"></img>
+            <div className="moviePoster"><img className="moviePoster" src={imgURL} alt="movie poster"></img></div>
             <div>{commentCard}</div>
         </section>
 )}
@@ -210,12 +221,7 @@ export const WatchedCard = ({ movie }) => {
         addComment(newComment)
         .then(MyLikes())
     }
-    // Create some data to use if there are no comments on a movie
-    // if (movie.comments[0] === undefined){
-    //     movie.comments = [{}]
-    //     movie.comments[0].comment = "No Comments Yet"
-    //     movie.comments[0].id = 0
-    // }
+
     // Get the array of movie comments
     let movieComments = movie.comments
 
