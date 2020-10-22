@@ -102,12 +102,23 @@ export const MovieProvider = (props) => {
         })
     }
 
+    // Update an existing selection using the selection ID as a reference
+    const updateComment = comment => {
+        return fetch(`http://localhost:8088/comments/${comment.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(comment)
+        })
+    }
+
 
 
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment
+            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment
         }}>
             {props.children}
         </MovieContext.Provider>
