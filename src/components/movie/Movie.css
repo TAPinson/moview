@@ -66,6 +66,29 @@
     text-align: center;
 }
 
+.editModal {
+    width: 60%;
+    padding: 1em;
+    background-color: gray;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modalClose {
+    float: right;
+}
+
+.modalInput {
+    width: 60%;
+}
+
+.commentControls {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 .likedMark {
     margin-left: 2em;
     
@@ -80,7 +103,7 @@
     margin-left: 2em;
 }
 
-#commentTextInput {
+.commentTextInput {
     width: 70%;
 }
 

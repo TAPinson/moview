@@ -1,7 +1,8 @@
-import React, {useContext, useEffect} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "./MovieProvider"
 import { UserContext } from '../account/UserProvider'
 import "./Movie.css"
+import Modal from 'react-modal'
 
 const loggedInUser = parseInt(localStorage.getItem("user"))
 
@@ -33,8 +34,10 @@ export const MovieBrowse = ({ movie }) => {
 
 // This is used to display movies already selected by the user and being retrieved from JSON Server
 export const MovieCard = ({ movie }) => {
-    const { deleteSelection, MyLikes, updateSelection, addComment, deleteComment } = useContext(MovieContext)
+    const { deleteSelection, MyLikes, updateSelection, addComment, deleteComment, updateComment } = useContext(MovieContext)
     const { users, getUsers } = useContext(UserContext)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    Modal.setAppElement('#root')
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
         MyLikes()
@@ -68,23 +71,34 @@ export const MovieCard = ({ movie }) => {
         }
     }
 
-    const commentEditor = (comment) => {
+    const commentEditor = (held, comment) => {
         const newComment = {
-            id: comment.id,
-            selectionId: comment.selectionId,
-            comment: comment.comment
+            id: held.id,
+            userId: held.userId,
+            selectionId: held.selectionId,
+            comment: comment
         }
-
-        console.log(newComment)
-
+        updateComment(newComment)
+        .then(() => {
+            MyLikes()
+        })
+        
     }
+
+    let updateCommentInput = ""
+    const handleCommentUpdate = (event) => {
+        updateCommentInput = event.target.value
+    }
+
+    
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
+        
         return <div key="held.id">
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
                         <div><i>"{held.comment}"</i></div>
-                        <div>
+                        <div className="commentControls">
                             <div className="commentDelete" onClick={() => {
                                 deleteComment(held.id)
                                 .then(() => {
@@ -92,10 +106,22 @@ export const MovieCard = ({ movie }) => {
                                 })
                                 }}>❌
                             </div>
-                            <div className="commentDelete" onClick={evt => {
-                                evt.preventDefault()
-                                commentEditor(held)
-                                }}>✏️
+                            <div className='App'>
+                                <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>
+                                <Modal className="editModal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                                    <h2>Edit Message</h2>
+                                    
+                                    <input type="text" className="modalInput" onChange={handleCommentUpdate} defaultValue={held.comment}/>
+                                    <button onClick={evt => {
+                                        evt.preventDefault()
+                                        commentEditor(held, updateCommentInput)
+                                        setModalIsOpen(false)
+                                        }}>Save
+                                    </button>
+                                    <div>
+                                        <button className="modalClose"onClick={() => setModalIsOpen(false)}>Close</button>
+                                    </div>
+                                </Modal>
                             </div>
                         </div>
                     </div>
@@ -133,14 +159,13 @@ export const MovieCard = ({ movie }) => {
                 <form className="commentForm">
                     <fieldset>
                         <input type="text"
-                                id="commentTextInput"
+                                className="commentTextInput"
                                 name="comment"
                                 required
                                 placeholder="Add a comment..."
                                 onChange={handleControlledInput} />
                         <button className="submitComment" onClick={evt  => {
                             evt.preventDefault()
-                            //console.log("click")
                             constructNewComment(commentInput)
                     }}>Comment
                 </button>
@@ -200,8 +225,10 @@ export const QueueCard = ({ movie }) => {
 )}
 
 export const WatchedCard = ({ movie }) => {
-    const { deleteSelection, MyLikes, updateSelection, addComment, deleteComment } = useContext(MovieContext)
+    const { deleteSelection, MyLikes, updateSelection, addComment, deleteComment, updateComment } = useContext(MovieContext)
     const { users, getUsers } = useContext(UserContext)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    Modal.setAppElement('#root')
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.tmdbObject.poster_path}`
     useEffect(() => {
         MyLikes()
@@ -234,23 +261,62 @@ export const WatchedCard = ({ movie }) => {
             return foundUser.username
         }
     }
+
+    let updateCommentInput = ""
+    const handleCommentUpdate = (event) => {
+        updateCommentInput = event.target.value
+    }
+    
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
+        
         return <div key={held.id}>
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
                         <div><i>"{held.comment}"</i></div>
-                        <div className="commentDelete" onClick={() => {
-                            deleteComment(held.id)
-                            .then(() => {
-                                MyLikes()
-                            })
-                            }}>❌
+                        <div className="commentControls">
+                            <div className="commentDelete" onClick={() => {
+                                deleteComment(held.id)
+                                .then(() => {
+                                    MyLikes()
+                                })
+                                }}>❌
+                            </div>
+                            <div className='App'>
+                                <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>
+                                <Modal className="editModal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                                    <h2>Edit Message</h2>
+                                    
+                                    <input type="text" className="modalInput" onChange={handleCommentUpdate} defaultValue={held.comment}/>
+                                    <button onClick={evt => {
+                                        evt.preventDefault()
+                                        commentEditor(held, updateCommentInput)
+                                        setModalIsOpen(false)
+                                        }}>Save
+                                    </button>
+                                    <div>
+                                        <button className="modalClose"onClick={() => setModalIsOpen(false)}>Close</button>
+                                    </div>
+                                </Modal>
+                            </div>
                         </div>
                     </div>
               </div>
     })
-
+    
+    const commentEditor = (held, comment) => {
+        const newComment = {
+            id: held.id,
+            userId: held.userId,
+            selectionId: held.selectionId,
+            comment: comment
+        }
+        updateComment(newComment)
+        .then(() => {
+            MyLikes()
+        })
+        
+    }
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>
@@ -283,7 +349,7 @@ export const WatchedCard = ({ movie }) => {
                 <form className="commentForm">
                     <fieldset>
                         <input type="text"
-                                id="commentTextInput"
+                                className="commentTextInput"
                                 name="comment"
                                 required
                                 placeholder="Add a comment..."

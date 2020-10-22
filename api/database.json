@@ -520,22 +520,28 @@
       "id": 4
     },
     {
-      "selectionId": 73,
+      "id": 5,
       "userId": 1,
-      "comment": "This movie made me want to be a better person",
-      "id": 5
+      "selectionId": 73,
+      "comment": "This movie made me want to be a better peoples"
     },
     {
-      "selectionId": 9,
+      "id": 6,
       "userId": 1,
-      "comment": "Ive been wanting to watch this since they redesigned Sonic",
-      "id": 6
+      "selectionId": 9,
+      "comment": "I've been wanting to watch this since they redesigned Sonic!"
     },
     {
       "selectionId": 70,
       "userId": 1,
       "comment": "This was a realistic representation of life in the military! A+",
       "id": 7
+    },
+    {
+      "selectionId": 23,
+      "userId": 1,
+      "comment": "One of Melissas favorite movies!",
+      "id": 8
     }
   ]
 }
