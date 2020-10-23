@@ -8,12 +8,7 @@ export const MovieContext = createContext()
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
 
-    const getMovies = () => {
-        // Fetch popular movies from 2019
-        return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&sort_by=popularity.desc&primary_release_year=2019`)
-        .then(res => res.json())
-        .then(setMovies)
-    }
+    // ***************************************** Movie Data Below ***************************************** //
 
     // Pull a random page of movies from the API
     const getRandomMovies = () => {
@@ -27,6 +22,42 @@ export const MovieProvider = (props) => {
             setMovies(movies)
         })
     }
+
+    // Search for a movie by title
+    const searchByTitle = terms => {
+        const termsCleaned = terms.replace(/\s/g, '+')
+        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}&include_adult=true`)
+        .then(res => res.json())
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            // Search results are formatted differently than random movies, so we add this property to handle this later
+            movies.found = true
+            // We want to ensure that at least 1 result is returned, so this will handle that and then show a random Movie
+            if (movies.results.length === 0){
+                window.alert("No results with that criteria")
+                getRandomMovies()
+            } 
+            // If we have a successful search, we will set movies to those results
+            else {
+                setMovies(movies)
+            }
+        })
+    }
+
+    const searchByGenre = (genre) => {
+        let randomPage = Math.floor(Math.random() * 50) + 1; // returns a random integer from 1 to 100
+        return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&language=en-US&sort_by=popularity.desc&include_adult=false&&page=${randomPage}&with_genres=${genre}`)
+        .then(res => res.json())
+       
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            movies.found = false
+            setMovies(movies)
+        })
+
+    }
+
+    // ***************************************** Selection Data Below ***************************************** //
 
     // Add a selection to the database
     const addSelection = selection => {
@@ -46,13 +77,6 @@ export const MovieProvider = (props) => {
         })
     }
 
-    // Return the database of selectiions
-    const MyLikes = () => {
-        return fetch(`http://localhost:8088/selections?_embed=comments`)
-        .then(res => res.json())
-        .then(setMovies)
-    }
-
     // Update an existing selection using the selection ID as a reference
     const updateSelection = selection => {
         return fetch(`http://localhost:8088/selections/${selection.id}`, {
@@ -64,23 +88,14 @@ export const MovieProvider = (props) => {
         })
     }
 
-    const searchByTitle = terms => {
-        const termsCleaned = terms.replace(/\s/g, '+')
-        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${defaultExport.tmdbKey}&query=${termsCleaned}&include_adult=true`)
+    // Return the database of selectiions and embed the related comments
+    const MyLikes = () => {
+        return fetch(`http://localhost:8088/selections?_embed=comments`)
         .then(res => res.json())
-        .then(parsedMovies => {
-            let movies = parsedMovies
-            movies.found = true
-            if (movies.results.length === 0){
-                window.alert("No results with that criteria")
-                getRandomMovies()
-            } else {
-                setMovies(movies)
-            }
-        })
+        .then(setMovies)
     }
 
-    
+    // ***************************************** Comment Data Below ***************************************** //
 
     // Add a selection to the database
     const addComment = comment => {
@@ -91,15 +106,8 @@ export const MovieProvider = (props) => {
             },
             body: JSON.stringify(comment)
         })
+        // We will want to automatically refresh after a comment is added. This handles that
         .then(MyLikes())
-    }
-
-    
-    // Delete a selection using the message ID as a recerence
-    const deleteComment = commentID => {
-        return fetch(`http://localhost:8088/comments/${commentID}`, {
-            method: "DELETE"
-        })
     }
 
     // Update an existing selection using the selection ID as a reference
@@ -113,12 +121,17 @@ export const MovieProvider = (props) => {
         })
     }
 
-
+    // Delete a selection using the message ID as a recerence
+    const deleteComment = commentID => {
+        return fetch(`http://localhost:8088/comments/${commentID}`, {
+            method: "DELETE"
+        })
+    }
 
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment
+            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre
         }}>
             {props.children}
         </MovieContext.Provider>

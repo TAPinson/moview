@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "../MovieProvider"
 import { UserContext } from '../../account/UserProvider'
 import "../Movie.css"
-import Modal from 'react-modal'
 
 export const QueueCard = ({ movie }) => {
     const { MyLikes } = useContext(MovieContext)

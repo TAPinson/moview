@@ -46,6 +46,12 @@
     margin-top: 2em;
 }
 
+
+.comedySearchBtn {
+    height: 2em;
+
+}
+
 .movieComment {
     margin: 1em;
     border: 1px solid;
@@ -119,12 +125,19 @@
     text-align: center;
 }
 
-.browseMoreMovies {
-    width: 31.5%;
-    height: 30%;
-    margin: 1em;
-    text-align: center;
+.finderGenreButtons {
+    display: flex;
+    flex-direction: column;
     background-color: goldenrod;
-    cursor: pointer;
+    padding: 1em;
+    margin-left: 5em;
 }
 
+.genreSelect {
+    width: 20%;
+}
+
+.genreSelectBox {
+    text-align: center;
+    margin-top: 3em;
+}
