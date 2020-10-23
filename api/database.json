@@ -395,30 +395,6 @@
       "id": 75
     },
     {
-      "userId": 3,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 23.007,
-        "vote_count": 3967,
-        "video": false,
-        "poster_path": "/pqiRuETmuSybfnVZ7qyeoXhQyN1.jpg",
-        "id": 3049,
-        "adult": false,
-        "backdrop_path": "/9f4CQGz30aqwLxjXNjWku9nGHbo.jpg",
-        "original_language": "en",
-        "original_title": "Ace Ventura: Pet Detective",
-        "genre_ids": [
-          35,
-          9648
-        ],
-        "title": "Ace Ventura: Pet Detective",
-        "vote_average": 6.5,
-        "overview": "He's Ace Ventura: Pet Detective. Jim Carrey is on the case to find the Miami Dolphins' missing mascot and quarterback Dan Marino. He goes eyeball to eyeball with a man-eating shark, stakes out the Miami Dolphins and woos and wows the ladies. Whether he's undercover, under fire or underwater, he always gets his man… or beast!",
-        "release_date": "1994-02-04"
-      },
-      "id": 76
-    },
-    {
       "userId": 1,
       "watched": false,
       "tmdbObject": {
@@ -564,6 +540,30 @@
         "release_date": "2016-10-01"
       },
       "id": 83
+    },
+    {
+      "userId": 3,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 20.201,
+        "vote_count": 3967,
+        "video": false,
+        "poster_path": "/pqiRuETmuSybfnVZ7qyeoXhQyN1.jpg",
+        "id": 3049,
+        "adult": false,
+        "backdrop_path": "/9f4CQGz30aqwLxjXNjWku9nGHbo.jpg",
+        "original_language": "en",
+        "original_title": "Ace Ventura: Pet Detective",
+        "genre_ids": [
+          35,
+          9648
+        ],
+        "title": "Ace Ventura: Pet Detective",
+        "vote_average": 6.5,
+        "overview": "He's Ace Ventura: Pet Detective. Jim Carrey is on the case to find the Miami Dolphins' missing mascot and quarterback Dan Marino. He goes eyeball to eyeball with a man-eating shark, stakes out the Miami Dolphins and woos and wows the ladies. Whether he's undercover, under fire or underwater, he always gets his man… or beast!",
+        "release_date": "1994-02-04"
+      },
+      "id": 84
     }
   ],
   "comments": [
