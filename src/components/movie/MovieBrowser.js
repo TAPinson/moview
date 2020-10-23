@@ -89,13 +89,8 @@ export const MovieBrowser = () => {
         getRandomMovies()
     }, [])
 
+    // This will be the array of results we map over
     const movieResults = movies.results
-    let results = []
-    if (movieResults) {
-        movieResults.map((each) => {
-            results.push(each)
-        })
-    }
 
     // Initialize genreId so it is in scope of the return
     let genreId;
@@ -104,24 +99,27 @@ export const MovieBrowser = () => {
         genreId = event.target.value
         searchByGenre(genreId)
     }
-    return (	
-        <>
-        <div className="genreSelectBox"><h2>Browse by Genre:</h2>
-            <select className="genreSelect"onChange={genreFinder}>
-            <option key='0' value="">Select a Genre...</option>
-                {genres.map((genre) => {
-                    return <option key={genre.id} value={genre.id}>{genre.name}</option>
-                        }
-                    )}
-            </select>
-        </div>
-		<div className="movies">
-        {   
-			results.map(movie => {
-				return <MovieBrowse key={movie.id} movie={movie} />
-			})
-        }
-        </div>
-        </>
-    )
+    if (movieResults !== undefined){
+        return (	
+            <>
+            <div className="genreSelectBox"><h2>Browse by Genre:</h2>
+                <select className="genreSelect"onChange={genreFinder}>
+                <option key='0' value="">Select a Genre...</option>
+                    {genres.map((genre) => {
+                        return <option key={genre.id} value={genre.id}>{genre.name}</option>
+                            }
+                        )}
+                </select>
+            </div>
+            <div className="movies">
+            {   
+                movieResults.map(movie => {
+                    return <MovieBrowse key={movie.id} movie={movie} />
+                })
+            }
+            </div>
+            </>
+        )
+    }
+    return (<>Rendering...</>)
 }

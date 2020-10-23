@@ -4,7 +4,6 @@ import "./Movie.css"
 
 export const MovieFinder = () => {
     const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre } = useContext(MovieContext)
-    const [ movie , setMovie] = useState({})
     useEffect(() => {
         // Start the application off with a selection of random movies
         getRandomMovies()
@@ -66,7 +65,6 @@ export const MovieFinder = () => {
                                         placeholder="Search By Title"
                                         onChange={searchTermFinder}
                                          />
-                                
                             </fieldset>
                             <button type="submit"
                                     onClick={evt => {
@@ -104,11 +102,8 @@ export const MovieFinder = () => {
                             }
                             }>Show A Fantasy
                         </button>
-                        
-                        
                     </div>
                 </section>
-                
                 </>
             )
         }
