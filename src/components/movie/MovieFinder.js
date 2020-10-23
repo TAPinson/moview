@@ -156,6 +156,33 @@ export const MovieFinder = () => {
                             </button>
                         </form>
                     </div>
+                    <div className="finderGenreButtons">
+                        <button className="comedySearchBtn" onClick={() => {
+                            searchByGenre("28")
+                            }
+                            }>Show An Action
+                        </button>
+                        <button className="comedySearchBtn" onClick={() => {
+                            searchByGenre("35")
+                            }
+                            }>Show A Comedy
+                        </button>
+                        <button className="comedySearchBtn" onClick={() => {
+                            searchByGenre("99")
+                            }
+                            }>Show A Documentary
+                        </button>
+                        <button className="comedySearchBtn" onClick={() => {
+                            searchByGenre("18")
+                            }
+                            }>Show A Drama
+                        </button>
+                        <button className="comedySearchBtn" onClick={() => {
+                            searchByGenre("14")
+                            }
+                            }>Show A Fantasy
+                        </button>
+                    </div>
                 </section>
                 </>
             )
