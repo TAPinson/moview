@@ -11,7 +11,7 @@ export const MovieWatched = () => {
     }, [])
     // Get the ID of the logged in user
     const loggedInUser = parseInt(localStorage.getItem("user"))
-    // Get an array of movies selected by the user
+    // Get an array of movies selected by the user AND have been marked watched
     const myMovies = movies.filter((movie) => {
         return movie.userId === loggedInUser && movie.watched === true
     })
