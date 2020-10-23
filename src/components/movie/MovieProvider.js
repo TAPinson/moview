@@ -13,7 +13,6 @@ export const MovieProvider = (props) => {
         let randomPage = Math.floor(Math.random() * 500) + 1; // returns a random integer from 1 to 500
         return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&page=${randomPage}`)
         .then(res => res.json())
-       
         .then(parsedMovies => {
             let movies = parsedMovies
             movies.found = false
