@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
-import { MovieCard } from "./MovieCard"
+import { MovieCard } from "./Views/MovieCard"
 import "./Movie.css"
 
 export const MovieLikes = () => {
@@ -18,9 +18,7 @@ export const MovieLikes = () => {
     })
     return (	
         <>
-        
 		<div className="movies">
-		    {/*{console.log("MovieList: Render")}*/}
         {   
 			myMovies.map(movie => {
 				return <MovieCard key={movie.id} movie={movie} />

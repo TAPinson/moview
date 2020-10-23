@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react"
 import {UserContext} from '../account/UserProvider'
 import { MovieContext } from "./MovieProvider"
-import { MovieCard, QueueCard } from "./MovieCard"
+import { MovieCard } from "./Views/MovieCard"
+import { QueueCard } from './Views/QueueCard'
 import "./Movie.css"
 
 export const MovieQueue = () => {
@@ -30,7 +31,6 @@ export const MovieQueue = () => {
                 if (qMovie.tmdbObject.id === myMovie.tmdbObject.id)  {
                     if (qMovie.comments.length > 0){
                         qMovie.comments.map((eachComment) => {
-                            //eachComment.id = eachComment.id + 1000
                             if (myMovie.comments.includes(eachComment) === false) {
                                 myMovie.comments.push(eachComment)
                             }
@@ -45,7 +45,6 @@ export const MovieQueue = () => {
         return (	
             <>
             <div className="movies">
-                {/*{console.log("MovieList: Render")}*/}
             {   //console.log(queueMovies),
                 queueMovies.map(movie => {
                     if (movie !== undefined) {

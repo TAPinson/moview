@@ -1,7 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { MovieProvider } from "./movie/MovieProvider"
-import { MovieList} from './movie/MovieList'
+import { MovieBrowser} from './movie/MovieBrowser'
 import { MovieFinder } from "./movie/MovieFinder"
 import { MovieQueue } from "./movie/MovieQueue"
 import { MovieLikes } from "./movie/MovieLikes"
@@ -21,13 +21,13 @@ export const ApplicationViews = (props) => {
 
             <MovieProvider>
                 <Route exact path="/browse">
-                    <MovieList />
+                    <MovieBrowser />
                 </Route>
             </MovieProvider>
 
             <MovieProvider>
                 <UserProvider>
-                    <Route exact path="/queue">
+                    <Route exact path="/OurQueue">
                         <MovieQueue />
                     </Route>
                 </UserProvider>
@@ -35,7 +35,7 @@ export const ApplicationViews = (props) => {
 
             <MovieProvider>
                 <UserProvider>
-                    <Route exact path="/likes">
+                    <Route exact path="/myqueue">
                         <MovieLikes />
                     </Route>
                 </UserProvider>

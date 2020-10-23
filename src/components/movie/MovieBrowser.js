@@ -1,14 +1,12 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
-import { MovieBrowse } from "./MovieCard"
+import { MovieBrowse } from "./Views/MovieBrowse"
 import "./Movie.css"
 
-export const MovieList = () => {
+export const MovieBrowser = () => {
     const { movies, getRandomMovies } = useContext(MovieContext)
-    
     useEffect(() => {
         getRandomMovies()
-		
     }, [])
 
     const movieResults = movies.results
@@ -18,7 +16,6 @@ export const MovieList = () => {
             results.push(each)
         })
     }
-    
     return (	
         <>
 		<div className="movies">
