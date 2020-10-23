@@ -7,9 +7,7 @@ export const MovieContext = createContext()
 // This component establishes what data can be used.
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
-
     // ***************************************** Movie Data Below ***************************************** //
-
     // Pull a random page of movies from the API
     const getRandomMovies = () => {
         let randomPage = Math.floor(Math.random() * 500) + 1; // returns a random integer from 1 to 500
@@ -22,7 +20,6 @@ export const MovieProvider = (props) => {
             setMovies(movies)
         })
     }
-
     // Search for a movie by title
     const searchByTitle = terms => {
         const termsCleaned = terms.replace(/\s/g, '+')
@@ -43,7 +40,6 @@ export const MovieProvider = (props) => {
             }
         })
     }
-
     const searchByGenre = (genre) => {
         let randomPage = Math.floor(Math.random() * 50) + 1; // returns a random integer from 1 to 100
         return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${defaultExport.tmdbKey}&language=en-US&sort_by=popularity.desc&include_adult=false&&page=${randomPage}&with_genres=${genre}`)
@@ -54,11 +50,8 @@ export const MovieProvider = (props) => {
             movies.found = false
             setMovies(movies)
         })
-
     }
-
     // ***************************************** Selection Data Below ***************************************** //
-
     // Add a selection to the database
     const addSelection = selection => {
         return fetch("http://localhost:8088/selections", {
@@ -69,14 +62,12 @@ export const MovieProvider = (props) => {
             body: JSON.stringify(selection)
         })
     }
-
     // Delete a selection using the message ID as a recerence
     const deleteSelection = selectionID => {
         return fetch(`http://localhost:8088/selections/${selectionID}`, {
             method: "DELETE"
         })
     }
-
     // Update an existing selection using the selection ID as a reference
     const updateSelection = selection => {
         return fetch(`http://localhost:8088/selections/${selection.id}`, {
@@ -87,16 +78,13 @@ export const MovieProvider = (props) => {
             body: JSON.stringify(selection)
         })
     }
-
     // Return the database of selectiions and embed the related comments
     const MyLikes = () => {
         return fetch(`http://localhost:8088/selections?_embed=comments`)
         .then(res => res.json())
         .then(setMovies)
     }
-
     // ***************************************** Comment Data Below ***************************************** //
-
     // Add a selection to the database
     const addComment = comment => {
         return fetch("http://localhost:8088/comments", {
@@ -109,7 +97,6 @@ export const MovieProvider = (props) => {
         // We will want to automatically refresh after a comment is added. This handles that
         .then(MyLikes())
     }
-
     // Update an existing selection using the selection ID as a reference
     const updateComment = comment => {
         return fetch(`http://localhost:8088/comments/${comment.id}`, {
@@ -120,14 +107,12 @@ export const MovieProvider = (props) => {
             body: JSON.stringify(comment)
         })
     }
-
     // Delete a selection using the message ID as a recerence
     const deleteComment = commentID => {
         return fetch(`http://localhost:8088/comments/${commentID}`, {
             method: "DELETE"
         })
     }
-
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
