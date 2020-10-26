@@ -28,14 +28,18 @@ export const MovieProvider = (props) => {
             let movies = parsedMovies
             // Search results are formatted differently than random movies, so we add this property to handle this later
             movies.found = true
-            // We want to ensure that at least 1 result is returned, so this will handle that and then show a random Movie
-            if (movies.results.length === 0){
-                window.alert("No results with that criteria")
-                getRandomMovies()
-            } 
-            // If we have a successful search, we will set movies to those results
+            if (movies.results !== undefined){
+                // We want to ensure that at least 1 result is returned, so this will handle that and then show a random Movie
+                if (movies.results.length === 0){
+                    window.alert("No results with that criteria")
+                    getRandomMovies()
+                } // If we have a successful search, we will set movies to those results
+                     else {
+                        setMovies(movies)
+                    }
+                }
             else {
-                setMovies(movies)
+                window.alert("Try different search criteria...")
             }
         })
     }

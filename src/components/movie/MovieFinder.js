@@ -144,12 +144,15 @@ export const MovieFinder = () => {
                                         className="form-control"
                                         placeholder="Search By Title"
                                         onChange={searchTermFinder}
+                                        defaultValue={searchTerms}
                                          />
                             </fieldset>
                             <button type="submit"
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
                                         searchByTitle(searchTerms)
+                                        console.log(searchTerms)
+                                        
                                     }}
                                     className="titleSearchBtn">
                                      Search
