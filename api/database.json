@@ -202,30 +202,6 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 32.216,
-        "id": 580489,
-        "video": false,
-        "vote_count": 0,
-        "vote_average": 0,
-        "title": "Venom: Let There Be Carnage",
-        "release_date": "2021-06-23",
-        "original_language": "en",
-        "original_title": "Venom: Let There Be Carnage",
-        "genre_ids": [
-          28,
-          878
-        ],
-        "backdrop_path": "/aL1fZFP5vsh3bIZEOBh6UxxtHK3.jpg",
-        "adult": false,
-        "overview": "Sequel to the box-office hit film \"Venom.\"",
-        "poster_path": "/wi0w3uNtvHdMqPtOA6meuqn8y6r.jpg"
-      },
-      "id": 25
-    },
-    {
-      "userId": 2,
       "watched": true,
       "tmdbObject": {
         "popularity": 11.276,
@@ -296,29 +272,6 @@
         "poster_path": "/2GvmFcpKmpKqJbKtAcHrAfeL3WV.jpg"
       },
       "id": 55
-    },
-    {
-      "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 19.439,
-        "vote_count": 700,
-        "video": false,
-        "poster_path": "/p9vCAVhDK375XyobVcKqzqzsUHE.jpg",
-        "id": 501907,
-        "adult": false,
-        "backdrop_path": "/w0tJot6O0UtLVBRIPAdg3dQ2oNO.jpg",
-        "original_language": "en",
-        "original_title": "A Beautiful Day in the Neighborhood",
-        "genre_ids": [
-          18
-        ],
-        "title": "A Beautiful Day in the Neighborhood",
-        "vote_average": 7.1,
-        "overview": "An award-winning cynical journalist, Lloyd Vogel, begrudgingly accepts an assignment to write an Esquire profile piece on the beloved television icon Fred Rogers. After his encounter with Rogers, Vogel's perspective on life is transformed.",
-        "release_date": "2019-09-07"
-      },
-      "id": 61
     },
     {
       "userId": 1,
@@ -578,12 +531,6 @@
       "userId": 2,
       "comment": "This movie changed my life!",
       "id": 2
-    },
-    {
-      "selectionId": 61,
-      "userId": 2,
-      "comment": "Ive heard nothing but great things about this",
-      "id": 3
     },
     {
       "selectionId": 55,

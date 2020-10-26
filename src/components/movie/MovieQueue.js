@@ -57,6 +57,7 @@ export const MovieQueue = () => {
         if (queueMovies.length > 0) {
             return (	
                 <>
+                <div className="queueMovieBox">
                 <div className="movies">
                 {   queueMovies.map(movie => {
                         if (movie !== undefined) {
@@ -64,6 +65,7 @@ export const MovieQueue = () => {
                         }
                     })
                 }
+                </div>
                 </div>
                 </>
             )

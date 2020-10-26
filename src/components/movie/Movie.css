@@ -3,6 +3,15 @@
     padding: 1em;
     border: 1px solid;
     width: 30%;
+    background-color: goldenrod;
+    color: #404040;
+    
+}
+
+.queueMovieBox {
+    height: 1000px;
+    
+
 }
 
 .movies {
@@ -14,11 +23,15 @@
     margin-bottom: 1em;
 }
 
+.movie__name {
+    text-align: center;
+}
+
 .finderContainer {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: grey;
+    
 }
 
 .finderViewer {
@@ -26,6 +39,8 @@
     height: auto;
     text-align: center;
     background-color: goldenrod;
+    margin-top: 5em;
+    margin-bottom: 14.2em;
 }
 
 #titleSearchInput{
@@ -131,6 +146,8 @@
     background-color: goldenrod;
     padding: 1em;
     margin-left: 5em;
+    margin-top: 5em;
+    height: 50em;
 }
 
 .genreSelect {
@@ -140,6 +157,7 @@
 .genreSelectBox {
     text-align: center;
     margin-top: 3em;
+    color: goldenrod;
 }
 
 .queueFallback {

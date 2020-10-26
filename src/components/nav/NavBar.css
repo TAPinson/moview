@@ -2,6 +2,16 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    background-color: black;
+    text-align: center;
+    font-weight: bold;
+    
+    
+    
+}
+
+.navbar__item:hover {
+    background-color: #404040;
 }
 
 .navbar__item {
@@ -9,6 +19,13 @@
     list-style-type: none;
 }
 
+.navbar__link:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .navbar__link {
-    text-decoration: none
+    text-decoration: none;
+    color: goldenrod;
+    
 }

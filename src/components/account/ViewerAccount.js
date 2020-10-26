@@ -63,7 +63,7 @@ export const ViewerAccount = () => {
                                     name="partnerId"
                                     required
                                     className="form-control"
-                                    placeholder="New Partner Username"
+                                    placeholder="Assign / Reassign Partner"
                                     onChange={searchTermFinder} />
                         </fieldset>
                         <button type="submit"
@@ -94,7 +94,7 @@ export const ViewerAccount = () => {
                                     required
                                     className="form-control"
                                     onChange={searchTermFinder}
-                                    placeholder="New Partner Username" />
+                                    placeholder="Assign / Reassign Partner" />
                         </fieldset>
                         <button type="submit"
                                 onClick={evt => {

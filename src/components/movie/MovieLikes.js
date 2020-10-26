@@ -17,12 +17,14 @@ export const MovieLikes = () => {
     // Render the following, mapping myMovies with a MovieCard for each element
     return (	
         <>
+        <div className="queueMovieBox">
 		<div className="movies">
         {   
 			myMovies.map(movie => {
 				return <MovieCard key={movie.id} movie={movie} />
 			})
         }
+        </div>
         </div>
         </>
     )}
