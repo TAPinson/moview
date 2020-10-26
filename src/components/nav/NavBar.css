@@ -6,10 +6,8 @@
     text-align: center;
     font-weight: bold;
     padding: 1em;
-    font-size: 16px;
-    
-    
-    
+    font-size: 18px;
+
 }
 
 .navbar__item:hover {
@@ -32,5 +30,19 @@
 .navbar__link {
     text-decoration: none;
     color:  #d9cd20;
-    
+}
+
+.navbarBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.logoImg {
+    margin-bottom: -1em;
+    margin-top: -0.8em;
+}
+
+.logoPic{
+    width: 40%;
 }

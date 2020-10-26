@@ -6,11 +6,19 @@
     border: 1px solid;
     border-color: black;
     padding: 1em;
-    color: goldenrod;
+    color:  #d9cd20;
     width: 35%;
     background-color: #404040;
     font-weight: bold;
     font-size: 24px;
+    
+}
+
+.userBox__title {
+    font-size: 36px;
+    font-weight: 1000;
+    letter-spacing: 4px;
+    text-align: center;
 }
 
 #partnerInput {

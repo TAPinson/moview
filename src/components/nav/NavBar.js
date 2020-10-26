@@ -2,11 +2,13 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
+
 export const NavBar = (props) => {
+    
     return (
         <ul className="navbar">
-            <li className="navbar__item">
-                <Link className="navbar__link" to="/">Home</Link>
+            <li className="navbar__item logoImg">
+                <Link className="navbar__link" to="/"><img className="logoPic" src={require('../images/logo.png')} alt="movie poster" /></Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/browse">Browse Movies</Link>

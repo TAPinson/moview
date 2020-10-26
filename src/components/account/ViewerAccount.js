@@ -52,7 +52,7 @@ export const ViewerAccount = () => {
         return (
             <>
             <div className="userBox">
-                <h1>Pick or Update Your Partner:</h1>
+                <h1 className="userBox__title">Pick or Update Your Partner:</h1>
                     <div>Username: {user.username}</div>
                     <div>Email: {user.email}</div>
                     <div>Partner: {partnerUser.username}</div>
@@ -83,7 +83,7 @@ export const ViewerAccount = () => {
         return (
             <>
             <div className="userBox">
-                <h1>Pick or Update Your Partner:</h1>
+                <h1 className="userBox__title">Pick or Update Your Partner:</h1>
                     <div>Username: {user.username}</div>
                     <div>Email: {user.email}</div>
                     <div>Partner: Partner Not Picked</div>
