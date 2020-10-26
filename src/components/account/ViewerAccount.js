@@ -63,15 +63,14 @@ export const ViewerAccount = () => {
                                     name="partnerId"
                                     required
                                     className="form-control"
-                                    placeholder="Assign / Reassign Partner"
+                                    defaultValue={partnerUser.username}
                                     onChange={searchTermFinder} />
                         </fieldset>
                         <button type="submit"
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
-                                    const reset = document.getElementById("partnerInput")
-                                    reset.value = ""
+                                    
                                 }}
                                 className="partnerSaveBtn">
                                 Save
@@ -96,14 +95,13 @@ export const ViewerAccount = () => {
                                     required
                                     className="form-control"
                                     onChange={searchTermFinder}
-                                    placeholder="Assign / Reassign Partner" />
+                                    placeholder="Assign Partner by Username" />
                         </fieldset>
                         <button type="submit"
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
-                                    const reset = document.getElementById("partnerInput")
-                                    reset.value = ""
+                                    
                                 }}
                                 className="partnerSaveBtn">
                                 Save

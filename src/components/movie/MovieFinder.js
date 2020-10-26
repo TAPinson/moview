@@ -64,17 +64,15 @@ export const MovieFinder = () => {
                                         name="terms"
                                         required
                                         className="form-control"
-                                        placeholder="Search By Title"
                                         onChange={searchTermFinder}
-                                        defaultValue={searchTerms}
+                                       
                                          />
                             </fieldset>
                             <button type="submit"
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
                                         searchByTitle(searchTerms)
-                                        const reset = document.getElementById("titleSearchInput")
-                                        reset.value = ""
+                                        
                                     }}
                                     className="titleSearchBtn">
                                      Search
@@ -147,17 +145,16 @@ export const MovieFinder = () => {
                                         name="terms"
                                         required
                                         className="form-control"
-                                        placeholder="Search By Title"
+                                        defaultValue={movie.title}
                                         onChange={searchTermFinder}
-                                        defaultValue={searchTerms}
+                                        
                                          />
                             </fieldset>
                             <button type="submit"
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
                                         searchByTitle(searchTerms)
-                                        const reset = document.getElementById("titleSearchInput")
-                                        reset.value = ""
+                                        
                                         
                                         
                                     }}

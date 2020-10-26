@@ -102,7 +102,7 @@ export const MovieBrowser = () => {
     if (movieResults !== undefined){
         return (	
             <>
-            <div className="genreSelectBox"><h2>Browse by Genre:</h2>
+            <div className="genreSelectBox"><h2 className="genreSelectHead">Browse by Genre:</h2>
                 <select className="genreSelect"onChange={genreFinder}>
                 <option key='0' value="">Select a Genre...</option>
                     {genres.map((genre) => {

@@ -11,7 +11,7 @@
       "username": "sudo",
       "password": "sudo",
       "email": "sudo@sudo",
-      "partnerId": 3,
+      "partnerId": 1,
       "id": 2
     },
     {
@@ -517,6 +517,31 @@
         "release_date": "1994-02-04"
       },
       "id": 84
+    },
+    {
+      "userId": 2,
+      "watched": false,
+      "tmdbObject": {
+        "popularity": 23.231,
+        "vote_count": 1734,
+        "video": false,
+        "poster_path": "/jJlxcEVVUHnrUeEkQ0077VeHQpb.jpg",
+        "id": 9355,
+        "adult": false,
+        "backdrop_path": "/qlWeNnr4FoREFtdRjDiSLKM0BJW.jpg",
+        "original_language": "en",
+        "original_title": "Mad Max Beyond Thunderdome",
+        "genre_ids": [
+          28,
+          12,
+          878
+        ],
+        "title": "Mad Max Beyond Thunderdome",
+        "vote_average": 6.2,
+        "overview": "Mad Max becomes a pawn in a decadent oasis of a technological society, and when exiled, becomes the deliverer of a colony of children.",
+        "release_date": "1985-06-29"
+      },
+      "id": 85
     }
   ],
   "comments": [

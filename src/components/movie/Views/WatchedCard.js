@@ -58,7 +58,9 @@ export const WatchedCard = ({ movie }) => {
                         <div><i>"{held.comment}"</i></div>
                         <div className="commentControls">
                             <div className='App'>
-                                <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>
+                                <span className="commentDelete" role="img" aria-label="edit button" onClick={() => setModalIsOpen(true)}>
+                                        ✏️
+                                </span>
                                 <Modal className="editModal" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
                                     <h2>Edit Message</h2>
                                     <input type="text" className="modalInput" onChange={handleCommentUpdate} defaultValue={held.comment}/>
@@ -73,13 +75,13 @@ export const WatchedCard = ({ movie }) => {
                                     </div>
                                 </Modal>
                             </div>
-                            <div className="commentDelete" onClick={() => {
+                            <span  role="img" aria-label="delete button"className="commentDelete" onClick={() => {
                                 deleteComment(held.id)
                                 .then(() => {
                                     MyLikes()
                                 })
                                 }}>❌
-                            </div>
+                            </span>
                         </div>
                     </div>
               </div>
@@ -137,7 +139,6 @@ export const WatchedCard = ({ movie }) => {
                                 onChange={handleControlledInput} />
                         <button className="submitComment" onClick={evt  => {
                             evt.preventDefault()
-                            //console.log("click")
                             constructNewComment(commentInput)
                     }}>Comment
                 </button>
