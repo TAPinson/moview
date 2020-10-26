@@ -70,6 +70,8 @@ export const ViewerAccount = () => {
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
+                                    const reset = document.getElementById("partnerInput")
+                                    reset.value = ""
                                 }}
                                 className="partnerSaveBtn">
                                 Save
@@ -100,6 +102,8 @@ export const ViewerAccount = () => {
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
+                                    const reset = document.getElementById("partnerInput")
+                                    reset.value = ""
                                 }}
                                 className="partnerSaveBtn">
                                 Save
