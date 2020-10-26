@@ -47,14 +47,10 @@ fieldset {
 }
 
 .form--login {
-    background-position-x: right;
-  
-    z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
+    background-color: #d9cd20;
+    padding:1em;
 }
 
 .button--close {

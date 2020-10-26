@@ -178,3 +178,12 @@ i {
 .queueFallback {
     text-align: center;
 }
+
+.finderTitle {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.singleMovieFindBtn{
+    margin-bottom: 0.8em;
+}

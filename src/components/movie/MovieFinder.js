@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "./MovieProvider"
+import { genres } from './MovieBrowser'
 import "./Movie.css"
 
 export const MovieFinder = () => {
@@ -38,7 +39,7 @@ export const MovieFinder = () => {
                 <>
                 <section className="finderContainer">
                     <div className="finderViewer">
-                        <h1>{movie.title}</h1>
+                        <h1 className="finderTitle">{movie.title}</h1>
                         <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
                         <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
                         <button onClick={() => {
@@ -80,31 +81,17 @@ export const MovieFinder = () => {
                         </form>
                     </div>
                     <div className="finderGenreButtons">
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("28")
-                            }
-                            }>Show An Action
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("35")
-                            }
-                            }>Show A Comedy
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("99")
-                            }
-                            }>Show A Documentary
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("18")
-                            }
-                            }>Show A Drama
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("14")
-                            }
-                            }>Show A Fantasy
-                        </button>
+                        {
+                            genres.map((genre) => {
+                                return (
+                                    <button className="singleMovieFindBtn" onClick={() => {
+                                        searchByGenre(genre.id)
+                                        }
+                                        }>Show {genre.name}
+                                    </button>
+                                )
+                            })
+                        }
                     </div>
                 </section>
                 </>
@@ -164,31 +151,17 @@ export const MovieFinder = () => {
                         </form>
                     </div>
                     <div className="finderGenreButtons">
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("28")
+                        {
+                                genres.map((genre) => {
+                                    return (
+                                        <button className="singleMovieFindBtn" onClick={() => {
+                                            searchByGenre(genre.id)
+                                            }
+                                            }>Show {genre.name}
+                                        </button>
+                                    )
+                                })
                             }
-                            }>Show An Action
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("35")
-                            }
-                            }>Show A Comedy
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("99")
-                            }
-                            }>Show A Documentary
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("18")
-                            }
-                            }>Show A Drama
-                        </button>
-                        <button className="comedySearchBtn" onClick={() => {
-                            searchByGenre("14")
-                            }
-                            }>Show A Fantasy
-                        </button>
                     </div>
                 </section>
                 </>

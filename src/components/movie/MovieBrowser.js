@@ -4,7 +4,7 @@ import { MovieBrowse } from "./Views/MovieBrowse"
 import "./Movie.css"
 
 // This are the genres from the movie database API. I could technically make this call to the API to get this, but it seems a redundant fetch for so little information
-const genres = [
+export const genres = [
     {
       "id": 28,
       "name": "Action"
