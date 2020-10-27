@@ -27,7 +27,6 @@ export const MovieFinder = () => {
         if (movies.found === false){
             // Get a random number between 1 and 19 - Object 20 would be element 19
             let token = Math.floor(Math.random() * 20);
-            console.log(token)
             // Use the token to display a random movie
             let movie = results[token]
             // Find the logged in user
