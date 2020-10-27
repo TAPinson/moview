@@ -37,7 +37,7 @@ export const MovieFinder = () => {
                     <div className="finderViewer">
                         <h1 className="finderTitle">{movie.title}</h1>
                         <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
-                        <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
+                        <div className="movie__overview">{movie.overview}</div>
                         <button onClick={() => {
                             const selection = {
                                 userId,
@@ -115,7 +115,7 @@ export const MovieFinder = () => {
                     <div className="finderViewer">
                         <h1>{movie.title}</h1>
                         <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
-                        <div className="movie__overview"><strong>Overview:</strong> {movie.overview}</div>
+                        <div className="movie__overview">{movie.overview}</div>
                         <button onClick={() => {
                             const selection = {
                                 userId,
