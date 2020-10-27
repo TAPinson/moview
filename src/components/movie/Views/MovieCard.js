@@ -66,7 +66,7 @@ export const MovieCard = ({ movie }) => {
         return <div key="held.id">
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
-                        <div><i>"{held.comment}"</i></div>
+                        <div><i className="commentComment">"{held.comment}"</i></div>
                         <div className="commentControls">
                             <div className='App'>
                                 <div className="commentDelete" onClick={() => setModalIsOpen(true)}>✏️</div>

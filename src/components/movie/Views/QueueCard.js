@@ -10,7 +10,6 @@ export const QueueCard = ({ movie }) => {
     useEffect(() => {
         MyLikes()
     }, [])
-
     // We will call this to get usernames from the comment ID's
     const findUser = (id) => {
         const foundUser = users.find((oneUser) => {
@@ -20,29 +19,16 @@ export const QueueCard = ({ movie }) => {
             return foundUser.username
         }
     }
-
     // Get the array of movie comments
     let movieComments = movie.comments
-
-    // return the HTML to dsplay each comment
-    const commentCard2 = movieComments.map((held) => {
-        return <div className="movieComment"key={held.id}>
-                    "{held.comment}"
-                    <div className="movieCommentAuthor">
-                        ~<i></i>{findUser(held.userId)}
-                    </div>
-              </div>
-    })
-
     const commentCard = movieComments.map((held) => {
         return <div key={held.id}>
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
-                        <div className="queueComment"><i>"{held.comment}"</i></div>
+                        <div className="queueComment"><i className="commentComment">"{held.comment}"</i></div>
                     </div>
               </div>
     })
-
     return (
         <section className="movieBox">
             <h3 className="movie__name">{movie.tmdbObject.title}</h3>

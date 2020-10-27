@@ -4,17 +4,13 @@ import { genres } from './MovieBrowser'
 import "./styles/Movie.css"
 
 export const MovieFinder = () => {
-     
-
     const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre } = useContext(MovieContext)
     useEffect(() => {
         // Start the application off with a selection of random movies
         getRandomMovies()
     }, [])
-    
     // Bring the results of the random movies into variable
     const movieResults = movies.results
-
     // Initialize variable outside of function so it is available later
     let searchTerms = ""
     // Keep value of input box as variable "searchTerms"
@@ -66,7 +62,6 @@ export const MovieFinder = () => {
                                         required
                                         className="form-control"
                                         onChange={searchTermFinder}
-                                       
                                          />
                             </fieldset>
                             <button type="submit"
@@ -134,7 +129,6 @@ export const MovieFinder = () => {
                                         className="form-control"
                                         defaultValue={movie.title}
                                         onChange={searchTermFinder}
-                                        
                                          />
                             </fieldset>
                             <button type="submit"

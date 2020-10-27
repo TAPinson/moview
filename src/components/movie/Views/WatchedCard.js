@@ -30,10 +30,8 @@ export const WatchedCard = ({ movie }) => {
         addComment(newComment)
         .then(MyLikes())
     }
-
     // Get the array of movie comments
     let movieComments = movie.comments
-
     // We will call this to get usernames from the comment ID's
     const findUser = (id) => {
         const foundUser = users.find((oneUser) => {
@@ -43,19 +41,16 @@ export const WatchedCard = ({ movie }) => {
             return foundUser.username
         }
     }
-
     let updateCommentInput = ""
     const handleCommentUpdate = (event) => {
         updateCommentInput = event.target.value
     }
-    
     // return the HTML to dsplay each comment
     const commentCard = movieComments.map((held) => {
-        
         return <div key={held.id}>
                     <div className="movieComment"key={held.id}>
                         <div className="movieCommentAuthor"><strong>{findUser(held.userId)}:</strong></div>
-                        <div><i>"{held.comment}"</i></div>
+                        <div><i className="commentComment">"{held.comment}"</i></div>
                         <div className="commentControls">
                             <div className='App'>
                                 <span className="commentDelete" role="img" aria-label="edit button" onClick={() => setModalIsOpen(true)}>
@@ -86,7 +81,6 @@ export const WatchedCard = ({ movie }) => {
                     </div>
               </div>
     })
-    
     const commentEditor = (held, comment) => {
         const newComment = {
             id: held.id,
@@ -98,7 +92,6 @@ export const WatchedCard = ({ movie }) => {
         .then(() => {
             MyLikes()
         })
-        
     }
     return (
         <section className="movieBox">
