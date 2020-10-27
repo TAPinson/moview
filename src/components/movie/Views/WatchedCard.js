@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "../MovieProvider"
 import { UserContext } from '../../account/UserProvider'
-import "../Movie.css"
+import "../styles/Movie.css"
 import Modal from 'react-modal'
 
 const loggedInUser = parseInt(localStorage.getItem("user"))

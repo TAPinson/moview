@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "./MovieProvider"
 import { genres } from './MovieBrowser'
-import "./Movie.css"
+import "./styles/Movie.css"
 
 export const MovieFinder = () => {
      
@@ -84,7 +84,7 @@ export const MovieFinder = () => {
                         {
                             genres.map((genre) => {
                                 return (
-                                    <button key={genre.id}className="singleMovieFindBtn" onClick={() => {
+                                    <button key={genre.id} className="singleMovieFindBtn" onClick={() => {
                                         searchByGenre(genre.id)
                                         }
                                         }>Show {genre.name}

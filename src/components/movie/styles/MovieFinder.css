@@ -1,0 +1,49 @@
+.finderViewer {
+    width: 800px;
+    height: auto;
+    text-align: center;
+    background-color:  #d9cd20;
+    margin-bottom: 14.2em;
+}
+
+.finderContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.finderTitle {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.titleSearchForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+#titleSearchInput{
+    width: 100%;
+}
+
+.titleSearchField {
+    width: 75%;
+}
+
+.titleSearchBtn {
+    height: 60%;
+    margin-top: 2em;
+}
+
+.singleMovieFindBtn{
+    margin-bottom: 0.8em;
+}
+
+.finderGenreButtons {
+    display: flex;
+    flex-direction: column;
+    background-color:  #d9cd20;
+    padding: 1em;
+    margin-left: 5em;
+    height: 50em;
+}

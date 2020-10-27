@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import {UserContext} from '../account/UserProvider'
 import { MovieContext } from "./MovieProvider"
 import { QueueCard } from './Views/QueueCard'
-import "./Movie.css"
+import "./styles/Movie.css"
 
 export const MovieQueue = () => {
    // This state changes when `getMovies()` is invoked below

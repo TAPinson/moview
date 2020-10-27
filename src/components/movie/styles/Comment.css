@@ -1,0 +1,55 @@
+.movieComment {
+    margin: 1em;
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.commentForm {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.commentTextInput {
+    width: 70%;
+}
+
+.submitComment {
+    margin-left: 2em;
+}
+
+.commentControls {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.commentDelete {
+    float: right;
+    cursor: pointer;
+}
+
+.queueComment {
+    width: 100%;
+    text-align: center;
+}
+
+.editModal {
+    width: 60%;
+    padding: 1em;
+    background-color: #d9cd20;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modalClose {
+    float: right;
+}
+
+.modalInput {
+    width: 60%;
+}

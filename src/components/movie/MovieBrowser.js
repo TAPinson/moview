@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
 import { MovieBrowse } from "./Views/MovieBrowse"
-import "./Movie.css"
+import "./styles/Movie.css"
 
 // This are the genres from the movie database API. I could technically make this call to the API to get this, but it seems a redundant fetch for so little information
 export const genres = [

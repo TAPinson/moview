@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react"
 import { MovieContext } from "../MovieProvider"
-import "../Movie.css"
+import "../styles/Movie.css"
 
 const loggedInUser = parseInt(localStorage.getItem("user"))
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchedCard } from "./Views/WatchedCard"
-import "./Movie.css"
+import "./styles/Movie.css"
 
 export const MovieWatched = () => {
     const { movies, MyLikes } = useContext(MovieContext)

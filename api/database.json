@@ -401,29 +401,6 @@
     },
     {
       "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 12.315,
-        "id": 5708,
-        "video": false,
-        "vote_count": 508,
-        "vote_average": 7.6,
-        "title": "Control",
-        "release_date": "2007-09-26",
-        "original_language": "en",
-        "original_title": "Control",
-        "genre_ids": [
-          18
-        ],
-        "backdrop_path": "/AhXLn61RxOgxjkyAzjqILJRIfpX.jpg",
-        "adult": false,
-        "overview": "The story of Joy Division’s lead singer Ian Curtis, from his schoolboy days in 1973 to his suicide on the eve of the band's first American tour in 1980.",
-        "poster_path": "/jOJiaOhwrDdwqTRZvZOhbndqHGp.jpg"
-      },
-      "id": 79
-    },
-    {
-      "userId": 1,
       "watched": true,
       "tmdbObject": {
         "popularity": 32.526,
@@ -447,30 +424,6 @@
         "release_date": "1992-11-19"
       },
       "id": 80
-    },
-    {
-      "userId": 1,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 6.89,
-        "vote_count": 1,
-        "video": false,
-        "poster_path": "/oRl9OFdPzyMuus7E7tgno3JdJaZ.jpg",
-        "id": 730337,
-        "adult": false,
-        "backdrop_path": null,
-        "original_language": "en",
-        "original_title": "Cover Me",
-        "genre_ids": [
-          18,
-          10751
-        ],
-        "title": "Cover Me",
-        "vote_average": 7,
-        "overview": "Mia Stone is faced with an eerie supernatural opportunity when a strange encounter with an eccentric man gives her a second chance at saving her company, marriage, family, and future.",
-        "release_date": "2020-04-01"
-      },
-      "id": 82
     },
     {
       "userId": 2,
