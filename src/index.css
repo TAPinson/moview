@@ -17,6 +17,6 @@ code {
 
 #root, html {
   margin-top: -0.5em;
-  background: url('../src/components/images/background.jpg') no-repeat;
+  background: url('../src/components/images/background.jpg');
   background-size: cover;
 }
