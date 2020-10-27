@@ -81,7 +81,7 @@ export const MovieFinder = () => {
                             </button>
                         </form>
                     </div>
-                    <div className="finderGenreButtons">
+                    <aside className="finderGenreButtons">
                         {
                             genres.map((genre) => {
                                 return (
@@ -98,7 +98,7 @@ export const MovieFinder = () => {
                             }
                             }>Now Playing
                         </button>
-                    </div>
+                    </aside>
                 </section>
                 </>
             )
@@ -157,7 +157,7 @@ export const MovieFinder = () => {
                             </button>
                         </form>
                     </div>
-                    <div className="finderGenreButtons">
+                    <aside className="finderGenreButtons">
                         {
                                 genres.map((genre) => {
                                     return (
@@ -174,7 +174,7 @@ export const MovieFinder = () => {
                             }
                             }>Now Playing
                         </button>
-                    </div>
+                    </aside>
                 </section>
                 </>
             )}
