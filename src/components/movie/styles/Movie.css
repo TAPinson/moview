@@ -10,10 +10,6 @@
     color: #404040;
 }
 
-i {
-    font-size: 16px;
-}
-
 .movies {
     display: flex;
     flex-wrap: wrap;
