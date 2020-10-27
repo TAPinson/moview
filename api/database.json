@@ -2,21 +2,18 @@
   "users": [
     {
       "username": "moviewer",
-      "password": "sudo",
       "email": "viewer@movies.com",
       "partnerId": 2,
       "id": 1
     },
     {
       "username": "sudo",
-      "password": "sudo",
       "email": "sudo@sudo",
       "partnerId": 1,
       "id": 2
     },
     {
       "username": "karl",
-      "password": "sudo",
       "email": "sudo@sudo",
       "partnerId": 1,
       "id": 3
