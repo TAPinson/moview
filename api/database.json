@@ -477,10 +477,10 @@
   ],
   "comments": [
     {
-      "selectionId": 72,
+      "id": 1,
       "userId": 2,
-      "comment": "Go Dolphins!",
-      "id": 1
+      "selectionId": 72,
+      "comment": "Go Dolphins!!"
     },
     {
       "selectionId": 75,
@@ -547,6 +547,12 @@
       "userId": 2,
       "comment": "Makes me miss my MyBuddy!",
       "id": 14
+    },
+    {
+      "selectionId": 83,
+      "userId": 2,
+      "comment": "DA Bears!",
+      "id": 15
     }
   ]
 }

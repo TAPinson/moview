@@ -127,7 +127,6 @@ export const MovieFinder = () => {
                                         name="terms"
                                         required
                                         className="form-control"
-                                        defaultValue={movie.title}
                                         onChange={searchTermFinder}
                                          />
                             </fieldset>
