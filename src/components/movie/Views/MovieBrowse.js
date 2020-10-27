@@ -6,7 +6,7 @@ const loggedInUser = parseInt(localStorage.getItem("user"))
 
 // This is used to display movies not yet selected by the user and retrieved from the API
 export const MovieBrowse = ({ movie }) => {
-    const { addSelection } = useContext(MovieContext)
+    const { addSelection, getRecommendations } = useContext(MovieContext)
     const imgURL = `http://image.tmdb.org/t/p/w185//${movie.poster_path}`
     return (
         <section className="movieBox">
@@ -23,6 +23,10 @@ export const MovieBrowse = ({ movie }) => {
                         }
                     addSelection(selection)
                     }}>Add to Queue
+                </button>
+                <button className="anotherLikeThis" onClick={() => {
+                    getRecommendations(movie.id)
+                    }}>More Like This
                 </button>
             </div>
         </section>

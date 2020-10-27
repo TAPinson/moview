@@ -64,8 +64,17 @@ export const MovieProvider = (props) => {
             movies.found = false
             setMovies(movies)
         })
-        
-        
+    }
+
+    const getRecommendations = (movieId) => {
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=3bb5c20434f099d5caac97fe7663da0b&language=en-US&page=1`)
+        .then(res => res.json())
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            movies.found = false
+            setMovies(movies)
+        })
+
     }
 
     // ***************************************** Selection Data Below ***************************************** //
@@ -133,7 +142,7 @@ export const MovieProvider = (props) => {
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying
+            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying, getRecommendations
         }}>
             {props.children}
         </MovieContext.Provider>

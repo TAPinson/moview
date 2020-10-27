@@ -4,7 +4,7 @@ import { genres } from './MovieBrowser'
 import "./styles/Movie.css"
 
 export const MovieFinder = () => {
-    const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre, getNowPlaying } = useContext(MovieContext)
+    const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre, getNowPlaying, getRecommendations } = useContext(MovieContext)
     useEffect(() => {
         // Start the application off with a selection of random movies
         getRandomMovies()
@@ -50,10 +50,16 @@ export const MovieFinder = () => {
                             })
                             }}>Add to Queue
                         </button>
-                        <button onClick={() => {
+                        <button className="passBtn" onClick={() => {
                             getRandomMovies()
                             }}>Pass
                         </button>
+                        <button className="anotherLikeThis" onClick={() => {
+                            getRecommendations(movie.id)
+                            }}>Another Like This
+                        </button>
+
+                        
                         <form className="titleSearchForm">
                             <fieldset className="titleSearchField">
                                 <input type="text"
@@ -121,9 +127,13 @@ export const MovieFinder = () => {
                             })
                             }}>Add to Queue
                         </button>
-                        <button onClick={() => {
+                        <button className="passBtn" onClick={() => {
                             getRandomMovies()
                             }}>Pass
+                        </button>
+                        <button className="anotherLikeThis" onClick={() => {
+                            getRecommendations(movie.id)
+                            }}>Another Like This
                         </button>
                         <form className="titleSearchForm">
                             <fieldset className="titleSearchField">
@@ -150,7 +160,7 @@ export const MovieFinder = () => {
                         {
                                 genres.map((genre) => {
                                     return (
-                                        <button className="singleMovieFindBtn" onClick={() => {
+                                        <button key={genre.id}className="singleMovieFindBtn" onClick={() => {
                                             searchByGenre(genre.id)
                                             }
                                             }>Show {genre.name}
