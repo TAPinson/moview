@@ -111,7 +111,7 @@ export const MovieBrowser = () => {
                 <button className="singleMovieFindBtn" onClick={() => {
                     getNowPlaying()
                     }
-                    }>In Theatres
+                    }>Now Playing
                 </button>
             </div>
             <div className="movies"> 

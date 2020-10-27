@@ -90,7 +90,7 @@ export const MovieFinder = () => {
                         <button className="singleMovieFindBtn" onClick={() => {
                             getNowPlaying()
                             }
-                            }>In Theatres
+                            }>Now Playing
                         </button>
                     </div>
                 </section>
@@ -157,7 +157,12 @@ export const MovieFinder = () => {
                                         </button>
                                     )
                                 })
+                        }
+                        <button className="singleMovieFindBtn" onClick={() => {
+                            getNowPlaying()
                             }
+                            }>Now Playing
+                        </button>
                     </div>
                 </section>
                 </>
