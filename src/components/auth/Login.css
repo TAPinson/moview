@@ -63,3 +63,10 @@ fieldset {
     min-height: 5rem;
 }
 
+.link--register {
+    text-align: center;
+}
+
+.loginWelcome{
+    text-align: center;
+}

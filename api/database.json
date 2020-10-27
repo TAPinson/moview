@@ -20,6 +20,12 @@
       "email": "sudo@sudo",
       "partnerId": 1,
       "id": 3
+    },
+    {
+      "username": "werd",
+      "email": "werd@werd.werd",
+      "partnerId": 0,
+      "id": 4
     }
   ],
   "selections": [
