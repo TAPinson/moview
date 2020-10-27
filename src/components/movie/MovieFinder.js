@@ -4,7 +4,7 @@ import { genres } from './MovieBrowser'
 import "./styles/Movie.css"
 
 export const MovieFinder = () => {
-    const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre } = useContext(MovieContext)
+    const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre, getNowPlaying } = useContext(MovieContext)
     useEffect(() => {
         // Start the application off with a selection of random movies
         getRandomMovies()
@@ -82,11 +82,16 @@ export const MovieFinder = () => {
                                     <button key={genre.id} className="singleMovieFindBtn" onClick={() => {
                                         searchByGenre(genre.id)
                                         }
-                                        }>Show {genre.name}
+                                        }>{genre.name}
                                     </button>
                                 )
                             })
                         }
+                        <button className="singleMovieFindBtn" onClick={() => {
+                            getNowPlaying()
+                            }
+                            }>In Theatres
+                        </button>
                     </div>
                 </section>
                 </>

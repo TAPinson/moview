@@ -37,6 +37,8 @@
 
 .singleMovieFindBtn{
     margin-bottom: 0.8em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .finderGenreButtons {
@@ -45,5 +47,5 @@
     background-color:  #d9cd20;
     padding: 1em;
     margin-left: 5em;
-    height: 50em;
+    height: 53em;
 }

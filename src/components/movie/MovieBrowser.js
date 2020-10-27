@@ -84,14 +84,12 @@ export const genres = [
   ]
 
 export const MovieBrowser = () => {
-    const { movies, getRandomMovies, searchByGenre } = useContext(MovieContext)
+    const { movies, getRandomMovies, searchByGenre, getNowPlaying } = useContext(MovieContext)
     useEffect(() => {
         getRandomMovies()
     }, [])
-
     // This will be the array of results we map over
     const movieResults = movies.results
-
     // Initialize genreId so it is in scope of the return
     let genreId;
     // Change the value of genreId to the ID selected in genreSelect
@@ -102,16 +100,21 @@ export const MovieBrowser = () => {
     if (movieResults !== undefined){
         return (	
             <>
-            <div className="genreSelectBox"><h2 className="genreSelectHead">Browse by Genre:</h2>
+            <div className="genreSelectBox"><h2 className="genreSelectHead">Browse by:</h2>
                 <select className="genreSelect"onChange={genreFinder}>
-                <option key='0' value="">Select a Genre...</option>
+                <option key='0' value="">Browse By Genre...</option>
                     {genres.map((genre) => {
                         return <option key={genre.id} value={genre.id}>{genre.name}</option>
                             }
                         )}
                 </select>
+                <button className="singleMovieFindBtn" onClick={() => {
+                    getNowPlaying()
+                    }
+                    }>In Theatres
+                </button>
             </div>
-            <div className="movies">
+            <div className="movies"> 
             {   
                 movieResults.map(movie => {
                     return <MovieBrowse key={movie.id} movie={movie} />

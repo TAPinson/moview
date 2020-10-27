@@ -54,6 +54,19 @@ export const MovieProvider = (props) => {
             setMovies(movies)
         })
     }
+
+    const getNowPlaying = () => {
+        return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=3bb5c20434f099d5caac97fe7663da0b&language=en-US&page=1`)
+        .then(res => res.json())
+        .then(parsedMovies => {
+            let movies = parsedMovies
+            movies.found = false
+            setMovies(movies)
+        })
+        
+        
+    }
+
     // ***************************************** Selection Data Below ***************************************** //
     // Add a selection to the database
     const addSelection = selection => {
@@ -119,7 +132,7 @@ export const MovieProvider = (props) => {
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre
+            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying
         }}>
             {props.children}
         </MovieContext.Provider>
