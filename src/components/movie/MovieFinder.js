@@ -73,7 +73,7 @@ export const MovieFinder = () => {
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
                                         searchByTitle(searchTerms)
-                                        
+                                        document.getElementById("titleSearchInput").value = ""
                                     }}
                                     className="titleSearchBtn">
                                      Search
@@ -84,7 +84,7 @@ export const MovieFinder = () => {
                         {
                             genres.map((genre) => {
                                 return (
-                                    <button className="singleMovieFindBtn" onClick={() => {
+                                    <button key={genre.id}className="singleMovieFindBtn" onClick={() => {
                                         searchByGenre(genre.id)
                                         }
                                         }>Show {genre.name}
@@ -141,9 +141,7 @@ export const MovieFinder = () => {
                                     onClick={evt => {
                                         evt.preventDefault() // Prevent browser from submitting the form
                                         searchByTitle(searchTerms)
-                                        
-                                        
-                                        
+                                        document.getElementById("titleSearchInput").value = ""
                                     }}
                                     className="titleSearchBtn">
                                      Search
