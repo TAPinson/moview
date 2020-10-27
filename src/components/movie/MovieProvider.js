@@ -71,7 +71,7 @@ export const MovieProvider = (props) => {
         .then(res => res.json())
         .then(parsedMovies => {
             let movies = parsedMovies
-            movies.found = false
+            movies.found = true
             setMovies(movies)
         })
 

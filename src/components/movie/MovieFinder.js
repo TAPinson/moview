@@ -106,6 +106,7 @@ export const MovieFinder = () => {
          else if (movies.found === true) {
             // Select the first result, as it is the closest match
             let movie = results[0]
+            if (movie !== undefined) {
             const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
             const userId = parseInt(localStorage.getItem("user"))
             return (
@@ -176,7 +177,11 @@ export const MovieFinder = () => {
                     </div>
                 </section>
                 </>
-            )
+            )}
+            else {
+                alert("No Recommendations available for this film...")
+                getRandomMovies()
+            }
         }
     }
     return (
