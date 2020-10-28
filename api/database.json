@@ -501,31 +501,6 @@
     },
     {
       "userId": 2,
-      "watched": false,
-      "tmdbObject": {
-        "popularity": 79.603,
-        "vote_count": 11,
-        "video": false,
-        "poster_path": "/7BEY3dAb6ZVHzND1Ewmw2PTAl76.jpg",
-        "id": 584044,
-        "adult": false,
-        "backdrop_path": "/ebaQIQ0Uj60Rb9qcXaz0wF5B77I.jpg",
-        "original_language": "en",
-        "original_title": "The Viking War",
-        "genre_ids": [
-          18,
-          14,
-          36
-        ],
-        "title": "The Viking War",
-        "vote_average": 4.8,
-        "overview": "Ingrid and her siblings are on the run from the Beserkers who have begun invading the villages, taking over, savagely using the residents on a game where they vs a Beserker, and if they win, they get to survive - only, no one ever wins. The siblings are trying to escape the Beserkers after they violently murdered and took over their town. However, the Beserkers are on their trail, and want to put them in the game.",
-        "release_date": "2019-10-15"
-      },
-      "id": 87
-    },
-    {
-      "userId": 2,
       "watched": true,
       "tmdbObject": {
         "popularity": 12.856,

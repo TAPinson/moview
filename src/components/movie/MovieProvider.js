@@ -7,6 +7,7 @@ export const MovieContext = createContext()
 // This component establishes what data can be used.
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
+    const [liked, setLiked] = useState([])
     // ***************************************** Movie Data Below ***************************************** //
     // Pull a random page of movies from the API
     const getRandomMovies = () => {
@@ -110,6 +111,17 @@ export const MovieProvider = (props) => {
         .then(res => res.json())
         .then(setMovies)
     }
+
+    const getLiked = () => {
+        return fetch(`http://localhost:8088/selections?_embed=comments`)
+        .then(res => res.json())
+        .then(parsedMovies => {
+            let liked = parsedMovies
+            setLiked(liked)
+            
+        })
+    }
+
     // ***************************************** Comment Data Below ***************************************** //
     // Add a selection to the database
     const addComment = comment => {
@@ -142,7 +154,7 @@ export const MovieProvider = (props) => {
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying, getRecommendations
+            movies, liked, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying, getRecommendations, getLiked
         }}>
             {props.children}
         </MovieContext.Provider>

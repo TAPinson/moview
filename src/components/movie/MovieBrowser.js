@@ -84,9 +84,12 @@ export const genres = [
   ]
 
 export const MovieBrowser = () => {
-    const { movies, getRandomMovies, searchByGenre, getNowPlaying } = useContext(MovieContext)
+    const { movies, getRandomMovies, searchByGenre, getNowPlaying, liked, getLiked } = useContext(MovieContext)
     useEffect(() => {
         getRandomMovies()
+        .then(() => {
+          getLiked()
+        })
     }, [])
     // This will be the array of results we map over
     const movieResults = movies.results
@@ -97,6 +100,18 @@ export const MovieBrowser = () => {
         genreId = event.target.value
         searchByGenre(genreId)
     }
+    // Get logged in user ID
+    const loggedInUser = parseInt(localStorage.getItem("user"))
+    // Get all of logged in users movies
+    const myQueue = liked.filter((like) => {
+        return like.userId === loggedInUser
+    })
+    // Array to hold IDs of liked movies
+    let likeIds = []
+    // Push the ID of each liked movie to the array
+    myQueue.map((queueObj) => {
+      likeIds.push(queueObj.tmdbObject.id)
+    })
     if (movieResults !== undefined){
         return (	
             <>
@@ -115,9 +130,11 @@ export const MovieBrowser = () => {
                 </button>
             </div>
             <div className="movies"> 
-            {   
+            {   // We will only map movies that have not already been liked
                 movieResults.map(movie => {
-                    return <MovieBrowse key={movie.id} movie={movie} />
+                    if (likeIds.includes(movie.id) === false) {
+                      return <MovieBrowse key={movie.id} movie={movie} />
+                    }
                 })
             }
             </div>

@@ -4,13 +4,36 @@ import { genres } from './MovieBrowser'
 import "./styles/Movie.css"
 
 export const MovieFinder = () => {
-    const { movies, getRandomMovies, addSelection, searchByTitle, searchByGenre, getNowPlaying, getRecommendations } = useContext(MovieContext)
+    const { movies, liked, getRandomMovies, addSelection, searchByTitle, searchByGenre, getNowPlaying, getRecommendations, getLiked } = useContext(MovieContext)
     useEffect(() => {
         // Start the application off with a selection of random movies
         getRandomMovies()
+        .then(() => {
+            getLiked()
+        })
     }, [])
     // Bring the results of the random movies into variable
     const movieResults = movies.results
+
+    const userId = parseInt(localStorage.getItem("user"))
+    //////
+    const likedCheck = (addingId) => {
+
+        const alreadyLiked = liked.filter((each) => {
+            if (each.userId === userId) {
+                return each.tmdbObject.id === addingId
+            }
+        })
+
+        if (alreadyLiked.length > 0) {
+            return true
+        } else { 
+            return false
+        }
+        
+    }
+
+    /////////
     // Initialize variable outside of function so it is available later
     let searchTerms = ""
     // Keep value of input box as variable "searchTerms"
@@ -44,10 +67,14 @@ export const MovieFinder = () => {
                                 watched: false,
                                 tmdbObject: movie
                             }
-                            addSelection(selection)
-                            .then(() =>{
-                                getRandomMovies()
-                            })
+                            if (likedCheck(movie.id) === false) {
+                                addSelection(selection)
+                                .then(() =>{
+                                    getRandomMovies()
+                                })
+                            } else {
+                                alert("You've already added this!")
+                            }
                             }}>Add to Queue
                         </button>
                         <button className="passBtn" onClick={() => {
@@ -122,10 +149,14 @@ export const MovieFinder = () => {
                                 watched: false,
                                 tmdbObject: movie
                             }
-                            addSelection(selection)
-                            .then(() =>{
-                                getRandomMovies()
-                            })
+                            if (likedCheck(movie.id) === false) {
+                                addSelection(selection)
+                                .then(() =>{
+                                    getRandomMovies()
+                                })
+                            } else {
+                                alert("You've already added this!")
+                            }
                             }}>Add to Queue
                         </button>
                         <button className="passBtn" onClick={() => {
