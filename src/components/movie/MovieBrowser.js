@@ -134,6 +134,7 @@ export const MovieBrowser = () => {
                 movieResults.map(movie => {
                     if (likeIds.includes(movie.id) === false) {
                       return <MovieBrowse key={movie.id} movie={movie} />
+
                     }
                 })
             }

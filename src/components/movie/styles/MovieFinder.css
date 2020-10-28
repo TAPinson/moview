@@ -5,6 +5,8 @@
     background-color:  #d9cd20;
     margin-bottom: 14.2em;
     margin-left: 43em;
+    border: 3px solid;
+    border-color: black;
 }
 
 .finderContainer {

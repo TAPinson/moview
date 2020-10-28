@@ -13,7 +13,6 @@ export const MovieQueue = () => {
         getUsers()
         .then(MyLikes)
     }, [])
-
     // Get the ID of the logged in user
     const loggedInUserId = parseInt(localStorage.getItem("user"))
     // Get an array of logged in users selections
@@ -53,7 +52,6 @@ export const MovieQueue = () => {
                 }
             }
         })
-
         // The logic below will count how many unique movies are in the shared queue.
         let individualIds = []
         queueMovies.map((unit) => {
@@ -63,14 +61,13 @@ export const MovieQueue = () => {
                 }
             }
         })
-
         // Check to ensure that there are matched movies and if so, map them
         if (queueMovies.length > 0) {
             return (	
                 <>
                 <div className="myQueueCountBoxBox">
                     <div className="myQueueCountBox">
-                        <h2 className="myQueueCount">Movies in your queue: {individualIds.length}</h2>
+                        <h2 className="myQueueCount">Movies in shared queue: {individualIds.length}</h2>
                     </div>
                 </div>
                 <div className="queueMovieBox">

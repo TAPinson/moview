@@ -6,7 +6,6 @@ export const UserProvider = (props) => {
     const loggedId = localStorage.getItem("user")
     const [user, setUser] = useState([])
     const [users, setUsers] = useState([])
-
     const getUser = () => {
         // Fetch popular movies from 2019
         return fetch(`http://localhost:8088/users?id=${loggedId}`)
@@ -16,7 +15,6 @@ export const UserProvider = (props) => {
             setUser(user)
         })
     }
-
     const getUsers = () => {
         return fetch(`http://localhost:8088/users`)
         .then(res => res.json())
@@ -25,7 +23,6 @@ export const UserProvider = (props) => {
             setUsers(users)
         })
     }
-
     const updateUser = user => {
         return fetch(`http://localhost:8088/users/${user.id}`, {
             method: "PUT",
@@ -36,7 +33,6 @@ export const UserProvider = (props) => {
         })
         .then(setUser(user))
     }
-
     // Add needed functionality to context
     return (
         <UserContext.Provider value={{
@@ -45,5 +41,4 @@ export const UserProvider = (props) => {
             {props.children}
         </UserContext.Provider>
     )
-
 }

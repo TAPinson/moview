@@ -8,14 +8,11 @@ export const ViewerAccount = () => {
     useEffect(() => {
         getUser()
         .then(getUsers)
-        
     }, [])
-
     let searchTerms;
     const searchTermFinder = (event) => {
         searchTerms = event.target.value
     }
-
     const constructUser = (partner) => {
         const pairedPartner = users.filter((each) => {
             return each.username === partner
@@ -24,7 +21,6 @@ export const ViewerAccount = () => {
         const resultCheck = pairedPartner.length
         if (resultCheck > 0) {
             const partnerId = pairedPartner[0].id
-        
             // Construct the updated user object to PUT
             const userWithPartner = {
                 username: user.username,
@@ -39,14 +35,12 @@ export const ViewerAccount = () => {
             alert("That is not a valid user")
         }
     }
-
     //Use users partnerId to retrieve the whole object of the partner
     const partnerFinder = users.filter((each) =>{
         return each.id === user.partnerId
     })
     // An array is returned from filter, so we only need the 0th element of the returned array
     const partnerUser = partnerFinder[0]
-
     // If a valied partner has been found, render the following way
     if (partnerUser !== undefined) {
         return (
@@ -70,7 +64,6 @@ export const ViewerAccount = () => {
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
-                                    
                                 }}
                                 className="partnerSaveBtn">
                                 Save
@@ -101,7 +94,6 @@ export const ViewerAccount = () => {
                                 onClick={evt => {
                                     evt.preventDefault() // Prevent browser from submitting the form
                                     constructUser(searchTerms)
-                                    
                                 }}
                                 className="partnerSaveBtn">
                                 Save

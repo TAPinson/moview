@@ -89,9 +89,12 @@
     background-color:  #404040;
     padding: 1em;
     width: 25%;
+    border: 1px solid;
+    border-color: black;
 }
 
 .myQueueCountBoxBox {
     display: flex;
     justify-content: center;
+
 }

@@ -14,26 +14,20 @@ export const MovieFinder = () => {
     }, [])
     // Bring the results of the random movies into variable
     const movieResults = movies.results
-
+    // Logic below is to prevent duplicate movie adds
     const userId = parseInt(localStorage.getItem("user"))
-    //////
     const likedCheck = (addingId) => {
-
         const alreadyLiked = liked.filter((each) => {
             if (each.userId === userId) {
                 return each.tmdbObject.id === addingId
             }
         })
-
         if (alreadyLiked.length > 0) {
             return true
         } else { 
             return false
         }
-        
     }
-
-    /////////
     // Initialize variable outside of function so it is available later
     let searchTerms = ""
     // Keep value of input box as variable "searchTerms"
@@ -52,8 +46,6 @@ export const MovieFinder = () => {
             let token = Math.floor(Math.random() * 20);
             // Use the token to display a random movie
             let movie = results[token]
-            // Find the logged in user
-            const userId = parseInt(localStorage.getItem("user"))
             return (
                 <>
                 <section className="finderContainer">
@@ -85,8 +77,6 @@ export const MovieFinder = () => {
                             getRecommendations(movie.id)
                             }}>Another Like This
                         </button>
-
-                        
                         <form className="titleSearchForm">
                             <fieldset className="titleSearchField">
                                 <input type="text"
@@ -135,7 +125,6 @@ export const MovieFinder = () => {
             let movie = results[0]
             if (movie !== undefined) {
             const imgURL = `http://image.tmdb.org/t/p/w300//${movie.poster_path}`
-            const userId = parseInt(localStorage.getItem("user"))
             return (
                 <>
                 <section className="finderContainer">

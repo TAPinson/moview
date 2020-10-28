@@ -3,7 +3,6 @@ import defaultExport from '../Settings'
 
 // The context is imported and used by individual components that need data
 export const MovieContext = createContext()
-
 // This component establishes what data can be used.
 export const MovieProvider = (props) => {
     const [movies, setMovies] = useState([])
@@ -55,7 +54,6 @@ export const MovieProvider = (props) => {
             setMovies(movies)
         })
     }
-
     const getNowPlaying = () => {
         let randomPage = Math.floor(Math.random() * 5) + 1; // returns a random integer from 1 to 5
         return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${defaultExport.tmdbKey}&language=en-US&sort_by=release_date.desc&page=${randomPage}`)
@@ -66,7 +64,6 @@ export const MovieProvider = (props) => {
             setMovies(movies)
         })
     }
-
     const getRecommendations = (movieId) => {
         return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${defaultExport.tmdbKey}&language=en-US&page=1`)
         .then(res => res.json())
@@ -77,7 +74,6 @@ export const MovieProvider = (props) => {
         })
 
     }
-
     // ***************************************** Selection Data Below ***************************************** //
     // Add a selection to the database
     const addSelection = selection => {
@@ -111,7 +107,6 @@ export const MovieProvider = (props) => {
         .then(res => res.json())
         .then(setMovies)
     }
-
     const getLiked = () => {
         return fetch(`http://localhost:8088/selections?_embed=comments`)
         .then(res => res.json())
@@ -121,7 +116,6 @@ export const MovieProvider = (props) => {
             
         })
     }
-
     // ***************************************** Comment Data Below ***************************************** //
     // Add a selection to the database
     const addComment = comment => {
@@ -154,7 +148,7 @@ export const MovieProvider = (props) => {
     // Add needed functionality to context
     return (
         <MovieContext.Provider value={{
-            movies, liked, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying, getRecommendations, getLiked
+            movies, setMovies, liked, getRandomMovies, addSelection, MyLikes, deleteSelection, updateSelection, searchByTitle, addComment, deleteComment, updateComment, searchByGenre, getNowPlaying, getRecommendations, getLiked
         }}>
             {props.children}
         </MovieContext.Provider>
