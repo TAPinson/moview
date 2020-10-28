@@ -74,9 +74,24 @@
     background-color:  #404040;
     width: 25%;
     padding: 1em;
-    
 }
 
 .queueFallback {
     text-align: center;
+}
+
+.myQueueCount{
+    color:  #d9cd20;
+    text-align: center;
+}
+
+.myQueueCountBox {
+    background-color:  #404040;
+    padding: 1em;
+    width: 25%;
+}
+
+.myQueueCountBoxBox {
+    display: flex;
+    justify-content: center;
 }

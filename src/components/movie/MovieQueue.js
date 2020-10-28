@@ -53,10 +53,26 @@ export const MovieQueue = () => {
                 }
             }
         })
+
+        // The logic below will count how many unique movies are in the shared queue.
+        let individualIds = []
+        queueMovies.map((unit) => {
+            if (unit !== undefined) {
+                if (individualIds.includes(unit.tmdbObject.id) === false) {
+                    individualIds.push(unit.tmdbObject.id)
+                }
+            }
+        })
+
         // Check to ensure that there are matched movies and if so, map them
         if (queueMovies.length > 0) {
             return (	
                 <>
+                <div className="myQueueCountBoxBox">
+                    <div className="myQueueCountBox">
+                        <h2 className="myQueueCount">Movies in your queue: {individualIds.length}</h2>
+                    </div>
+                </div>
                 <div className="queueMovieBox">
                 <div className="movies">
                 {   queueMovies.map(movie => {

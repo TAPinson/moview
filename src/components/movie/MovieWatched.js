@@ -18,6 +18,11 @@ export const MovieWatched = () => {
     // Map over the users movies and display each with WatchedCard
     return (	
         <>
+        <div className="myQueueCountBoxBox">
+            <div className="myQueueCountBox">
+                <h2 className="myQueueCount">Watched Movies: {myMovies.length}</h2>
+            </div>
+        </div>
         <div className="queueMovieBox">
 		<div className="movies">
         {   

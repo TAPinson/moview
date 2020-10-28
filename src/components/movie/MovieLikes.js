@@ -18,13 +18,19 @@ export const MovieLikes = () => {
     return (	
         <>
         <div className="queueMovieBox">
-		<div className="movies">
-        {   
-			myMovies.map(movie => {
-				return <MovieCard key={movie.id} movie={movie} />
-			})
-        }
-        </div>
+            <div className="myQueueCountBoxBox">
+                <div className="myQueueCountBox">
+                    <h2 className="myQueueCount">Movies in your queue: {myMovies.length}</h2>
+                </div>
+            </div>
+		    <div className="movies">
+            {   
+			    myMovies.map(movie => {
+				    return <MovieCard key={movie.id} movie={movie} />
+			    })
+            }
+            </div>
+            
         </div>
         </>
     )}
