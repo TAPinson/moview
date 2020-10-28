@@ -57,7 +57,7 @@ export const MovieProvider = (props) => {
 
     const getNowPlaying = () => {
         let randomPage = Math.floor(Math.random() * 5) + 1; // returns a random integer from 1 to 5
-        return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=3bb5c20434f099d5caac97fe7663da0b&language=en-US&sort_by=release_date.desc&page=${randomPage}`)
+        return fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${defaultExport.tmdbKey}&language=en-US&sort_by=release_date.desc&page=${randomPage}`)
         .then(res => res.json())
         .then(parsedMovies => {
             let movies = parsedMovies
@@ -67,7 +67,7 @@ export const MovieProvider = (props) => {
     }
 
     const getRecommendations = (movieId) => {
-        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=3bb5c20434f099d5caac97fe7663da0b&language=en-US&page=1`)
+        return fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${defaultExport.tmdbKey}&language=en-US&page=1`)
         .then(res => res.json())
         .then(parsedMovies => {
             let movies = parsedMovies
