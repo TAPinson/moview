@@ -58,8 +58,8 @@
       "id": 1
     },
     {
-      "userId": 1,
-      "watched": true,
+      "userId": null,
+      "watched": false,
       "tmdbObject": {
         "popularity": 464.445,
         "vote_count": 5905,
@@ -85,7 +85,7 @@
     },
     {
       "userId": 1,
-      "watched": true,
+      "watched": false,
       "tmdbObject": {
         "popularity": 636.211,
         "vote_count": 6047,
@@ -755,24 +755,24 @@
       "userId": 2,
       "watched": false,
       "tmdbObject": {
-        "popularity": 26.378,
-        "id": 1267,
+        "popularity": 13.456,
+        "id": 10973,
         "video": false,
-        "vote_count": 1894,
-        "vote_average": 6.8,
-        "title": "Meet the Robinsons",
-        "release_date": "2007-03-23",
+        "vote_count": 411,
+        "vote_average": 6.9,
+        "title": "Creature from the Black Lagoon",
+        "release_date": "1954-03-05",
         "original_language": "en",
-        "original_title": "Meet the Robinsons",
+        "original_title": "Creature from the Black Lagoon",
         "genre_ids": [
-          16,
-          35,
-          10751
+          12,
+          27,
+          878
         ],
-        "backdrop_path": "/p4dZLrzwhgc1ACZJmkWosRlbUvn.jpg",
+        "backdrop_path": "/bQLroCsrg1WJhuThfWw6ss3IDbc.jpg",
         "adult": false,
-        "overview": "In this animated adventure, brilliant preteen inventor Lewis creates a memory scanner to retrieve his earliest recollections and find out why his mother gave him up for adoption. But when the villainous Bowler Hat Guy steals the machine, Lewis is ready to give up on his quest until the mysterious Wilbur Robinson shows up on the scene, whisking Lewis to the future to find the scanner and his mom.",
-        "poster_path": "/swsjj0jZtsx53Yp9zBORPwsmGWj.jpg"
+        "overview": "A scientific expedition searching for fossils along the Amazon River discover a prehistoric Gill-Man in the legendary Black Lagoon. The explorers capture the mysterious creature, but it breaks free. The Gill-Man returns to kidnap the lovely Kay, fiancée of one of the expedition, with whom it has fallen in love.",
+        "poster_path": "/6JQZ78pOixvae5qhJQnR8wwqSjy.jpg"
       },
       "id": 105
     }
@@ -827,10 +827,10 @@
       "id": 11
     },
     {
-      "selectionId": 78,
+      "id": 12,
       "userId": 1,
-      "comment": "This movie made me want to be a better person",
-      "id": 12
+      "selectionId": 78,
+      "comment": "Laces out!"
     },
     {
       "id": 13,

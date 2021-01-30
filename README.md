@@ -1,7 +1,13 @@
-Below is my proposed wireframe:
+Below is the Moview sign-in landing page:
+![Image of wireframe](/planning/moview-finder.png)
+
+Below is the Moview users saved queue page:
+![Image of wireframe](/planning/moview-queue.png)
+
+Below was my proposed wireframe:
 ![Image of wireframe](/planning/wireframe.jpg)
 
-Below is my proposed ERD:
+Below was my proposed ERD:
 ![Image of ERD](/planning/ApprovedERD.png)
 
 

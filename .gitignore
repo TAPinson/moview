@@ -17,6 +17,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.vscode/
 # API Key stored in src/components/Settings.js
 /src/components/Settings.js
 
