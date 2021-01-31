@@ -26,6 +26,10 @@
     padding-left: 1em;
     padding-right: 1em;
     text-align: left;
+    height: 8rem;
+    overflow-y: scroll;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .movie__release {
@@ -46,6 +50,7 @@
 
 .moviePoster {
     text-align: center;
+    height: 30rem;
 }
 
 .buttonBoxLikes {
