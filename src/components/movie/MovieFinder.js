@@ -50,7 +50,7 @@ export const MovieFinder = () => {
                 <>
                     <section className="finderContainer">
                         <div className="finderViewer">
-                            <h1 className="finderTitle">{movie.title}</h1>
+                            <h2 className="finderTitle">{movie.title}</h2>
                             <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
                             <div className="movie__overview">{movie.overview}</div>
                             <button onClick={() => {
@@ -129,7 +129,7 @@ export const MovieFinder = () => {
                     <>
                         <section className="finderContainer">
                             <div className="finderViewer">
-                                <h1>{movie.title}</h1>
+                                <h2>{movie.title}</h2>
                                 <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
                                 <div className="movie__overview">{movie.overview}</div>
                                 <button onClick={() => {
@@ -209,7 +209,7 @@ export const MovieFinder = () => {
         <>
             <section className="finderContainer">
                 <div className="finderViewer">
-                    <h1>Movie Display</h1>
+                    <h2>Movie Display</h2>
                 </div>
             </section>
         </>
