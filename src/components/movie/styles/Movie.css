@@ -50,6 +50,11 @@
 
 .moviePoster {
     text-align: center; 
+    /* height: 30rem; */
+}
+
+.finder-moviePoster {
+    text-align: center; 
     height: 30rem;
 }
 

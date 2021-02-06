@@ -14,20 +14,22 @@ export const MovieFinder = () => {
     }, [])
 
 
-    const PosterCheck = ({movie}) => {
-        if (movie.poster_path){
-            return ( 
-            <img className="moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
-            
-            )}
+    const PosterCheck = ({ movie }) => {
+        if (movie.poster_path) {
+            return (
+                <img className="finder-moviePoster" src={`http://image.tmdb.org/t/p/w300//` + movie.poster_path} alt="movie poster"></img>
+
+            )
+        }
         else {
             return (
-            <img className="moviePoster" src={'https://lexingtonvenue.com/media/poster-placeholder.jpg'} alt="movie poster"></img>
-            )}
-            }
-      
-        
-    
+                <img className="finder-moviePoster" src={'https://lexingtonvenue.com/media/poster-placeholder.jpg'} alt="movie poster"></img>
+            )
+        }
+    }
+
+
+
 
 
     // Bring the results of the random movies into variable
@@ -69,7 +71,7 @@ export const MovieFinder = () => {
                     <section className="finderContainer">
                         <div className="finderViewer">
                             <h2 className="finderTitle">{movie.title}</h2>
-                            <PosterCheck movie={movie}/>
+                            <PosterCheck movie={movie} />
                             <div className="movie__overview">{movie.overview}</div>
                             <button onClick={() => {
                                 const selection = {
@@ -148,7 +150,7 @@ export const MovieFinder = () => {
                         <section className="finderContainer">
                             <div className="finderViewer">
                                 <h2>{movie.title}</h2>
-                                <PosterCheck movie={movie}/>
+                                <PosterCheck movie={movie} />
                                 <div className="movie__overview">{movie.overview}</div>
                                 <button onClick={() => {
                                     const selection = {
