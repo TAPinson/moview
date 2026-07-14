@@ -9,6 +9,12 @@ export type UserProfile = {
   lastName: string | null;
 };
 
+export type UpdateUserProfileInput = {
+  username: string;
+  firstName: string | null;
+  lastName: string | null;
+};
+
 const PROFILE_STORAGE_KEY = "moview:userProfile";
 
 type GraphQLResponse<T> = {
@@ -38,9 +44,11 @@ export function clearStoredUserProfile() {
   window.localStorage.removeItem(PROFILE_STORAGE_KEY);
 }
 
-export async function fetchCurrentUserProfile(
+async function graphQLRequest<T>(
   authUser: AuthUser,
-): Promise<UserProfile> {
+  query: string,
+  variables?: Record<string, unknown>,
+): Promise<T> {
   if (!appSyncGraphqlUrl) {
     throw new Error("Missing AppSync configuration. Set VITE_APPSYNC_GRAPHQL_URL.");
   }
@@ -51,35 +59,68 @@ export async function fetchCurrentUserProfile(
       "content-type": "application/json",
       authorization: authUser.idToken,
     },
-    body: JSON.stringify({
-      query: `
-        query Me {
-          me {
-            id
-            username
-            email
-            admin
-            firstName
-            lastName
-          }
-        }
-      `,
-    }),
+    body: JSON.stringify({ query, variables }),
   });
 
   if (!response.ok) {
     throw new Error(`Profile request failed with status ${response.status}.`);
   }
 
-  const body = (await response.json()) as GraphQLResponse<{ me: UserProfile }>;
+  const body = (await response.json()) as GraphQLResponse<T>;
   if (body.errors?.length) {
     throw new Error(body.errors[0]?.message || "Profile request failed.");
   }
 
-  if (!body.data?.me) {
-    throw new Error("Profile request did not return a user profile.");
+  if (!body.data) {
+    throw new Error("Profile request did not return data.");
   }
 
-  saveUserProfile(body.data.me);
-  return body.data.me;
+  return body.data;
+}
+
+const USER_PROFILE_FIELDS = `
+  id
+  username
+  email
+  admin
+  firstName
+  lastName
+`;
+
+export async function fetchCurrentUserProfile(
+  authUser: AuthUser,
+): Promise<UserProfile> {
+  const data = await graphQLRequest<{ me: UserProfile }>(
+    authUser,
+    `
+      query Me {
+        me {
+          ${USER_PROFILE_FIELDS}
+        }
+      }
+    `,
+  );
+
+  saveUserProfile(data.me);
+  return data.me;
+}
+
+export async function updateUserProfile(
+  authUser: AuthUser,
+  input: UpdateUserProfileInput,
+): Promise<UserProfile> {
+  const data = await graphQLRequest<{ updateUser: UserProfile }>(
+    authUser,
+    `
+      mutation UpdateUser($input: UpdateUserProfileInput!) {
+        updateUser(input: $input) {
+          ${USER_PROFILE_FIELDS}
+        }
+      }
+    `,
+    { input },
+  );
+
+  saveUserProfile(data.updateUser);
+  return data.updateUser;
 }

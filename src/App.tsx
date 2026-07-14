@@ -11,6 +11,7 @@ import "./App.css";
 import { Home } from "./routes/home/Home";
 import { About } from "./routes/about/About";
 import { Login } from "./routes/login/Login";
+import { Profile } from "./routes/profile/Profile";
 import {
   getCurrentAuthUser,
   signOut as signOutUser,
@@ -99,6 +100,10 @@ function App() {
     setUserProfile(profile);
   }
 
+  function handleProfileUpdated(profile: UserProfile) {
+    setUserProfile(profile);
+  }
+
   function handleAccountMenuOpen(event: MouseEvent<HTMLButtonElement>) {
     setAccountMenuAnchor(event.currentTarget);
   }
@@ -134,6 +139,12 @@ function App() {
                 H
               </span>
               <span>Home</span>
+            </NavLink>
+            <NavLink to="/profile" title="Profile">
+              <span className="nav-icon" aria-hidden="true">
+                P
+              </span>
+              <span>Profile</span>
             </NavLink>
             <NavLink to="/about" title="About">
               <span className="nav-icon" aria-hidden="true">
@@ -176,6 +187,13 @@ function App() {
                     list: { "aria-labelledby": "account-menu-button" },
                   }}
                 >
+                  <MenuItem
+                    onClick={handleAccountMenuClose}
+                    component={NavLink}
+                    to="/profile"
+                  >
+                    Profile
+                  </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </>
@@ -202,6 +220,18 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <Home userProfile={userProfile} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <Profile
+                  authUser={user}
+                  userProfile={userProfile}
+                  onProfileUpdated={handleProfileUpdated}
+                />
               </ProtectedRoute>
             }
           />

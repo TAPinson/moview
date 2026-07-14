@@ -168,6 +168,42 @@ nav a.active {
   max-width: 520px;
 }
 
+.profile-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+  max-width: 520px;
+}
+
+.profile-form .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.profile-form .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.profile-form .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.profile-form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.profile-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+
+.profile-form .MuiButton-contained {
+  min-height: 44px;
+  color: #0f172a;
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.profile-form .MuiButton-contained:hover {
+  background: var(--accent-strong);
+}
+
 .login-form {
   display: grid;
   gap: 18px;
