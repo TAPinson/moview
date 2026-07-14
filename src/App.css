@@ -168,6 +168,96 @@ nav a.active {
   max-width: 520px;
 }
 
+.movie-search-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.movie-search-form .MuiInputBase-root,
+.movie-search-page .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.movie-search-form .MuiInputLabel-root,
+.movie-search-page .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.movie-search-form .MuiOutlinedInput-notchedOutline,
+.movie-search-page .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.movie-search-form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.movie-search-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+
+.movie-search-form .MuiButton-contained {
+  min-height: 56px;
+  color: #0f172a;
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.movie-search-form .MuiButton-contained:hover {
+  background: var(--accent-strong);
+}
+
+.movie-search-alert {
+  margin-top: 18px;
+}
+
+.movie-results {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.movie-result-card.movie-result-card {
+  color: var(--text);
+  background: var(--panel);
+  border-color: var(--border);
+  border-radius: 8px;
+}
+
+.movie-result-title.movie-result-title {
+  color: var(--text-h);
+  margin-bottom: 14px;
+}
+
+.movie-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+  margin: 0;
+}
+
+.movie-detail-list div {
+  min-width: 0;
+}
+
+.movie-detail-list dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.movie-detail-list dd {
+  overflow-wrap: anywhere;
+  margin: 3px 0 0;
+  color: var(--text);
+}
+
+.movie-detail-full {
+  grid-column: 1 / -1;
+}
+
 .profile-form {
   display: grid;
   gap: 18px;
@@ -307,6 +397,14 @@ nav a.active {
 
   .header-actions {
     display: none;
+  }
+
+  .movie-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-detail-list {
+    grid-template-columns: 1fr;
   }
 
   .page {

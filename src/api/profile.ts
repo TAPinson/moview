@@ -90,19 +90,21 @@ const USER_PROFILE_FIELDS = `
 export async function fetchCurrentUserProfile(
   authUser: AuthUser,
 ): Promise<UserProfile> {
-  const data = await graphQLRequest<{ me: UserProfile }>(
+  const data = await graphQLRequest<{ users: { profile: UserProfile } }>(
     authUser,
     `
-      query Me {
-        me {
-          ${USER_PROFILE_FIELDS}
+      query Profile {
+        users {
+          profile {
+            ${USER_PROFILE_FIELDS}
+          }
         }
       }
     `,
   );
 
-  saveUserProfile(data.me);
-  return data.me;
+  saveUserProfile(data.users.profile);
+  return data.users.profile;
 }
 
 export async function updateUserProfile(

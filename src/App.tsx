@@ -12,6 +12,7 @@ import { Home } from "./routes/home/Home";
 import { About } from "./routes/about/About";
 import { Login } from "./routes/login/Login";
 import { Profile } from "./routes/profile/Profile";
+import { MovieSearch } from "./routes/movie_search/MovieSearch";
 import {
   getCurrentAuthUser,
   signOut as signOutUser,
@@ -140,6 +141,12 @@ function App() {
               </span>
               <span>Home</span>
             </NavLink>
+            <NavLink to="/movie_search" title="Movie Search">
+              <span className="nav-icon" aria-hidden="true">
+                M
+              </span>
+              <span>Movie Search</span>
+            </NavLink>
             <NavLink to="/profile" title="Profile">
               <span className="nav-icon" aria-hidden="true">
                 P
@@ -220,6 +227,14 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <Home userProfile={userProfile} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/movie_search"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <MovieSearch authUser={user} />
               </ProtectedRoute>
             }
           />
