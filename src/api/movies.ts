@@ -23,6 +23,17 @@ export type MovieLike = {
   createdAt: string;
 };
 
+export type WatchlistStatus = "want_to_watch" | "watching" | "watched";
+
+export type WatchlistItem = {
+  userId: number;
+  movieId: number;
+  status: WatchlistStatus;
+  addedAt: string;
+  watchedAt: string | null;
+  notes: string | null;
+};
+
 type GraphQLResponse<T> = {
   data?: T;
   errors?: Array<{ message?: string }>;
@@ -47,16 +58,16 @@ async function graphQLRequest<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`Movie search failed with status ${response.status}.`);
+    throw new Error(`Request failed with status ${response.status}.`);
   }
 
   const body = (await response.json()) as GraphQLResponse<T>;
   if (body.errors?.length) {
-    throw new Error(body.errors[0]?.message || "Movie search failed.");
+    throw new Error(body.errors[0]?.message || "Request failed.");
   }
 
   if (!body.data) {
-    throw new Error("Movie search did not return data.");
+    throw new Error("Request did not return data.");
   }
 
   return body.data;
@@ -98,7 +109,6 @@ export async function searchMovies(
   return data.movies.search;
 }
 
-
 export async function addMovieLike(
   authUser: AuthUser,
   movieId: number,
@@ -118,4 +128,52 @@ export async function addMovieLike(
   );
 
   return data.addLike;
+}
+
+export async function addMovieToWatchlist(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<WatchlistItem> {
+  const data = await graphQLRequest<{ addToWatchlist: WatchlistItem }>(
+    authUser,
+    `
+      mutation AddToWatchlist($movieId: Int!) {
+        addToWatchlist(movieId: $movieId) {
+          userId
+          movieId
+          status
+          addedAt
+          watchedAt
+          notes
+        }
+      }
+    `,
+    { movieId },
+  );
+
+  return data.addToWatchlist;
+}
+
+export async function markMovieWatched(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<WatchlistItem> {
+  const data = await graphQLRequest<{ markWatched: WatchlistItem }>(
+    authUser,
+    `
+      mutation MarkWatched($movieId: Int!) {
+        markWatched(movieId: $movieId) {
+          userId
+          movieId
+          status
+          addedAt
+          watchedAt
+          notes
+        }
+      }
+    `,
+    { movieId },
+  );
+
+  return data.markWatched;
 }

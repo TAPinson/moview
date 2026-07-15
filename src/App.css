@@ -233,6 +233,18 @@ nav a.active {
   margin-bottom: 14px;
 }
 
+.movie-result-actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.movie-result-actions .MuiButton-root {
+  min-height: 32px;
+}
+
 .movie-result-header .MuiButton-contained {
   color: #0f172a;
   background: var(--accent);
