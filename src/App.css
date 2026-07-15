@@ -225,8 +225,34 @@ nav a.active {
   border-radius: 8px;
 }
 
+.movie-result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.movie-result-header .MuiButton-contained {
+  color: #0f172a;
+  background: var(--accent);
+  font-weight: 700;
+}
+
+.movie-result-header .MuiButton-contained:hover {
+  background: var(--accent-strong);
+}
+
+.movie-result-header .MuiButton-outlined {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .movie-result-title.movie-result-title {
   color: var(--text-h);
+}
+
+.movie-like-alert {
   margin-bottom: 14px;
 }
 

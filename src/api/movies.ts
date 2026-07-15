@@ -17,6 +17,12 @@ export type MovieSearchResult = {
   vote_average: number | null;
 };
 
+export type MovieLike = {
+  userId: number;
+  movieId: number;
+  createdAt: string;
+};
+
 type GraphQLResponse<T> = {
   data?: T;
   errors?: Array<{ message?: string }>;
@@ -90,4 +96,26 @@ export async function searchMovies(
   );
 
   return data.movies.search;
+}
+
+
+export async function addMovieLike(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<MovieLike> {
+  const data = await graphQLRequest<{ addLike: MovieLike }>(
+    authUser,
+    `
+      mutation AddLike($movieId: Int!) {
+        addLike(movieId: $movieId) {
+          userId
+          movieId
+          createdAt
+        }
+      }
+    `,
+    { movieId },
+  );
+
+  return data.addLike;
 }

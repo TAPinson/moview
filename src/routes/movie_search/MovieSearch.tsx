@@ -7,7 +7,11 @@ import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import type { AuthUser } from "../../auth/cognito";
-import { searchMovies, type MovieSearchResult } from "../../api/movies";
+import {
+  addMovieLike,
+  searchMovies,
+  type MovieSearchResult,
+} from "../../api/movies";
 
 type MovieSearchProps = {
   authUser: AuthUser | null;
@@ -29,13 +33,41 @@ function fieldValue(value: string | number | boolean | null | undefined) {
   return String(value);
 }
 
-function MovieResultCard({ movie }: { movie: MovieSearchResult }) {
+function MovieResultCard({
+  isLiked,
+  isSavingLike,
+  likeError,
+  movie,
+  onLike,
+}: {
+  isLiked: boolean;
+  isSavingLike: boolean;
+  likeError: string | null;
+  movie: MovieSearchResult;
+  onLike: (movie: MovieSearchResult) => void;
+}) {
   return (
     <Card className="movie-result-card" variant="outlined">
       <CardContent>
-        <Typography className="movie-result-title" component="h2" variant="h6">
-          {movie.title || movie.original_title || "Untitled"}
-        </Typography>
+        <div className="movie-result-header">
+          <Typography className="movie-result-title" component="h2" variant="h6">
+            {movie.title || movie.original_title || "Untitled"}
+          </Typography>
+          <Button
+            type="button"
+            variant={isLiked ? "outlined" : "contained"}
+            size="small"
+            disabled={isSavingLike || isLiked || movie.id === null}
+            onClick={() => onLike(movie)}
+          >
+            {isSavingLike ? "Saving..." : isLiked ? "Liked" : "Like"}
+          </Button>
+        </div>
+        {likeError && (
+          <Alert severity="error" className="movie-like-alert">
+            {likeError}
+          </Alert>
+        )}
         <dl className="movie-detail-list">
           <div>
             <dt>ID</dt>
@@ -100,6 +132,9 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
   const [results, setResults] = useState<MovieSearchResult[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [likedMovieIds, setLikedMovieIds] = useState<Set<number>>(() => new Set());
+  const [savingLikeMovieId, setSavingLikeMovieId] = useState<number | null>(null);
+  const [likeErrors, setLikeErrors] = useState<Record<number, string>>({});
   const [isSearching, setIsSearching] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -114,6 +149,7 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
     try {
       const movies = await searchMovies(authUser, query.trim());
       setResults(movies);
+      setLikeErrors({});
       setHasSearched(true);
     } catch (caughtError) {
       setError(errorMessage(caughtError));
@@ -121,6 +157,36 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
       setHasSearched(true);
     } finally {
       setIsSearching(false);
+    }
+  }
+
+
+  async function handleLike(movie: MovieSearchResult) {
+    if (!authUser || movie.id === null) {
+      return;
+    }
+
+    setSavingLikeMovieId(movie.id);
+    setLikeErrors((currentErrors) => {
+      const nextErrors = { ...currentErrors };
+      delete nextErrors[movie.id as number];
+      return nextErrors;
+    });
+
+    try {
+      await addMovieLike(authUser, movie.id);
+      setLikedMovieIds((currentIds) => {
+        const nextIds = new Set(currentIds);
+        nextIds.add(movie.id as number);
+        return nextIds;
+      });
+    } catch (caughtError) {
+      setLikeErrors((currentErrors) => ({
+        ...currentErrors,
+        [movie.id as number]: errorMessage(caughtError),
+      }));
+    } finally {
+      setSavingLikeMovieId(null);
     }
   }
 
@@ -149,9 +215,19 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
       )}
 
       <section className="movie-results" aria-label="Movie search results">
-        {results.map((movie, index) => (
-          <MovieResultCard key={movie.id ?? `${movie.title}-${index}`} movie={movie} />
-        ))}
+        {results.map((movie, index) => {
+          const movieKey = movie.id ?? `${movie.title}-${index}`;
+          return (
+            <MovieResultCard
+              key={movieKey}
+              isLiked={movie.id !== null && likedMovieIds.has(movie.id)}
+              isSavingLike={movie.id !== null && savingLikeMovieId === movie.id}
+              likeError={movie.id !== null ? likeErrors[movie.id] : null}
+              movie={movie}
+              onLike={handleLike}
+            />
+          );
+        })}
       </section>
     </main>
   );
