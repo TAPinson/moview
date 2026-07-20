@@ -212,6 +212,17 @@ nav a.active {
   margin-top: 18px;
 }
 
+.movie-list-progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  color: var(--accent);
+}
+
+.movie-list-progress .MuiCircularProgress-root {
+  color: var(--accent);
+}
+
 .movie-results {
   display: grid;
   gap: 14px;

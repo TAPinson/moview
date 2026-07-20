@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
@@ -8,6 +8,7 @@ import { MovieCard } from "../../components/MovieCard";
 import {
   addMovieLike,
   addMovieToWatchlist,
+  fetchWatchlistEntries,
   markMovieWatched,
   searchMovies,
   type MovieSearchResult,
@@ -40,6 +41,35 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
   >({});
   const [watchlistErrors, setWatchlistErrors] = useState<Record<number, string>>({});
   const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    if (!authUser) {
+      return;
+    }
+
+    let isMounted = true;
+    fetchWatchlistEntries(authUser)
+      .then((entries) => {
+        if (!isMounted) {
+          return;
+        }
+
+        setWatchlistStatuses(
+          Object.fromEntries(
+            entries.map((entry) => [entry.movieId, entry.status]),
+          ),
+        );
+      })
+      .catch(() => {
+        if (isMounted) {
+          setWatchlistStatuses({});
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [authUser]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -146,7 +176,6 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
 
   return (
     <main className="page movie-search-page">
-      <p className="eyebrow">Movies</p>
       <h1>Movie Search</h1>
       <form className="movie-search-form" onSubmit={handleSubmit}>
         <TextField

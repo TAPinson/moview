@@ -107,10 +107,20 @@ export function MovieCard({
   const isInWatchlist =
     watchlistStatus === "want_to_watch" || watchlistStatus === "watched";
   const isWatched = watchlistStatus === "watched";
+  const canAddToWatchlist = Boolean(
+    onAddToWatchlist && !isInWatchlist && movie.id !== null,
+  );
+  const canMarkWatched = Boolean(onMarkWatched && !isWatched && movie.id !== null);
+  const canLike = Boolean(onLike && !isLiked && movie.id !== null);
   const posterUrl = moviePosterUrl(movie.poster_path);
   const statusLabel = watchlistStatusLabel(watchlistStatus);
   const title = movie.title || movie.original_title || "Untitled";
-  const hasActions = onAddToWatchlist || onMarkWatched || onLike;
+  const hasActions =
+    canAddToWatchlist ||
+    canMarkWatched ||
+    canLike ||
+    watchlistSavingAction !== null ||
+    isSavingLike;
 
   return (
     <Card className="movie-result-card" variant="outlined">
@@ -124,43 +134,41 @@ export function MovieCard({
           </div>
           {hasActions && (
             <div className="movie-result-actions">
-              {onAddToWatchlist && (
-                <Button
-                  type="button"
-                  variant={isInWatchlist ? "outlined" : "contained"}
-                  size="small"
-                  disabled={
-                    watchlistSavingAction !== null || isInWatchlist || movie.id === null
-                  }
-                  onClick={() => onAddToWatchlist(movie)}
-                >
-                  {watchlistSavingAction === "want_to_watch"
-                    ? "Saving..."
-                    : isInWatchlist
-                      ? "In watchlist"
+              {onAddToWatchlist &&
+                (canAddToWatchlist || watchlistSavingAction === "want_to_watch") && (
+                  <Button
+                    type="button"
+                    variant="contained"
+                    size="small"
+                    disabled={watchlistSavingAction !== null}
+                    onClick={() => onAddToWatchlist(movie)}
+                  >
+                    {watchlistSavingAction === "want_to_watch"
+                      ? "Saving..."
                       : "Add to watchlist"}
-                </Button>
-              )}
-              {onMarkWatched && (
+                  </Button>
+                )}
+              {onMarkWatched &&
+                (canMarkWatched || watchlistSavingAction === "watched") && (
+                  <Button
+                    type="button"
+                    variant="contained"
+                    size="small"
+                    disabled={watchlistSavingAction !== null}
+                    onClick={() => onMarkWatched(movie)}
+                  >
+                    {watchlistSavingAction === "watched" ? "Saving..." : "Watched"}
+                  </Button>
+                )}
+              {onLike && (canLike || isSavingLike) && (
                 <Button
                   type="button"
-                  variant={isWatched ? "outlined" : "contained"}
+                  variant="contained"
                   size="small"
-                  disabled={watchlistSavingAction !== null || isWatched || movie.id === null}
-                  onClick={() => onMarkWatched(movie)}
-                >
-                  {watchlistSavingAction === "watched" ? "Saving..." : "Watched"}
-                </Button>
-              )}
-              {onLike && (
-                <Button
-                  type="button"
-                  variant={isLiked ? "outlined" : "contained"}
-                  size="small"
-                  disabled={isSavingLike || isLiked || movie.id === null}
+                  disabled={isSavingLike}
                   onClick={() => onLike(movie)}
                 >
-                  {isSavingLike ? "Saving..." : isLiked ? "Liked" : "Like"}
+                  {isSavingLike ? "Saving..." : "Like"}
                 </Button>
               )}
             </div>

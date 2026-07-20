@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Alert from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
 import type { AuthUser } from "../../auth/cognito";
 import { fetchWatchlist, type WatchlistItem, type WatchlistStatus } from "../../api/movies";
 import { MovieCard } from "../../components/MovieCard";
@@ -7,7 +8,6 @@ import { MovieCard } from "../../components/MovieCard";
 type MovieListProps = {
   authUser: AuthUser | null;
   emptyMessage: string;
-  loadingMessage: string;
   status: WatchlistStatus;
   title: string;
 };
@@ -27,7 +27,6 @@ function errorMessage(error: unknown) {
 function MovieList({
   authUser,
   emptyMessage,
-  loadingMessage,
   status,
   title,
 }: MovieListProps) {
@@ -66,13 +65,12 @@ function MovieList({
 
   return (
     <main className="page watchlist-page">
-      <p className="eyebrow">Movies</p>
       <h1>{title}</h1>
 
       {isLoading && (
-        <Alert severity="info" className="movie-search-alert">
-          {loadingMessage}
-        </Alert>
+        <div className="movie-list-progress" role="status" aria-label="Loading movies">
+          <CircularProgress size={32} />
+        </div>
       )}
       {error && <Alert severity="error" className="movie-search-alert">{error}</Alert>}
       {!isLoading && !error && items.length === 0 && (
@@ -101,7 +99,6 @@ export function Watchlist({ authUser }: WatchlistProps) {
     <MovieList
       authUser={authUser}
       emptyMessage="Your watchlist is empty."
-      loadingMessage="Loading watchlist."
       status="want_to_watch"
       title="Watchlist"
     />
@@ -113,7 +110,6 @@ export function Watched({ authUser }: WatchlistProps) {
     <MovieList
       authUser={authUser}
       emptyMessage="You have not marked any movies watched yet."
-      loadingMessage="Loading watched movies."
       status="watched"
       title="Watched"
     />

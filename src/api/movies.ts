@@ -21,14 +21,18 @@ export type MovieLike = {
   userId: number;
   movieId: number;
   createdAt: string;
+  movie?: MovieSearchResult | null;
 };
 
 export type WatchlistStatus = "want_to_watch" | "watching" | "watched";
 
-export type WatchlistItem = {
+export type WatchlistEntry = {
   userId: number;
   movieId: number;
   status: WatchlistStatus;
+};
+
+export type WatchlistItem = WatchlistEntry & {
   addedAt: string;
   watchedAt: string | null;
   notes: string | null;
@@ -179,6 +183,65 @@ export async function markMovieWatched(
   return data.markWatched;
 }
 
+export async function fetchLikedMovies(authUser: AuthUser): Promise<MovieLike[]> {
+  const data = await graphQLRequest<{
+    users: { likes: MovieLike[] };
+  }>(
+    authUser,
+    `
+      query Likes {
+        users {
+          likes {
+            userId
+            movieId
+            createdAt
+            movie {
+              poster_path
+              adult
+              overview
+              release_date
+              genre_ids
+              id
+              original_title
+              original_language
+              title
+              backdrop_path
+              popularity
+              vote_count
+              video
+              vote_average
+            }
+          }
+        }
+      }
+    `,
+  );
+
+  return data.users.likes;
+}
+
+export async function fetchWatchlistEntries(
+  authUser: AuthUser,
+): Promise<WatchlistEntry[]> {
+  const data = await graphQLRequest<{
+    users: { watchlistEntries: WatchlistEntry[] };
+  }>(
+    authUser,
+    `
+      query WatchlistEntries {
+        users {
+          watchlistEntries {
+            userId
+            movieId
+            status
+          }
+        }
+      }
+    `,
+  );
+
+  return data.users.watchlistEntries;
+}
 
 export async function fetchWatchlist(
   authUser: AuthUser,
