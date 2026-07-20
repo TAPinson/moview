@@ -1,7 +1,11 @@
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FormatListBulletedAddIcon from "@mui/icons-material/FormatListBulletedAdd";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import movieGenres from "../data/movieGenres.json";
 import movieLanguages from "../data/movieLanguages.json";
@@ -146,65 +150,78 @@ export function MovieCard({
             <div className="movie-result-actions">
               {onAddToWatchlist &&
                 (canAddToWatchlist || watchlistSavingAction === "want_to_watch") && (
-                  <Button
+                  <IconButton
                     type="button"
-                    variant="contained"
                     size="small"
+                    color="primary"
                     disabled={watchlistSavingAction !== null}
+                    aria-label={
+                      watchlistSavingAction === "want_to_watch"
+                        ? "Adding movie to watchlist"
+                        : "Add movie to watchlist"
+                    }
                     onClick={() => onAddToWatchlist(movie)}
                   >
-                    {watchlistSavingAction === "want_to_watch"
-                      ? "Saving..."
-                      : "Add to watchlist"}
-                  </Button>
+                    <FormatListBulletedAddIcon fontSize="small" />
+                  </IconButton>
                 )}
               {onMarkWatched &&
                 (canMarkWatched || watchlistSavingAction === "watched") && (
-                  <Button
+                  <IconButton
                     type="button"
-                    variant="contained"
                     size="small"
+                    color="primary"
                     disabled={watchlistSavingAction !== null}
+                    aria-label={
+                      watchlistSavingAction === "watched"
+                        ? "Marking movie watched"
+                        : "Mark movie watched"
+                    }
                     onClick={() => onMarkWatched(movie)}
                   >
-                    {watchlistSavingAction === "watched" ? "Saving..." : "Watched"}
-                  </Button>
+                    <AssignmentTurnedInIcon fontSize="small" />
+                  </IconButton>
                 )}
               {onRemoveFromWatchlist &&
                 (canRemoveFromWatchlist || watchlistSavingAction === "remove") && (
-                  <Button
+                  <IconButton
                     type="button"
-                    variant="outlined"
                     size="small"
                     color="error"
                     disabled={watchlistSavingAction !== null}
+                    aria-label={
+                      watchlistSavingAction === "remove"
+                        ? "Removing movie"
+                        : "Remove movie"
+                    }
                     onClick={() => onRemoveFromWatchlist(movie)}
                   >
-                    {watchlistSavingAction === "remove" ? "Removing..." : "Remove"}
-                  </Button>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
                 )}
               {onRemoveLike && (canRemoveLike || isSavingLike) && (
-                <Button
+                <IconButton
                   type="button"
-                  variant="outlined"
                   size="small"
                   color="error"
                   disabled={isSavingLike}
+                  aria-label={isSavingLike ? "Removing liked movie" : "Remove liked movie"}
                   onClick={() => onRemoveLike(movie)}
                 >
-                  {isSavingLike ? "Removing..." : "Remove"}
-                </Button>
+                  <DeleteIcon fontSize="small" />
+                </IconButton>
               )}
               {onLike && (canLike || isSavingLike) && (
-                <Button
+                <IconButton
                   type="button"
-                  variant="contained"
                   size="small"
+                  color="primary"
                   disabled={isSavingLike}
+                  aria-label={isSavingLike ? "Liking movie" : "Like movie"}
                   onClick={() => onLike(movie)}
                 >
-                  {isSavingLike ? "Saving..." : "Like"}
-                </Button>
+                  <ThumbUpIcon fontSize="small" />
+                </IconButton>
               )}
             </div>
           )}
