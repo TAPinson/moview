@@ -6,6 +6,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import movieGenres from "../../data/movieGenres.json";
+import movieLanguages from "../../data/movieLanguages.json";
 import type { AuthUser } from "../../auth/cognito";
 import {
   addMovieLike,
@@ -19,6 +21,41 @@ import {
 type MovieSearchProps = {
   authUser: AuthUser | null;
 };
+
+const TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
+
+function moviePosterUrl(posterPath: string | null) {
+  return posterPath ? `${TMDB_POSTER_BASE_URL}${posterPath}` : null;
+}
+
+const MOVIE_GENRE_NAMES = new Map(
+  movieGenres.genres.map((genre) => [genre.id, genre.name]),
+);
+
+function genreNamesValue(genreIds: number[]) {
+  if (!genreIds.length) {
+    return "-";
+  }
+
+  return genreIds
+    .map((genreId) => MOVIE_GENRE_NAMES.get(genreId) ?? String(genreId))
+    .join(", ");
+}
+
+const MOVIE_LANGUAGE_NAMES = new Map(
+  movieLanguages.map((language) => [
+    language.iso_639_1,
+    language.english_name || language.iso_639_1,
+  ]),
+);
+
+function languageNameValue(languageCode: string | null | undefined) {
+  if (!languageCode) {
+    return "-";
+  }
+
+  return MOVIE_LANGUAGE_NAMES.get(languageCode) ?? languageCode;
+}
 
 function errorMessage(error: unknown) {
   if (error instanceof Error) {
@@ -34,6 +71,19 @@ function fieldValue(value: string | number | boolean | null | undefined) {
   }
 
   return String(value);
+}
+
+function releaseDateValue(value: string | null | undefined) {
+  if (!value) {
+    return "-";
+  }
+
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) {
+    return value;
+  }
+
+  return `${match[2]}/${match[3]}/${match[1]}`;
 }
 
 function MovieResultCard({
@@ -62,13 +112,15 @@ function MovieResultCard({
   const isInWatchlist =
     watchlistStatus === "want_to_watch" || watchlistStatus === "watched";
   const isWatched = watchlistStatus === "watched";
+  const posterUrl = moviePosterUrl(movie.poster_path);
+  const title = movie.title || movie.original_title || "Untitled";
 
   return (
     <Card className="movie-result-card" variant="outlined">
       <CardContent>
         <div className="movie-result-header">
           <Typography className="movie-result-title" component="h2" variant="h6">
-            {movie.title || movie.original_title || "Untitled"}
+            {title}
           </Typography>
           <div className="movie-result-actions">
             <Button
@@ -109,60 +161,42 @@ function MovieResultCard({
             {watchlistError || likeError}
           </Alert>
         )}
-        <dl className="movie-detail-list">
-          <div>
-            <dt>ID</dt>
-            <dd>{fieldValue(movie.id)}</dd>
-          </div>
-          <div>
-            <dt>Original title</dt>
-            <dd>{fieldValue(movie.original_title)}</dd>
-          </div>
-          <div>
-            <dt>Original language</dt>
-            <dd>{fieldValue(movie.original_language)}</dd>
-          </div>
-          <div>
-            <dt>Release date</dt>
-            <dd>{fieldValue(movie.release_date)}</dd>
-          </div>
-          <div>
-            <dt>Adult</dt>
-            <dd>{fieldValue(movie.adult)}</dd>
-          </div>
-          <div>
-            <dt>Video</dt>
-            <dd>{fieldValue(movie.video)}</dd>
-          </div>
-          <div>
-            <dt>Vote average</dt>
-            <dd>{fieldValue(movie.vote_average)}</dd>
-          </div>
-          <div>
-            <dt>Vote count</dt>
-            <dd>{fieldValue(movie.vote_count)}</dd>
-          </div>
-          <div>
-            <dt>Popularity</dt>
-            <dd>{fieldValue(movie.popularity)}</dd>
-          </div>
-          <div>
-            <dt>Genre IDs</dt>
-            <dd>{movie.genre_ids.length ? movie.genre_ids.join(", ") : "-"}</dd>
-          </div>
-          <div>
-            <dt>Poster path</dt>
-            <dd>{fieldValue(movie.poster_path)}</dd>
-          </div>
-          <div>
-            <dt>Backdrop path</dt>
-            <dd>{fieldValue(movie.backdrop_path)}</dd>
-          </div>
-          <div className="movie-detail-full">
-            <dt>Overview</dt>
-            <dd>{fieldValue(movie.overview)}</dd>
-          </div>
-        </dl>
+        <div className="movie-result-body">
+          {posterUrl ? (
+            <img className="movie-poster" src={posterUrl} alt={`${title} poster`} />
+          ) : (
+            <div className="movie-poster-placeholder" aria-label="No poster available">
+              No poster
+            </div>
+          )}
+          <dl className="movie-detail-list">
+            <div>
+              <dt>Language</dt>
+              <dd>{languageNameValue(movie.original_language)}</dd>
+            </div>
+            <div>
+              <dt>Release date</dt>
+              <dd>{releaseDateValue(movie.release_date)}</dd>
+            </div>
+            <div>
+              <dt>Vote average</dt>
+              <dd>
+                {fieldValue(movie.vote_average)}
+                {movie.vote_count !== null && movie.vote_count !== undefined && (
+                  <span className="movie-vote-count">({movie.vote_count})</span>
+                )}
+              </dd>
+            </div>
+            <div>
+              <dt>Genres</dt>
+              <dd>{genreNamesValue(movie.genre_ids)}</dd>
+            </div>
+            <div className="movie-detail-full">
+              <dt>Overview</dt>
+              <dd>{fieldValue(movie.overview)}</dd>
+            </div>
+          </dl>
+        </div>
       </CardContent>
     </Card>
   );
