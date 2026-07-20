@@ -213,9 +213,24 @@ nav a.active {
 
 .movie-results {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-top: 24px;
 }
+
+.movie-search-page,
+.watchlist-page,
+.likes-page,
+.browse-page {
+  width: min(1080px, calc(100% - 40px));
+}
+.browse-intro { color: var(--text-muted); }
+.genre-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.genre-list .MuiChip-root { color: var(--text); border-color: var(--border); }
+.genre-list .MuiChip-colorPrimary { color: #0f172a; background: var(--accent); }
+.browse-results { margin-top: 42px; }
+.browse-results h2 { margin: 0 0 18px; color: var(--text-h); font-size: 28px; }
+.browse-results .movie-results { margin-top: 0; }
 
 .movie-result-card.movie-result-card {
   color: var(--text);
@@ -480,6 +495,8 @@ nav a.active {
   .movie-detail-list {
     grid-template-columns: 1fr;
   }
+
+  .movie-results { grid-template-columns: 1fr; }
 
   .page {
     width: min(720px, calc(100% - 32px));

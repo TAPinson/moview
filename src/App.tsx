@@ -14,6 +14,7 @@ import { Profile } from "./routes/profile/Profile";
 import { MovieSearch } from "./routes/movie_search/MovieSearch";
 import { Watched, Watchlist } from "./routes/watchlist/Watchlist";
 import { Likes } from "./routes/likes/Likes";
+import { Browse } from "./routes/browse/Browse";
 import {
   getCurrentAuthUser,
   signOut as signOutUser,
@@ -136,6 +137,10 @@ function App() {
 
         {isLoggedIn && (
           <nav>
+            <NavLink to="/browse" title="Browse">
+              <span className="nav-icon" aria-hidden="true">B</span>
+              <span>Browse</span>
+            </NavLink>
             <NavLink to="/movie_search" title="Movie Search">
               <span className="nav-icon" aria-hidden="true">
                 M
@@ -224,6 +229,14 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <Home userProfile={userProfile} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/browse"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <Browse authUser={user} />
               </ProtectedRoute>
             }
           />

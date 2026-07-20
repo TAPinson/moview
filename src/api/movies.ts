@@ -114,6 +114,28 @@ export async function searchMovies(
   return data.movies.search;
 }
 
+export async function fetchMoviesByGenre(
+  authUser: AuthUser,
+  genreId: number,
+): Promise<MovieSearchResult[]> {
+  const data = await graphQLRequest<{ movies: { byGenre: MovieSearchResult[] } }>(
+    authUser,
+    `
+      query MoviesByGenre($genreId: Int!) {
+        movies {
+          byGenre(genreId: $genreId) {
+            poster_path adult overview release_date genre_ids id original_title
+            original_language title backdrop_path popularity vote_count video vote_average
+          }
+        }
+      }
+    `,
+    { genreId },
+  );
+
+  return data.movies.byGenre;
+}
+
 export async function addMovieLike(
   authUser: AuthUser,
   movieId: number,
