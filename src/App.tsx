@@ -136,12 +136,6 @@ function App() {
 
         {isLoggedIn && (
           <nav>
-            <NavLink to="/home" title="Home">
-              <span className="nav-icon" aria-hidden="true">
-                H
-              </span>
-              <span>Home</span>
-            </NavLink>
             <NavLink to="/movie_search" title="Movie Search">
               <span className="nav-icon" aria-hidden="true">
                 M
