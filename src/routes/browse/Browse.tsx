@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Alert from "@mui/material/Alert";
 import Chip from "@mui/material/Chip";
 import CircularProgress from "@mui/material/CircularProgress";
+import IconButton from "@mui/material/IconButton";
 import type { AuthUser } from "../../auth/cognito";
 import {
   addMovieLike,
@@ -26,6 +29,8 @@ function errorMessage(error: unknown) {
 export function Browse({ authUser }: BrowseProps) {
   const [selectedGenreId, setSelectedGenreId] = useState(movieGenres.genres[0].id);
   const [movies, setMovies] = useState<MovieSearchResult[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [likedMovieIds, setLikedMovieIds] = useState<Set<number>>(() => new Set());
@@ -41,13 +46,14 @@ export function Browse({ authUser }: BrowseProps) {
     let isCurrent = true;
 
     Promise.all([
-      fetchMoviesByGenre(authUser, selectedGenreId),
+      fetchMoviesByGenre(authUser, selectedGenreId, page),
       fetchWatchlistEntries(authUser),
       fetchLikedMovies(authUser),
     ])
-      .then(([results, entries, likes]) => {
+      .then(([moviePage, entries, likes]) => {
         if (!isCurrent) return;
-        setMovies(results);
+        setMovies(moviePage.results);
+        setTotalPages(moviePage.totalPages);
         setWatchlistStatuses(Object.fromEntries(entries.map((entry) => [entry.movieId, entry.status])));
         setLikedMovieIds(new Set(likes.map((like) => like.movieId)));
       })
@@ -60,7 +66,7 @@ export function Browse({ authUser }: BrowseProps) {
       .finally(() => { if (isCurrent) setIsLoading(false); });
 
     return () => { isCurrent = false; };
-  }, [authUser, selectedGenreId]);
+  }, [authUser, selectedGenreId, page]);
 
   async function handleLike(movie: MovieSearchResult) {
     if (!authUser || movie.id === null) return;
@@ -94,9 +100,14 @@ export function Browse({ authUser }: BrowseProps) {
     }
   }
 
+  function changePage(nextPage: number) {
+    setIsLoading(true);
+    setError(null);
+    setPage(nextPage);
+  }
+
   return (
     <main className="page browse-page">
-      <p className="eyebrow">Discover</p>
       <h1>Browse movies</h1>
       <p className="browse-intro">Choose a genre to explore popular movies.</p>
       <div className="genre-list" aria-label="Movie genres">
@@ -111,6 +122,7 @@ export function Browse({ authUser }: BrowseProps) {
               setError(null);
               setLikeErrors({});
               setWatchlistErrors({});
+              setPage(1);
               setSelectedGenreId(genre.id);
             }} />
         ))}
@@ -138,6 +150,17 @@ export function Browse({ authUser }: BrowseProps) {
             />;
           })}
         </div>}
+        {!error && totalPages > 1 && (
+          <nav className="browse-pagination" aria-label="Browse result pages">
+            <IconButton aria-label="Previous page" disabled={isLoading || page <= 1} onClick={() => changePage(page - 1)}>
+              <ChevronLeftIcon />
+            </IconButton>
+            <span aria-live="polite">Page {page} of {totalPages}</span>
+            <IconButton aria-label="Next page" disabled={isLoading || page >= totalPages} onClick={() => changePage(page + 1)}>
+              <ChevronRightIcon />
+            </IconButton>
+          </nav>
+        )}
       </section>
     </main>
   );

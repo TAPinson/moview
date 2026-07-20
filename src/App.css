@@ -231,6 +231,19 @@ nav a.active {
 .browse-results { margin-top: 42px; }
 .browse-results h2 { margin: 0 0 18px; color: var(--text-h); font-size: 28px; }
 .browse-results .movie-results { margin-top: 0; }
+.browse-pagination { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 14px; margin-top: 24px; padding: 0; }
+.browse-pagination .MuiIconButton-root { color: var(--accent); border: 1px solid var(--border); }
+.browse-pagination .MuiIconButton-root.Mui-disabled { color: var(--text-muted); opacity: 0.45; }
+.browse-pagination {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 0;
+}
+.browse-pagination .MuiIconButton-root { color: var(--accent); border: 1px solid var(--border); }
+.browse-pagination .MuiIconButton-root.Mui-disabled { color: var(--text-muted); opacity: 0.45; }
 
 .movie-result-card.movie-result-card {
   color: var(--text);

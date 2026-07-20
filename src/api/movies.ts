@@ -114,23 +114,34 @@ export async function searchMovies(
   return data.movies.search;
 }
 
+export type MovieResultPage = {
+  page: number;
+  totalPages: number;
+  results: MovieSearchResult[];
+};
+
 export async function fetchMoviesByGenre(
   authUser: AuthUser,
   genreId: number,
-): Promise<MovieSearchResult[]> {
-  const data = await graphQLRequest<{ movies: { byGenre: MovieSearchResult[] } }>(
+  page: number,
+): Promise<MovieResultPage> {
+  const data = await graphQLRequest<{ movies: { byGenre: MovieResultPage } }>(
     authUser,
     `
-      query MoviesByGenre($genreId: Int!) {
+      query MoviesByGenre($genreId: Int!, $page: Int!) {
         movies {
-          byGenre(genreId: $genreId) {
-            poster_path adult overview release_date genre_ids id original_title
-            original_language title backdrop_path popularity vote_count video vote_average
+          byGenre(genreId: $genreId, page: $page) {
+            page
+            totalPages
+            results {
+              poster_path adult overview release_date genre_ids id original_title
+              original_language title backdrop_path popularity vote_count video vote_average
+            }
           }
         }
       }
     `,
-    { genreId },
+    { genreId, page },
   );
 
   return data.movies.byGenre;
