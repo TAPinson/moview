@@ -32,6 +32,7 @@ export type WatchlistItem = {
   addedAt: string;
   watchedAt: string | null;
   notes: string | null;
+  movie?: MovieSearchResult | null;
 };
 
 type GraphQLResponse<T> = {
@@ -176,4 +177,49 @@ export async function markMovieWatched(
   );
 
   return data.markWatched;
+}
+
+
+export async function fetchWatchlist(
+  authUser: AuthUser,
+  status?: WatchlistStatus,
+): Promise<WatchlistItem[]> {
+  const data = await graphQLRequest<{
+    users: { watchlist: WatchlistItem[] };
+  }>(
+    authUser,
+    `
+      query Watchlist($status: WatchlistStatus) {
+        users {
+          watchlist(status: $status) {
+            userId
+            movieId
+            status
+            addedAt
+            watchedAt
+            notes
+            movie {
+              poster_path
+              adult
+              overview
+              release_date
+              genre_ids
+              id
+              original_title
+              original_language
+              title
+              backdrop_path
+              popularity
+              vote_count
+              video
+              vote_average
+            }
+          }
+        }
+      }
+    `,
+    { status },
+  );
+
+  return data.users.watchlist;
 }

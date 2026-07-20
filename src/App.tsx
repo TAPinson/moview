@@ -13,6 +13,7 @@ import { About } from "./routes/about/About";
 import { Login } from "./routes/login/Login";
 import { Profile } from "./routes/profile/Profile";
 import { MovieSearch } from "./routes/movie_search/MovieSearch";
+import { Watched, Watchlist } from "./routes/watchlist/Watchlist";
 import {
   getCurrentAuthUser,
   signOut as signOutUser,
@@ -147,6 +148,18 @@ function App() {
               </span>
               <span>Movie Search</span>
             </NavLink>
+            <NavLink to="/watchlist" title="Watchlist">
+              <span className="nav-icon" aria-hidden="true">
+                W
+              </span>
+              <span>Watchlist</span>
+            </NavLink>
+            <NavLink to="/watched" title="Watched">
+              <span className="nav-icon" aria-hidden="true">
+                V
+              </span>
+              <span>Watched</span>
+            </NavLink>
             <NavLink to="/profile" title="Profile">
               <span className="nav-icon" aria-hidden="true">
                 P
@@ -235,6 +248,22 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <MovieSearch authUser={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/watchlist"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <Watchlist authUser={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/watched"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <Watched authUser={user} />
               </ProtectedRoute>
             }
           />
