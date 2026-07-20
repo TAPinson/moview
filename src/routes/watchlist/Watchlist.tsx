@@ -4,6 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import type { AuthUser } from "../../auth/cognito";
 import {
   fetchWatchlist,
+  markMovieWatched,
   removeMovieFromWatchlist,
   type MovieSearchResult,
   type WatchlistItem,
@@ -38,8 +39,10 @@ function MovieList({
 }: MovieListProps) {
   const [items, setItems] = useState<WatchlistItem[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [removeErrors, setRemoveErrors] = useState<Record<number, string>>({});
-  const [removingMovieId, setRemovingMovieId] = useState<number | null>(null);
+  const [watchlistErrors, setWatchlistErrors] = useState<Record<number, string>>({});
+  const [savingWatchlistActions, setSavingWatchlistActions] = useState<
+    Record<number, "watched" | "remove">
+  >({});
   const [isLoading, setIsLoading] = useState(authUser !== null);
 
   useEffect(() => {
@@ -52,7 +55,7 @@ function MovieList({
       .then((watchlistItems) => {
         if (isMounted) {
           setItems(watchlistItems);
-          setRemoveErrors({});
+          setWatchlistErrors({});
         }
       })
       .catch((caughtError) => {
@@ -78,8 +81,11 @@ function MovieList({
     }
 
     const movieId = movie.id;
-    setRemovingMovieId(movieId);
-    setRemoveErrors((currentErrors) => {
+    setSavingWatchlistActions((currentActions) => ({
+      ...currentActions,
+      [movieId]: "remove",
+    }));
+    setWatchlistErrors((currentErrors) => {
       const nextErrors = { ...currentErrors };
       delete nextErrors[movieId];
       return nextErrors;
@@ -91,14 +97,51 @@ function MovieList({
         currentItems.filter((item) => item.movieId !== movieId),
       );
     } catch (caughtError) {
-      setRemoveErrors((currentErrors) => ({
+      setWatchlistErrors((currentErrors) => ({
         ...currentErrors,
         [movieId]: errorMessage(caughtError),
       }));
     } finally {
-      setRemovingMovieId((currentMovieId) =>
-        currentMovieId === movieId ? null : currentMovieId,
+      setSavingWatchlistActions((currentActions) => {
+        const nextActions = { ...currentActions };
+        delete nextActions[movieId];
+        return nextActions;
+      });
+    }
+  }
+
+  async function handleMarkWatched(movie: MovieSearchResult) {
+    if (!authUser || movie.id === null || status !== "want_to_watch") {
+      return;
+    }
+
+    const movieId = movie.id;
+    setSavingWatchlistActions((currentActions) => ({
+      ...currentActions,
+      [movieId]: "watched",
+    }));
+    setWatchlistErrors((currentErrors) => {
+      const nextErrors = { ...currentErrors };
+      delete nextErrors[movieId];
+      return nextErrors;
+    });
+
+    try {
+      await markMovieWatched(authUser, movieId);
+      setItems((currentItems) =>
+        currentItems.filter((item) => item.movieId !== movieId),
       );
+    } catch (caughtError) {
+      setWatchlistErrors((currentErrors) => ({
+        ...currentErrors,
+        [movieId]: errorMessage(caughtError),
+      }));
+    } finally {
+      setSavingWatchlistActions((currentActions) => {
+        const nextActions = { ...currentActions };
+        delete nextActions[movieId];
+        return nextActions;
+      });
     }
   }
 
@@ -124,10 +167,13 @@ function MovieList({
             <MovieCard
               key={`${item.movieId}-${item.status}`}
               movie={item.movie}
+              onMarkWatched={
+                status === "want_to_watch" ? handleMarkWatched : undefined
+              }
               onRemoveFromWatchlist={handleRemoveFromWatchlist}
-              watchlistError={removeErrors[item.movieId] ?? null}
+              watchlistError={watchlistErrors[item.movieId] ?? null}
               watchlistSavingAction={
-                removingMovieId === item.movieId ? "remove" : null
+                savingWatchlistActions[item.movieId] ?? null
               }
               watchlistStatus={item.status}
             />
