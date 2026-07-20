@@ -9,7 +9,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home } from "./routes/home/Home";
-import { About } from "./routes/about/About";
 import { Login } from "./routes/login/Login";
 import { Profile } from "./routes/profile/Profile";
 import { MovieSearch } from "./routes/movie_search/MovieSearch";
@@ -167,28 +166,12 @@ function App() {
               </span>
               <span>Watched</span>
             </NavLink>
-            <NavLink to="/profile" title="Profile">
-              <span className="nav-icon" aria-hidden="true">
-                P
-              </span>
-              <span>Profile</span>
-            </NavLink>
-            <NavLink to="/about" title="About">
-              <span className="nav-icon" aria-hidden="true">
-                A
-              </span>
-              <span>About</span>
-            </NavLink>
           </nav>
         )}
       </aside>
 
       <section className="content-area">
         <header className="top-header">
-          <div>
-            <p className="header-kicker">Workspace</p>
-            <h2>Moview</h2>
-          </div>
           <div className="header-actions">
             {isLoggedIn ? (
               <>
@@ -291,14 +274,6 @@ function App() {
                   userProfile={userProfile}
                   onProfileUpdated={handleProfileUpdated}
                 />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
-                <About />
               </ProtectedRoute>
             }
           />
