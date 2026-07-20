@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import Alert from "@mui/material/Alert";
 import CircularProgress from "@mui/material/CircularProgress";
 import type { AuthUser } from "../../auth/cognito";
-import { fetchLikedMovies, type MovieLike } from "../../api/movies";
+import {
+  fetchLikedMovies,
+  removeMovieLike,
+  type MovieLike,
+  type MovieSearchResult,
+} from "../../api/movies";
 import { MovieCard } from "../../components/MovieCard";
 
 type LikesProps = {
@@ -20,6 +25,8 @@ function errorMessage(error: unknown) {
 export function Likes({ authUser }: LikesProps) {
   const [likes, setLikes] = useState<MovieLike[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [removeErrors, setRemoveErrors] = useState<Record<number, string>>({});
+  const [removingMovieId, setRemovingMovieId] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(authUser !== null);
 
   useEffect(() => {
@@ -32,6 +39,7 @@ export function Likes({ authUser }: LikesProps) {
       .then((likedMovies) => {
         if (isMounted) {
           setLikes(likedMovies);
+          setRemoveErrors({});
         }
       })
       .catch((caughtError) => {
@@ -50,6 +58,36 @@ export function Likes({ authUser }: LikesProps) {
       isMounted = false;
     };
   }, [authUser]);
+
+  async function handleRemoveLike(movie: MovieSearchResult) {
+    if (!authUser || movie.id === null) {
+      return;
+    }
+
+    const movieId = movie.id;
+    setRemovingMovieId(movieId);
+    setRemoveErrors((currentErrors) => {
+      const nextErrors = { ...currentErrors };
+      delete nextErrors[movieId];
+      return nextErrors;
+    });
+
+    try {
+      await removeMovieLike(authUser, movieId);
+      setLikes((currentLikes) =>
+        currentLikes.filter((like) => like.movieId !== movieId),
+      );
+    } catch (caughtError) {
+      setRemoveErrors((currentErrors) => ({
+        ...currentErrors,
+        [movieId]: errorMessage(caughtError),
+      }));
+    } finally {
+      setRemovingMovieId((currentMovieId) =>
+        currentMovieId === movieId ? null : currentMovieId,
+      );
+    }
+  }
 
   return (
     <main className="page likes-page">
@@ -70,7 +108,14 @@ export function Likes({ authUser }: LikesProps) {
       <section className="movie-results" aria-label="Liked movies">
         {likes.map((like) =>
           like.movie ? (
-            <MovieCard key={`${like.movieId}-${like.createdAt}`} movie={like.movie} />
+            <MovieCard
+              key={`${like.movieId}-${like.createdAt}`}
+              isLiked
+              isSavingLike={removingMovieId === like.movieId}
+              likeError={removeErrors[like.movieId] ?? null}
+              movie={like.movie}
+              onRemoveLike={handleRemoveLike}
+            />
           ) : null,
         )}
       </section>

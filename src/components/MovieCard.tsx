@@ -17,9 +17,11 @@ type MovieCardProps = {
   onAddToWatchlist?: (movie: MovieSearchResult) => void;
   onLike?: (movie: MovieSearchResult) => void;
   onMarkWatched?: (movie: MovieSearchResult) => void;
+  onRemoveFromWatchlist?: (movie: MovieSearchResult) => void;
+  onRemoveLike?: (movie: MovieSearchResult) => void;
   watchlistError?: string | null;
   watchlistStatus?: WatchlistStatus | null;
-  watchlistSavingAction?: "want_to_watch" | "watched" | null;
+  watchlistSavingAction?: "want_to_watch" | "watched" | "remove" | null;
 };
 
 function moviePosterUrl(posterPath: string | null) {
@@ -100,6 +102,8 @@ export function MovieCard({
   onAddToWatchlist,
   onLike,
   onMarkWatched,
+  onRemoveFromWatchlist,
+  onRemoveLike,
   watchlistError = null,
   watchlistStatus = null,
   watchlistSavingAction = null,
@@ -111,14 +115,20 @@ export function MovieCard({
     onAddToWatchlist && !isInWatchlist && movie.id !== null,
   );
   const canMarkWatched = Boolean(onMarkWatched && !isWatched && movie.id !== null);
+  const canRemoveFromWatchlist = Boolean(
+    onRemoveFromWatchlist && isInWatchlist && movie.id !== null,
+  );
   const canLike = Boolean(onLike && !isLiked && movie.id !== null);
+  const canRemoveLike = Boolean(onRemoveLike && isLiked && movie.id !== null);
   const posterUrl = moviePosterUrl(movie.poster_path);
   const statusLabel = watchlistStatusLabel(watchlistStatus);
   const title = movie.title || movie.original_title || "Untitled";
   const hasActions =
     canAddToWatchlist ||
     canMarkWatched ||
+    canRemoveFromWatchlist ||
     canLike ||
+    canRemoveLike ||
     watchlistSavingAction !== null ||
     isSavingLike;
 
@@ -160,6 +170,31 @@ export function MovieCard({
                     {watchlistSavingAction === "watched" ? "Saving..." : "Watched"}
                   </Button>
                 )}
+              {onRemoveFromWatchlist &&
+                (canRemoveFromWatchlist || watchlistSavingAction === "remove") && (
+                  <Button
+                    type="button"
+                    variant="outlined"
+                    size="small"
+                    color="error"
+                    disabled={watchlistSavingAction !== null}
+                    onClick={() => onRemoveFromWatchlist(movie)}
+                  >
+                    {watchlistSavingAction === "remove" ? "Removing..." : "Remove"}
+                  </Button>
+                )}
+              {onRemoveLike && (canRemoveLike || isSavingLike) && (
+                <Button
+                  type="button"
+                  variant="outlined"
+                  size="small"
+                  color="error"
+                  disabled={isSavingLike}
+                  onClick={() => onRemoveLike(movie)}
+                >
+                  {isSavingLike ? "Removing..." : "Remove"}
+                </Button>
+              )}
               {onLike && (canLike || isSavingLike) && (
                 <Button
                   type="button"

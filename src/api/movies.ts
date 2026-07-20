@@ -135,6 +135,23 @@ export async function addMovieLike(
   return data.addLike;
 }
 
+export async function removeMovieLike(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<boolean> {
+  const data = await graphQLRequest<{ removeLike: boolean }>(
+    authUser,
+    `
+      mutation RemoveLike($movieId: Int!) {
+        removeLike(movieId: $movieId)
+      }
+    `,
+    { movieId },
+  );
+
+  return data.removeLike;
+}
+
 export async function addMovieToWatchlist(
   authUser: AuthUser,
   movieId: number,
@@ -181,6 +198,23 @@ export async function markMovieWatched(
   );
 
   return data.markWatched;
+}
+
+export async function removeMovieFromWatchlist(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<boolean> {
+  const data = await graphQLRequest<{ removeFromWatchlist: boolean }>(
+    authUser,
+    `
+      mutation RemoveFromWatchlist($movieId: Int!) {
+        removeFromWatchlist(movieId: $movieId)
+      }
+    `,
+    { movieId },
+  );
+
+  return data.removeFromWatchlist;
 }
 
 export async function fetchLikedMovies(authUser: AuthUser): Promise<MovieLike[]> {
