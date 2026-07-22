@@ -138,10 +138,6 @@ function App() {
 
         {isLoggedIn && (
           <nav>
-            <NavLink to="/friends" title="Friends">
-              <span className="nav-icon" aria-hidden="true">F</span>
-              <span>Friends</span>
-            </NavLink>
             <NavLink to="/browse" title="Browse">
               <span className="nav-icon" aria-hidden="true">B</span>
               <span>Browse</span>
@@ -201,6 +197,13 @@ function App() {
                     list: { "aria-labelledby": "account-menu-button" },
                   }}
                 >
+                  <MenuItem
+                    onClick={handleAccountMenuClose}
+                    component={NavLink}
+                    to="/friends"
+                  >
+                    Friends
+                  </MenuItem>
                   <MenuItem
                     onClick={handleAccountMenuClose}
                     component={NavLink}
