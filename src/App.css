@@ -644,3 +644,42 @@ nav a.active {
     grid-template-columns: 1fr;
   }
 }
+
+.shared-page {
+  width: min(1080px, calc(100% - 40px));
+}
+
+.shared-intro {
+  color: var(--text-muted);
+}
+
+.shared-friend-select {
+  width: min(420px, 100%);
+  margin-top: 28px;
+}
+
+.shared-friend-select .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.shared-friend-select .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.shared-friend-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.shared-friend-select
+  .MuiOutlinedInput-root:hover
+  .MuiOutlinedInput-notchedOutline,
+.shared-friend-select
+  .MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+
+.shared-alert {
+  margin-top: 24px;
+}

@@ -16,6 +16,7 @@ import { Watched, Watchlist } from "./routes/watchlist/Watchlist";
 import { Likes } from "./routes/likes/Likes";
 import { Browse } from "./routes/browse/Browse";
 import { Friends } from "./routes/friends/Friends";
+import { Shared } from "./routes/shared/Shared";
 import {
   getCurrentAuthUser,
   signOut as signOutUser,
@@ -154,6 +155,12 @@ function App() {
               </span>
               <span>Watchlist</span>
             </NavLink>
+            <NavLink to="/shared" title="Shared">
+              <span className="nav-icon" aria-hidden="true">
+                S
+              </span>
+              <span>Shared</span>
+            </NavLink>
             <NavLink to="/likes" title="Likes">
               <span className="nav-icon" aria-hidden="true">
                 L
@@ -269,6 +276,14 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <Watchlist authUser={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/shared"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <Shared authUser={user} />
               </ProtectedRoute>
             }
           />

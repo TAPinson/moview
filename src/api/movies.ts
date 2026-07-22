@@ -353,3 +353,47 @@ export async function fetchWatchlist(
 
   return data.users.watchlist;
 }
+
+export async function fetchSharedWatchlist(
+  authUser: AuthUser,
+  friendUserId: number,
+): Promise<WatchlistItem[]> {
+  const data = await graphQLRequest<{
+    users: { sharedWatchlist: WatchlistItem[] };
+  }>(
+    authUser,
+    `
+      query SharedWatchlist($friendUserId: Int!) {
+        users {
+          sharedWatchlist(friendUserId: $friendUserId) {
+            userId
+            movieId
+            status
+            addedAt
+            watchedAt
+            notes
+            movie {
+              poster_path
+              adult
+              overview
+              release_date
+              genre_ids
+              id
+              original_title
+              original_language
+              title
+              backdrop_path
+              popularity
+              vote_count
+              video
+              vote_average
+            }
+          }
+        }
+      }
+    `,
+    { friendUserId },
+  );
+
+  return data.users.sharedWatchlist;
+}

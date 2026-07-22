@@ -134,3 +134,22 @@ export const cancelFriendRequest = (authUser: AuthUser, userId: number) =>
   booleanMutation(authUser, "cancelFriendRequest", userId);
 export const removeFriend = (authUser: AuthUser, userId: number) =>
   booleanMutation(authUser, "removeFriend", userId);
+
+export async function fetchAcceptedFriends(
+  authUser: AuthUser,
+): Promise<Friendship[]> {
+  const data = await graphQLRequest<{
+    users: { friends: Friendship[] };
+  }>(
+    authUser,
+    `
+      query AcceptedFriends {
+        users {
+          friends { ${FRIENDSHIP_FIELDS} }
+        }
+      }
+    `,
+  );
+
+  return data.users.friends;
+}
