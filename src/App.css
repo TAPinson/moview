@@ -540,3 +540,107 @@ nav a.active {
     grid-template-columns: 1fr;
   }
 }
+
+.friends-page {
+  width: min(960px, calc(100% - 40px));
+}
+
+.friend-search-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.friend-search-form .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.friend-search-form .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.friend-search-form .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.friend-search-button.friend-search-button {
+  width: 56px;
+  height: 56px;
+  color: #0f172a;
+  background: var(--accent);
+  border-radius: 6px;
+}
+
+.friend-search-button.friend-search-button:hover {
+  background: var(--accent-strong);
+}
+
+.friends-alert {
+  margin-top: 18px;
+}
+
+.friend-section {
+  margin-top: 36px;
+}
+
+.friend-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: var(--text-h);
+}
+
+.friend-section h2 span {
+  min-width: 28px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #0f172a;
+  background: var(--accent);
+  font-size: 14px;
+  text-align: center;
+}
+
+.friend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.friend-card.friend-card {
+  color: var(--text);
+  background: var(--panel);
+  border-color: var(--border);
+}
+
+.friend-card-content.friend-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.friend-card h3 {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.friend-card p {
+  margin-top: 2px;
+  color: var(--text-muted);
+}
+
+.friend-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 6px;
+}
+
+@media (max-width: 720px) {
+  .friend-search-form,
+  .friend-grid {
+    grid-template-columns: 1fr;
+  }
+}
