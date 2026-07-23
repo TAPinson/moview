@@ -80,6 +80,17 @@
   border-radius: 6px;
 }
 
+.account-avatar.account-avatar {
+  width: 38px;
+  height: 38px;
+}
+
+.account-menu-button.account-menu-button:has(.account-avatar) {
+  overflow: hidden;
+  padding: 0;
+  background: transparent;
+}
+
 .account-menu-button.account-menu-button:hover,
 .account-menu-button.account-menu-button[aria-expanded="true"] {
   background: var(--accent-strong);
@@ -360,6 +371,34 @@ nav a.active {
   grid-column: 1 / -1;
 }
 
+.profile-photo-editor {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.profile-photo-preview.profile-photo-preview {
+  width: 112px;
+  height: 112px;
+  color: #0f172a;
+  background: var(--accent);
+  font-size: 40px;
+}
+
+.profile-photo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-photo-controls p {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
 .profile-form {
   display: grid;
   gap: 18px;
@@ -620,6 +659,21 @@ nav a.active {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+.friend-identity {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.friend-avatar.friend-avatar {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  color: #0f172a;
+  background: var(--accent);
 }
 
 .friend-card h3 {

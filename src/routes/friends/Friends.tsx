@@ -6,6 +6,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import Alert from "@mui/material/Alert";
+import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -41,9 +42,18 @@ function UserCard({ user, actions }: { user: PublicUserProfile; actions: ReactNo
   return (
     <Card className="friend-card" variant="outlined">
       <CardContent className="friend-card-content">
-        <div>
-          <h3>{displayName(user)}</h3>
-          <p>@{user.username}</p>
+        <div className="friend-identity">
+          <Avatar
+            className="friend-avatar"
+            src={user.profilePhotoUrl ?? undefined}
+            alt={displayName(user)}
+          >
+            {displayName(user).charAt(0).toUpperCase()}
+          </Avatar>
+          <div>
+            <h3>{displayName(user)}</h3>
+            <p>@{user.username}</p>
+          </div>
         </div>
         <div className="friend-actions">{actions}</div>
       </CardContent>

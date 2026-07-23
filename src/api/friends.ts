@@ -5,6 +5,7 @@ export type PublicUserProfile = {
   username: string;
   firstName: string | null;
   lastName: string | null;
+  profilePhotoUrl: string | null;
 };
 
 export type Friendship = {
@@ -50,7 +51,7 @@ async function graphQLRequest<T>(
   return body.data;
 }
 
-const PUBLIC_USER_FIELDS = "id username firstName lastName";
+const PUBLIC_USER_FIELDS = "id username firstName lastName profilePhotoUrl";
 const FRIENDSHIP_FIELDS = `
   status
   createdAt

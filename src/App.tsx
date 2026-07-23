@@ -3,6 +3,7 @@ import type { MouseEvent } from "react";
 import type { ReactNode } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import PersonOffIcon from "@mui/icons-material/PersonOff";
+import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -191,7 +192,15 @@ function App() {
                   aria-expanded={isAccountMenuOpen ? "true" : undefined}
                   onClick={handleAccountMenuOpen}
                 >
-                  <PersonIcon fontSize="small" />
+                  {userProfile?.profilePhotoUrl ? (
+                    <Avatar
+                      className="account-avatar"
+                      src={userProfile.profilePhotoUrl}
+                      alt="Profile"
+                    />
+                  ) : (
+                    <PersonIcon fontSize="small" />
+                  )}
                 </IconButton>
                 <Menu
                   id="account-menu"
