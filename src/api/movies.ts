@@ -39,6 +39,36 @@ export type WatchlistItem = WatchlistEntry & {
   movie?: MovieSearchResult | null;
 };
 
+export type MovieInvitationInput = {
+  friendUserId: number;
+  movieId: number;
+  startsAt: string;
+  timezone: string;
+  durationMinutes: number;
+  location: string | null;
+  message: string | null;
+  idempotencyKey: string;
+};
+
+export type MovieInvitation = {
+  id: number;
+  createdByUserId: number;
+  friendUserId: number;
+  movieId: number;
+  startsAt: string;
+  endsAt: string;
+  timezone: string;
+  eventSummary: string;
+  location: string | null;
+  message: string | null;
+  calendarSequence: number;
+  status: "pending" | "sending" | "sent" | "failed" | "cancelled";
+  createdAt: string;
+  updatedAt: string;
+  sentAt: string | null;
+  cancelledAt: string | null;
+};
+
 type GraphQLResponse<T> = {
   data?: T;
   errors?: Array<{ message?: string }>;
@@ -396,4 +426,40 @@ export async function fetchSharedWatchlist(
   );
 
   return data.users.sharedWatchlist;
+}
+
+export async function sendMovieInvitation(
+  authUser: AuthUser,
+  input: MovieInvitationInput,
+): Promise<MovieInvitation> {
+  const data = await graphQLRequest<{
+    sendMovieInvitation: MovieInvitation;
+  }>(
+    authUser,
+    `
+      mutation SendMovieInvitation($input: MovieInvitationInput!) {
+        sendMovieInvitation(input: $input) {
+          id
+          createdByUserId
+          friendUserId
+          movieId
+          startsAt
+          endsAt
+          timezone
+          eventSummary
+          location
+          message
+          calendarSequence
+          status
+          createdAt
+          updatedAt
+          sentAt
+          cancelledAt
+        }
+      }
+    `,
+    { input },
+  );
+
+  return data.sendMovieInvitation;
 }

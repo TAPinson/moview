@@ -232,7 +232,8 @@ nav a.active {
 .movie-search-page,
 .watchlist-page,
 .likes-page,
-.browse-page {
+.browse-page,
+.shared-page {
   width: min(1080px, calc(100% - 40px));
 }
 .browse-intro { color: var(--text-muted); }
@@ -736,4 +737,76 @@ nav a.active {
 
 .shared-alert {
   margin-top: 24px;
+}
+
+.shared-intro {
+  color: var(--text-muted);
+}
+
+.shared-friend-select {
+  width: min(420px, 100%);
+  margin-top: 28px;
+}
+
+.shared-friend-select .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.shared-friend-select .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.shared-friend-select .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.shared-alert {
+  margin-top: 18px;
+}
+
+.movie-invitation-dialog .MuiDialog-paper {
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.movie-invitation-dialog .MuiDialogTitle-root {
+  color: var(--text-h);
+}
+
+.movie-invitation-summary {
+  margin: 0 0 20px;
+  color: var(--text);
+}
+
+.movie-invitation-fields {
+  display: grid;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.movie-invitation-fields .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+}
+
+.movie-invitation-fields .MuiInputLabel-root {
+  color: var(--text-muted);
+}
+
+.movie-invitation-fields .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+
+.movie-invitation-timezone {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.movie-invitation-dialog .MuiDialogActions-root .MuiButton-contained {
+  color: #0f172a;
+  background: var(--accent);
+  font-weight: 700;
 }

@@ -1,4 +1,5 @@
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FormatListBulletedAddIcon from "@mui/icons-material/FormatListBulletedAdd";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -23,6 +24,7 @@ type MovieCardProps = {
   onMarkWatched?: (movie: MovieSearchResult) => void;
   onRemoveFromWatchlist?: (movie: MovieSearchResult) => void;
   onRemoveLike?: (movie: MovieSearchResult) => void;
+  onSchedule?: (movie: MovieSearchResult) => void;
   watchlistError?: string | null;
   watchlistStatus?: WatchlistStatus | null;
   watchlistSavingAction?: "want_to_watch" | "watched" | "remove" | null;
@@ -108,6 +110,7 @@ export function MovieCard({
   onMarkWatched,
   onRemoveFromWatchlist,
   onRemoveLike,
+  onSchedule,
   watchlistError = null,
   watchlistStatus = null,
   watchlistSavingAction = null,
@@ -124,6 +127,7 @@ export function MovieCard({
   );
   const canLike = Boolean(onLike && !isLiked && movie.id !== null);
   const canRemoveLike = Boolean(onRemoveLike && isLiked && movie.id !== null);
+  const canSchedule = Boolean(onSchedule && movie.id !== null);
   const posterUrl = moviePosterUrl(movie.poster_path);
   const statusLabel = watchlistStatusLabel(watchlistStatus);
   const title = movie.title || movie.original_title || "Untitled";
@@ -133,6 +137,7 @@ export function MovieCard({
     canRemoveFromWatchlist ||
     canLike ||
     canRemoveLike ||
+    canSchedule ||
     watchlistSavingAction !== null ||
     isSavingLike;
 
@@ -148,6 +153,17 @@ export function MovieCard({
           </div>
           {hasActions && (
             <div className="movie-result-actions">
+              {canSchedule && (
+                <IconButton
+                  type="button"
+                  size="small"
+                  color="primary"
+                  aria-label="Schedule movie night"
+                  onClick={() => onSchedule?.(movie)}
+                >
+                  <CalendarMonthIcon fontSize="small" />
+                </IconButton>
+              )}
               {onAddToWatchlist &&
                 (canAddToWatchlist || watchlistSavingAction === "want_to_watch") && (
                   <IconButton
