@@ -42,6 +42,11 @@ export function Profile({
   const [photoPreviewUrl, setPhotoPreviewUrl] = useState<string | null>(null);
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
 
+  const hasUnsavedChanges =
+    username.trim() !== (userProfile?.username ?? "") ||
+    (firstName.trim() || null) !== (userProfile?.firstName ?? null) ||
+    (lastName.trim() || null) !== (userProfile?.lastName ?? null);
+
   useEffect(() => {
     return () => {
       if (photoPreviewUrl) URL.revokeObjectURL(photoPreviewUrl);
@@ -76,7 +81,7 @@ export function Profile({
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!authUser) {
+    if (!authUser || isSaving || !hasUnsavedChanges) {
       return;
     }
 
@@ -154,7 +159,11 @@ export function Profile({
         />
         {status && <Alert severity="success">{status}</Alert>}
         {error && <Alert severity="error">{error}</Alert>}
-        <Button type="submit" variant="contained" disabled={isSaving}>
+        <Button
+          type="submit"
+          variant="contained"
+          disabled={!authUser || isSaving || !hasUnsavedChanges}
+        >
           {isSaving ? "Saving..." : "Save"}
         </Button>
       </form>
