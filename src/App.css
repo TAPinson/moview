@@ -237,6 +237,34 @@ nav a.active {
   width: min(1080px, calc(100% - 40px));
 }
 .browse-intro { color: var(--text-muted); }
+.browse-page .MuiFormControlLabel-label,
+.browse-page .MuiInputBase-root,
+.browse-page .MuiInputLabel-root,
+.browse-page .MuiFormHelperText-root,
+.browse-page .MuiAutocomplete-clearIndicator,
+.browse-page .MuiAutocomplete-popupIndicator {
+  color: #fff;
+}
+.browse-page .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.browse-page .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.browse-page .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+}
+.browse-people-menu.MuiPaper-root {
+  color: #fff;
+  background: var(--panel, #182030);
+}
+.browse-people-menu .MuiAutocomplete-loading,
+.browse-people-menu .MuiAutocomplete-noOptions {
+  color: #fff;
+}
+.browse-people-menu .MuiAutocomplete-option.Mui-focused,
+.browse-people-menu .MuiAutocomplete-option[aria-selected="true"],
+.browse-people-menu .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  background: rgba(255, 255, 255, 0.12);
+}
 .genre-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .genre-list .MuiChip-root { color: var(--text); border-color: var(--border); }
 .genre-list .MuiChip-colorPrimary { color: #0f172a; background: var(--accent); }

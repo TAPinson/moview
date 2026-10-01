@@ -152,15 +152,17 @@ export type MovieResultPage = {
 
 export async function fetchMoviesByGenre(
   authUser: AuthUser,
-  genreId: number,
+  genreId: number | null,
   page: number,
+  includeAdult = false,
+  personId: number | null = null,
 ): Promise<MovieResultPage> {
   const data = await graphQLRequest<{ movies: { byGenre: MovieResultPage } }>(
     authUser,
     `
-      query MoviesByGenre($genreId: Int!, $page: Int!) {
+      query MoviesByGenre($genreId: Int, $page: Int!, $includeAdult: Boolean!, $personId: Int) {
         movies {
-          byGenre(genreId: $genreId, page: $page) {
+          byGenre(genreId: $genreId, page: $page, includeAdult: $includeAdult, personId: $personId) {
             page
             totalPages
             results {
@@ -171,10 +173,35 @@ export async function fetchMoviesByGenre(
         }
       }
     `,
-    { genreId, page },
+    { genreId, page, includeAdult, personId },
   );
 
   return data.movies.byGenre;
+}
+
+export type MoviePerson = {
+  id: number;
+  name: string;
+  department: string | null;
+};
+
+export async function searchMoviePeople(
+  authUser: AuthUser,
+  query: string,
+  includeAdult: boolean,
+): Promise<MoviePerson[]> {
+  const data = await graphQLRequest<{ movies: { people: MoviePerson[] } }>(
+    authUser,
+    `query MoviePeople($query: String!, $includeAdult: Boolean!) {
+      movies {
+        people(query: $query, includeAdult: $includeAdult) {
+          id name department
+        }
+      }
+    }`,
+    { query, includeAdult },
+  );
+  return data.movies.people;
 }
 
 export async function addMovieLike(
