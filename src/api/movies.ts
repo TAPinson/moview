@@ -156,13 +156,14 @@ export async function fetchMoviesByGenre(
   page: number,
   includeAdult = false,
   personId: number | null = null,
+  certification: string | null = null,
 ): Promise<MovieResultPage> {
   const data = await graphQLRequest<{ movies: { byGenre: MovieResultPage } }>(
     authUser,
     `
-      query MoviesByGenre($genreId: Int, $page: Int!, $includeAdult: Boolean!, $personId: Int) {
+      query MoviesByGenre($genreId: Int, $page: Int!, $includeAdult: Boolean!, $personId: Int, $certification: String) {
         movies {
-          byGenre(genreId: $genreId, page: $page, includeAdult: $includeAdult, personId: $personId) {
+          byGenre(genreId: $genreId, page: $page, includeAdult: $includeAdult, personId: $personId, certification: $certification) {
             page
             totalPages
             results {
@@ -173,7 +174,7 @@ export async function fetchMoviesByGenre(
         }
       }
     `,
-    { genreId, page, includeAdult, personId },
+    { genreId, page, includeAdult, personId, certification },
   );
 
   return data.movies.byGenre;

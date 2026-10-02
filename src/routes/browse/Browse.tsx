@@ -9,6 +9,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 import type { AuthUser } from "../../auth/cognito";
 import {
   addMovieLike,
@@ -34,6 +35,7 @@ function errorMessage(error: unknown) {
 
 export function Browse({ authUser }: BrowseProps) {
   const [includeAdult, setIncludeAdult] = useState(false);
+  const [certification, setCertification] = useState("");
   const [person, setPerson] = useState<MoviePerson | null>(null);
   const [personQuery, setPersonQuery] = useState("");
   const [people, setPeople] = useState<MoviePerson[]>([]);
@@ -81,7 +83,7 @@ export function Browse({ authUser }: BrowseProps) {
     let isCurrent = true;
 
     Promise.all([
-      fetchMoviesByGenre(authUser, selectedGenreId, page, includeAdult, personId),
+      fetchMoviesByGenre(authUser, selectedGenreId, page, includeAdult, personId, certification || null),
       fetchWatchlistEntries(authUser),
       fetchLikedMovies(authUser),
     ])
@@ -101,7 +103,7 @@ export function Browse({ authUser }: BrowseProps) {
       .finally(() => { if (isCurrent) setIsLoading(false); });
 
     return () => { isCurrent = false; };
-  }, [authUser, selectedGenreId, page, includeAdult, personId]);
+  }, [authUser, selectedGenreId, page, includeAdult, personId, certification]);
 
   function resetResults() {
     setIsLoading(true);
@@ -153,53 +155,80 @@ export function Browse({ authUser }: BrowseProps) {
     <main className="page browse-page">
       <h1>Browse movies</h1>
       <p className="browse-intro">Explore popular movies by genre or cast or crew member.</p>
-      <FormControlLabel
-        label="Include adult entries"
-        control={<Switch checked={includeAdult} onChange={(_, checked) => {
-          resetResults();
-          setIncludeAdult(checked);
-          setPerson(null);
-          setPersonQuery("");
-          setPeople([]);
-          setPeopleError(null);
-          setIsSearchingPeople(false);
-        }} />}
-      />
-      <Autocomplete
-        sx={{ maxWidth: 480, marginTop: 2 }}
-        slotProps={{ paper: { className: "browse-people-menu" } }}
-        options={people}
-        value={person}
-        inputValue={personQuery}
-        loading={isSearchingPeople}
-        filterOptions={(options) => options}
-        getOptionLabel={(option) => option.name}
-        getOptionKey={(option) => option.id}
-        isOptionEqualToValue={(option, value) => option.id === value.id}
-        renderOption={(props, option) => (
-          <li {...props}>
-            {option.name}{option.department ? ` — ${option.department}` : ""}
-          </li>
-        )}
-        noOptionsText={personQuery.trim().length < 2
-          ? "Type at least two characters"
-          : "No people found"}
-        onInputChange={(_, value) => {
-          setPersonQuery(value);
-          setPeople([]);
-          setPeopleError(null);
-          setIsSearchingPeople(false);
-        }}
-        onChange={(_, value) => {
-          if (value?.id === person?.id) return;
-          resetResults();
-          setPerson(value);
-        }}
-        renderInput={(params) => (
-          <TextField {...params} label="Cast or crew member"
-            helperText="Select a person to browse their movies across all genres. Clear the selection to browse by genre." />
-        )}
-      />
+      <section className="browse-filters" aria-label="Browse filters">
+        <div className="browse-filter-controls">
+        <Autocomplete
+          className="browse-person-filter"
+          size="small"
+          fullWidth
+          slotProps={{ paper: { className: "browse-people-menu" } }}
+          options={people}
+          value={person}
+          inputValue={personQuery}
+          loading={isSearchingPeople}
+          filterOptions={(options) => options}
+          getOptionLabel={(option) => option.name}
+          getOptionKey={(option) => option.id}
+          isOptionEqualToValue={(option, value) => option.id === value.id}
+          renderOption={(props, option) => (
+            <li {...props}>
+              {option.name}{option.department ? ` — ${option.department}` : ""}
+            </li>
+          )}
+          noOptionsText={personQuery.trim().length < 2
+            ? "Type at least two characters"
+            : "No people found"}
+          onInputChange={(_, value) => {
+            setPersonQuery(value);
+            setPeople([]);
+            setPeopleError(null);
+            setIsSearchingPeople(false);
+          }}
+          onChange={(_, value) => {
+            if (value?.id === person?.id) return;
+            resetResults();
+            setPerson(value);
+          }}
+          renderInput={(params) => (
+            <TextField {...params} label="Cast or crew member" placeholder="Search a name" />
+          )}
+        />
+        <TextField
+          select
+          label="Age rating (US)"
+          value={certification}
+          className="browse-rating-filter"
+          size="small"
+          fullWidth
+          slotProps={{ select: { MenuProps: { slotProps: { paper: { className: "browse-filter-menu" } } } } }}
+          onChange={(event) => {
+            resetResults();
+            setCertification(event.target.value);
+          }}
+        >
+          <MenuItem value="">Any rating</MenuItem>
+          {["G", "PG", "PG-13", "R", "NC-17"].map((rating) => (
+            <MenuItem key={rating} value={rating}>{rating}</MenuItem>
+          ))}
+        </TextField>
+        <FormControlLabel
+          className="browse-adult-filter"
+          label="Include adult entries"
+          control={<Switch size="small" checked={includeAdult} onChange={(_, checked) => {
+            resetResults();
+            setIncludeAdult(checked);
+            setPerson(null);
+            setPersonQuery("");
+            setPeople([]);
+            setPeopleError(null);
+            setIsSearchingPeople(false);
+          }} />}
+        />
+        </div>
+        <p className="browse-filter-hint">
+          Choose a US rating or search a person. Selecting a person searches across all genres.
+        </p>
+      </section>
       {peopleError && <Alert severity="error">{peopleError}</Alert>}
       {!person && <div className="genre-list" aria-label="Movie genres">
         <Chip label="All genres" clickable

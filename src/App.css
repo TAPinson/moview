@@ -237,33 +237,107 @@ nav a.active {
   width: min(1080px, calc(100% - 40px));
 }
 .browse-intro { color: var(--text-muted); }
-.browse-page .MuiFormControlLabel-label,
-.browse-page .MuiInputBase-root,
-.browse-page .MuiInputLabel-root,
-.browse-page .MuiFormHelperText-root,
-.browse-page .MuiAutocomplete-clearIndicator,
-.browse-page .MuiAutocomplete-popupIndicator {
-  color: #fff;
+.browse-filters {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
 }
-.browse-page .MuiOutlinedInput-notchedOutline {
-  border-color: rgba(255, 255, 255, 0.5);
+.browse-filter-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 180px auto;
+  align-items: center;
+  gap: 16px;
 }
-.browse-page .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
-.browse-page .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: #fff;
+.browse-person-filter,
+.browse-rating-filter {
+  min-width: 0;
 }
-.browse-people-menu.MuiPaper-root {
-  color: #fff;
-  background: var(--panel, #182030);
+.browse-filters .MuiInputBase-root {
+  color: var(--text-h);
+  background: var(--bg);
+  border-radius: 8px;
+}
+.browse-filters .MuiInputLabel-root,
+.browse-filters .MuiAutocomplete-clearIndicator,
+.browse-filters .MuiAutocomplete-popupIndicator,
+.browse-filters .MuiSelect-icon {
+  color: var(--text-muted);
+}
+.browse-filters .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
+.browse-filters .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--text-muted);
+}
+.browse-filters .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--accent);
+}
+.browse-filters .MuiInputLabel-root.Mui-focused {
+  color: var(--accent);
+}
+.browse-adult-filter.MuiFormControlLabel-root {
+  margin: 0;
+  gap: 4px;
+}
+.browse-adult-filter .MuiFormControlLabel-label {
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.browse-adult-filter .MuiSwitch-switchBase {
+  color: var(--text-muted);
+}
+.browse-adult-filter .MuiSwitch-track {
+  background-color: var(--text-muted);
+}
+.browse-adult-filter .MuiSwitch-switchBase.Mui-checked {
+  color: var(--accent);
+}
+.browse-adult-filter .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
+  background-color: var(--accent);
+}
+.browse-filter-hint {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.browse-people-menu.MuiPaper-root,
+.browse-filter-menu.MuiPaper-root {
+  color: var(--text-h);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 .browse-people-menu .MuiAutocomplete-loading,
 .browse-people-menu .MuiAutocomplete-noOptions {
-  color: #fff;
+  color: var(--text-muted);
 }
 .browse-people-menu .MuiAutocomplete-option.Mui-focused,
 .browse-people-menu .MuiAutocomplete-option[aria-selected="true"],
-.browse-people-menu .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
-  background: rgba(255, 255, 255, 0.12);
+.browse-people-menu .MuiAutocomplete-option[aria-selected="true"].Mui-focused,
+.browse-filter-menu .MuiMenuItem-root:hover,
+.browse-filter-menu .MuiMenuItem-root.Mui-focusVisible,
+.browse-filter-menu .MuiMenuItem-root.Mui-selected,
+.browse-filter-menu .MuiMenuItem-root.Mui-selected:hover {
+  background: var(--accent-soft);
+}
+@media (max-width: 800px) {
+  .browse-filter-controls {
+    grid-template-columns: minmax(0, 1fr) 180px;
+  }
+  .browse-adult-filter {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 480px) {
+  .browse-filters {
+    padding: 16px;
+  }
+  .browse-filter-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .genre-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .genre-list .MuiChip-root { color: var(--text); border-color: var(--border); }
