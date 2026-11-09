@@ -9,6 +9,7 @@ import {
   type MovieSearchResult,
 } from "../../api/movies";
 import { MovieCard } from "../../components/MovieCard";
+import { UnavailableMovieCard } from "../../components/UnavailableMovieCard";
 
 type LikesProps = {
   authUser: AuthUser | null;
@@ -25,6 +26,7 @@ function errorMessage(error: unknown) {
 export function Likes({ authUser }: LikesProps) {
   const [likes, setLikes] = useState<MovieLike[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [removeErrors, setRemoveErrors] = useState<Record<number, string>>({});
   const [removingMovieId, setRemovingMovieId] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(authUser !== null);
@@ -57,7 +59,7 @@ export function Likes({ authUser }: LikesProps) {
     return () => {
       isMounted = false;
     };
-  }, [authUser]);
+  }, [authUser, retryCount]);
 
   async function handleRemoveLike(movie: MovieSearchResult) {
     if (!authUser || movie.id === null) {
@@ -89,6 +91,12 @@ export function Likes({ authUser }: LikesProps) {
     }
   }
 
+  function handleRetryDetails() {
+    setIsLoading(true);
+    setError(null);
+    setRetryCount((count) => count + 1);
+  }
+
   return (
     <main className="page likes-page">
       <h1>Likes</h1>
@@ -116,7 +124,14 @@ export function Likes({ authUser }: LikesProps) {
               movie={like.movie}
               onRemoveLike={handleRemoveLike}
             />
-          ) : null,
+          ) : (
+            <UnavailableMovieCard
+              key={`${like.movieId}-${like.createdAt}`}
+              movieId={like.movieId}
+              isRetrying={isLoading}
+              onRetry={handleRetryDetails}
+            />
+          ),
         )}
       </section>
     </main>

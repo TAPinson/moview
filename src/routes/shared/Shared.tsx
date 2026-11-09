@@ -24,6 +24,7 @@ import {
   type WatchlistItem,
 } from "../../api/movies";
 import { MovieCard } from "../../components/MovieCard";
+import { UnavailableMovieCard } from "../../components/UnavailableMovieCard";
 
 type SharedProps = {
   authUser: AuthUser | null;
@@ -74,6 +75,7 @@ export function Shared({ authUser }: SharedProps) {
   const [isLoadingFriends, setIsLoadingFriends] = useState(true);
   const [isLoadingMovies, setIsLoadingMovies] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [invitationMovie, setInvitationMovie] =
     useState<MovieSearchResult | null>(null);
   const [startsAt, setStartsAt] = useState(defaultStartTime);
@@ -209,7 +211,13 @@ export function Shared({ authUser }: SharedProps) {
     return () => {
       isCurrent = false;
     };
-  }, [authUser, selectedFriendId]);
+  }, [authUser, selectedFriendId, retryCount]);
+
+  function handleRetryDetails() {
+    setIsLoadingMovies(true);
+    setError(null);
+    setRetryCount((count) => count + 1);
+  }
 
   return (
     <main className="page shared-page">
@@ -302,7 +310,14 @@ export function Shared({ authUser }: SharedProps) {
               watchlistStatus={item.status}
               onSchedule={openInvitation}
             />
-          ) : null,
+          ) : (
+            <UnavailableMovieCard
+              key={item.movieId}
+              movieId={item.movieId}
+              isRetrying={isLoadingMovies}
+              onRetry={handleRetryDetails}
+            />
+          ),
         )}
       </section>
       <Dialog

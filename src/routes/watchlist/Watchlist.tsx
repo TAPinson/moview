@@ -11,6 +11,7 @@ import {
   type WatchlistStatus,
 } from "../../api/movies";
 import { MovieCard } from "../../components/MovieCard";
+import { UnavailableMovieCard } from "../../components/UnavailableMovieCard";
 
 type MovieListProps = {
   authUser: AuthUser | null;
@@ -39,6 +40,7 @@ function MovieList({
 }: MovieListProps) {
   const [items, setItems] = useState<WatchlistItem[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [watchlistErrors, setWatchlistErrors] = useState<Record<number, string>>({});
   const [savingWatchlistActions, setSavingWatchlistActions] = useState<
     Record<number, "watched" | "remove">
@@ -73,7 +75,7 @@ function MovieList({
     return () => {
       isMounted = false;
     };
-  }, [authUser, status]);
+  }, [authUser, status, retryCount]);
 
   async function handleRemoveFromWatchlist(movie: MovieSearchResult) {
     if (!authUser || movie.id === null) {
@@ -145,6 +147,12 @@ function MovieList({
     }
   }
 
+  function handleRetryDetails() {
+    setIsLoading(true);
+    setError(null);
+    setRetryCount((count) => count + 1);
+  }
+
   return (
     <main className="page watchlist-page">
       <h1>{title}</h1>
@@ -177,7 +185,14 @@ function MovieList({
               }
               watchlistStatus={item.status}
             />
-          ) : null,
+          ) : (
+            <UnavailableMovieCard
+              key={`${item.movieId}-${item.status}`}
+              movieId={item.movieId}
+              isRetrying={isLoading}
+              onRetry={handleRetryDetails}
+            />
+          ),
         )}
       </section>
     </main>
