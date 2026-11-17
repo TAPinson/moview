@@ -269,6 +269,7 @@ export function Browse({ authUser }: BrowseProps) {
           {movies.map((movie, index) => {
             const movieId = movie.id;
             return <MovieCard
+              authUser={authUser}
               key={movieId ?? `${movie.title}-${index}`}
               movie={movie}
               isLiked={movieId !== null && likedMovieIds.has(movieId)}

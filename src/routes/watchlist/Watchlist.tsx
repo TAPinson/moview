@@ -173,6 +173,7 @@ function MovieList({
         {items.map((item) =>
           item.movie ? (
             <MovieCard
+              authUser={authUser}
               key={`${item.movieId}-${item.status}`}
               movie={item.movie}
               onMarkWatched={

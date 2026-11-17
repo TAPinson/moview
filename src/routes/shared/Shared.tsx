@@ -305,6 +305,7 @@ export function Shared({ authUser }: SharedProps) {
         {items.map((item) =>
           item.movie ? (
             <MovieCard
+              authUser={authUser}
               key={item.movieId}
               movie={item.movie}
               watchlistStatus={item.status}

@@ -491,3 +491,79 @@ export async function sendMovieInvitation(
 
   return data.sendMovieInvitation;
 }
+
+export type MovieComment = {
+  id: number;
+  movieId: number;
+  author: {
+    id: number;
+    username: string;
+  };
+  body: string;
+  createdAt: string;
+  canDelete: boolean;
+};
+
+export type MovieCommentCursor = {
+  createdAt: string;
+  id: number;
+};
+
+export type MovieCommentPage = {
+  comments: MovieComment[];
+  nextCursor: MovieCommentCursor | null;
+};
+
+const COMMENT_FIELDS = `
+  id movieId body createdAt canDelete
+  author { id username }
+`;
+
+export async function fetchMovieComments(
+  authUser: AuthUser,
+  movieId: number,
+  before: MovieCommentCursor | null = null,
+): Promise<MovieCommentPage> {
+  const data = await graphQLRequest<{ movieComments: MovieCommentPage }>(
+    authUser,
+    `query MovieComments($movieId: Int!, $before: MovieCommentCursorInput) {
+      movieComments(movieId: $movieId, before: $before) {
+        comments { ${COMMENT_FIELDS} }
+        nextCursor { createdAt id }
+      }
+    }`,
+    { movieId, before },
+  );
+  return data.movieComments;
+}
+
+export async function addMovieComment(
+  authUser: AuthUser,
+  movieId: number,
+  body: string,
+): Promise<MovieComment> {
+  const data = await graphQLRequest<{ addMovieComment: MovieComment }>(
+    authUser,
+    `mutation AddMovieComment($movieId: Int!, $body: String!) {
+      addMovieComment(movieId: $movieId, body: $body) {
+        ${COMMENT_FIELDS}
+      }
+    }`,
+    { movieId, body },
+  );
+  return data.addMovieComment;
+}
+
+export async function deleteMovieComment(
+  authUser: AuthUser,
+  commentId: number,
+): Promise<boolean> {
+  const data = await graphQLRequest<{ deleteMovieComment: boolean }>(
+    authUser,
+    `mutation DeleteMovieComment($commentId: Int!) {
+      deleteMovieComment(commentId: $commentId)
+    }`,
+    { commentId },
+  );
+  return data.deleteMovieComment;
+}

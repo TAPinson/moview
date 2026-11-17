@@ -117,6 +117,7 @@ export function Likes({ authUser }: LikesProps) {
         {likes.map((like) =>
           like.movie ? (
             <MovieCard
+              authUser={authUser}
               key={`${like.movieId}-${like.createdAt}`}
               isLiked
               isSavingLike={removingMovieId === like.movieId}

@@ -1,3 +1,7 @@
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import type { AuthUser } from "../auth/cognito";
+import { MovieComments } from "./MovieComments";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -15,6 +19,7 @@ import type { MovieSearchResult, WatchlistStatus } from "../api/movies";
 const TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
 
 type MovieCardProps = {
+  authUser: AuthUser | null;
   isLiked?: boolean;
   isSavingLike?: boolean;
   likeError?: string | null;
@@ -101,6 +106,7 @@ function watchlistStatusLabel(status: WatchlistStatus | null | undefined) {
 }
 
 export function MovieCard({
+  authUser,
   isLiked = false,
   isSavingLike = false,
   likeError = null,
@@ -115,6 +121,7 @@ export function MovieCard({
   watchlistStatus = null,
   watchlistSavingAction = null,
 }: MovieCardProps) {
+  const [commentsOpen, setCommentsOpen] = useState(false);
   const isInWatchlist =
     watchlistStatus === "want_to_watch" || watchlistStatus === "watched";
   const isWatched = watchlistStatus === "watched";
@@ -283,6 +290,22 @@ export function MovieCard({
             </div>
           </dl>
         </div>
+        {authUser && movie.id !== null && (
+          <>
+            <Button onClick={() => setCommentsOpen(true)}>
+              Comments
+            </Button>
+            {commentsOpen && (
+              <MovieComments
+                key={`${movie.id}:${authUser.idToken}`}
+                authUser={authUser}
+                movieId={movie.id}
+                title={title}
+                onClose={() => setCommentsOpen(false)}
+              />
+            )}
+          </>
+        )}
       </CardContent>
     </Card>
   );

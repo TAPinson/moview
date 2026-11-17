@@ -202,6 +202,7 @@ export function MovieSearch({ authUser }: MovieSearchProps) {
           const movieKey = movie.id ?? `${movie.title}-${index}`;
           return (
             <MovieCard
+              authUser={authUser}
               key={movieKey}
               isLiked={movie.id !== null && likedMovieIds.has(movie.id)}
               isSavingLike={movie.id !== null && savingLikeMovieId === movie.id}
