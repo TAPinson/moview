@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import {
   confirmSignUp,
   resendConfirmationCode,
@@ -31,6 +31,14 @@ function authErrorMessage(error: unknown) {
 
 export function Login({ isAuthReady, user, onAuthenticated }: LoginProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const requestedPath = (
+    location.state as { returnTo?: unknown } | null
+  )?.returnTo;
+  const destination = (
+    typeof requestedPath === "string"
+    && /^\/movies\/[1-9]\d*$/.test(requestedPath)
+  ) ? requestedPath : "/home";
   const [mode, setMode] = useState<AuthMode>("sign-in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,7 +68,7 @@ export function Login({ isAuthReady, user, onAuthenticated }: LoginProps) {
 
       const authUser = await signIn(email, password);
       await onAuthenticated(authUser);
-      navigate("/home");
+      navigate(destination, { replace: true });
     } catch (caughtError) {
       const message = authErrorMessage(caughtError);
       if (message.includes("User is not confirmed")) {
@@ -99,7 +107,7 @@ export function Login({ isAuthReady, user, onAuthenticated }: LoginProps) {
   }
 
   if (user) {
-    return <Navigate to="/home" replace />;
+    return <Navigate to={destination} replace />;
   }
 
   const isConfirming = mode === "confirm";

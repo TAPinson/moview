@@ -1,3 +1,4 @@
+import { MovieDetail } from "./routes/movie_detail/MovieDetail";
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
 import type { ReactNode } from "react";
@@ -7,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { Home } from "./routes/home/Home";
 import { Login } from "./routes/login/Login";
@@ -37,12 +38,19 @@ type ProtectedRouteProps = {
 };
 
 function ProtectedRoute({ user, isAuthReady, children }: ProtectedRouteProps) {
+  const location = useLocation();
   if (!isAuthReady) {
     return <main className="page">Loading...</main>;
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{ returnTo: location.pathname + location.search + location.hash }}
+      />
+    );
   }
 
   return children;
@@ -244,6 +252,14 @@ function App() {
         </header>
 
         <Routes>
+          <Route
+            path="/movies/:movieId"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                <MovieDetail authUser={user} />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/"
             element={<Navigate to={isLoggedIn ? "/home" : "/login"} replace />}

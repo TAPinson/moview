@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import type { AuthUser } from "../auth/cognito";
@@ -19,6 +20,7 @@ import type { MovieSearchResult, WatchlistStatus } from "../api/movies";
 const TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342";
 
 type MovieCardProps = {
+  detailPage?: boolean;
   authUser: AuthUser | null;
   isLiked?: boolean;
   isSavingLike?: boolean;
@@ -106,6 +108,7 @@ function watchlistStatusLabel(status: WatchlistStatus | null | undefined) {
 }
 
 export function MovieCard({
+  detailPage = false,
   authUser,
   isLiked = false,
   isSavingLike = false,
@@ -153,8 +156,16 @@ export function MovieCard({
       <CardContent>
         <div className="movie-result-header">
           <div>
-            <Typography className="movie-result-title" component="h2" variant="h6">
-              {title}
+            <Typography
+              className="movie-result-title"
+              component={detailPage ? "h1" : "h2"}
+              variant={detailPage ? "h4" : "h6"}
+            >
+              {!detailPage && movie.id !== null ? (
+                <Link className="movie-title-link" to={`/movies/${movie.id}`}>
+                  {title}
+                </Link>
+              ) : title}
             </Typography>
             {statusLabel && <p className="movie-watchlist-status">{statusLabel}</p>}
           </div>
@@ -290,7 +301,7 @@ export function MovieCard({
             </div>
           </dl>
         </div>
-        {authUser && movie.id !== null && (
+        {!detailPage && authUser && movie.id !== null && (
           <>
             <Button onClick={() => setCommentsOpen(true)}>
               Comments

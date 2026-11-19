@@ -567,3 +567,31 @@ export async function deleteMovieComment(
   );
   return data.deleteMovieComment;
 }
+
+export type MovieDetails = {
+  movie: MovieSearchResult;
+  isLiked: boolean;
+  watchlistStatus: WatchlistStatus | null;
+};
+
+export async function fetchMovie(
+  authUser: AuthUser,
+  movieId: number,
+): Promise<MovieDetails | null> {
+  const data = await graphQLRequest<{ movie: MovieDetails | null }>(
+    authUser,
+    `query Movie($movieId: Int!) {
+      movie(movieId: $movieId) {
+        movie {
+          id poster_path adult overview release_date genre_ids
+          original_title original_language title backdrop_path
+          popularity vote_count video vote_average
+        }
+        isLiked
+        watchlistStatus
+      }
+    }`,
+    { movieId },
+  );
+  return data.movie;
+}

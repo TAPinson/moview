@@ -22,14 +22,21 @@ type Props = {
   authUser: AuthUser;
   movieId: number;
   title: string;
-  onClose: () => void;
+  onClose?: () => void;
+  inline?: boolean;
 };
 
 function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : "Comments could not be updated.";
 }
 
-export function MovieComments({ authUser, movieId, title, onClose }: Props) {
+export function MovieComments({
+  authUser,
+  movieId,
+  title,
+  onClose,
+  inline = false,
+}: Props) {
   const [page, setPage] = useState<MovieCommentPage | null>(null);
   const [body, setBody] = useState("");
   const [busy, setBusy] = useState(true);
@@ -118,10 +125,8 @@ export function MovieComments({ authUser, movieId, title, onClose }: Props) {
     }
   }
 
-  return (
-    <Dialog open onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Comments — {title}</DialogTitle>
-      <DialogContent aria-busy={busy}>
+  const content = (
+    <Box aria-busy={busy}>
         <Typography variant="body2" sx={{ mb: 2 }}>
           Visible to all signed-in users.
         </Typography>
@@ -204,7 +209,22 @@ export function MovieComments({ authUser, movieId, title, onClose }: Props) {
             Post comment
           </Button>
         </Box>
-      </DialogContent>
+    </Box>
+  );
+
+  if (inline) {
+    return (
+      <section className="movie-comments-section" aria-label="Movie comments">
+        <h2>Comments</h2>
+        {content}
+      </section>
+    );
+  }
+
+  return (
+    <Dialog open onClose={onClose} fullWidth maxWidth="sm">
+      <DialogTitle>Comments — {title}</DialogTitle>
+      <DialogContent>{content}</DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>
       </DialogActions>

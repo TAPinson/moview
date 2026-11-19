@@ -912,3 +912,53 @@ nav a.active {
   background: var(--accent);
   font-weight: 700;
 }
+
+.movie-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.movie-title-link:hover {
+  text-decoration: underline;
+}
+
+.movie-title-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.movie-detail-page {
+  max-width: 1000px;
+}
+
+.movie-detail-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.movie-detail-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.movie-comments-section {
+  padding: 24px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.movie-comments-section .MuiTypography-root,
+.movie-comments-section .MuiInputBase-root,
+.movie-comments-section .MuiInputLabel-root {
+  color: var(--text);
+}
+
+.movie-comments-section .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border);
+}
