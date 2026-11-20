@@ -595,3 +595,46 @@ export async function fetchMovie(
   );
   return data.movie;
 }
+
+export type MovieNightDecision = "accepted" | "declined";
+
+export type MovieNightInvitation = {
+  id: number;
+  movieId: number;
+  eventSummary: string;
+  startsAt: string;
+  location: string | null;
+  message: string | null;
+  friendName: string;
+  friendProfilePhotoUrl: string | null;
+  incoming: boolean;
+  response: "awaiting" | MovieNightDecision;
+};
+
+export async function listMovieNights(authUser: AuthUser) {
+  const data = await graphQLRequest<{ movieNightInvitations: MovieNightInvitation[] }>(
+    authUser,
+    `query MovieNightInvitations {
+      movieNightInvitations {
+        id movieId eventSummary startsAt location message
+        friendName friendProfilePhotoUrl incoming response
+      }
+    }`,
+  );
+  return data.movieNightInvitations;
+}
+
+export async function respondToMovieNight(
+  authUser: AuthUser,
+  id: number,
+  decision: MovieNightDecision,
+) {
+  const data = await graphQLRequest<{ respondToMovieNight: boolean }>(
+    authUser,
+    `mutation RespondToMovieNight($id: Int!, $decision: MovieNightDecision!) {
+      respondToMovieNight(id: $id, decision: $decision)
+    }`,
+    { id, decision },
+  );
+  return data.respondToMovieNight;
+}

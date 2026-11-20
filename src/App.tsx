@@ -18,6 +18,7 @@ import { Watched, Watchlist } from "./routes/watchlist/Watchlist";
 import { Likes } from "./routes/likes/Likes";
 import { Browse } from "./routes/browse/Browse";
 import { Friends } from "./routes/friends/Friends";
+import { MovieNight } from "./routes/movie_night/MovieNight";
 import { Shared } from "./routes/shared/Shared";
 import {
   getCurrentAuthUser,
@@ -170,6 +171,10 @@ function App() {
               </span>
               <span>Shared</span>
             </NavLink>
+            <NavLink to="/movie-night" title="Movie Night">
+              <span className="nav-icon" aria-hidden="true">N</span>
+              <span>Movie Night</span>
+            </NavLink>
             <NavLink to="/likes" title="Likes">
               <span className="nav-icon" aria-hidden="true">
                 L
@@ -309,6 +314,14 @@ function App() {
             element={
               <ProtectedRoute user={user} isAuthReady={isAuthReady}>
                 <Shared authUser={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/movie-night"
+            element={
+              <ProtectedRoute user={user} isAuthReady={isAuthReady}>
+                {user && <MovieNight authUser={user} />}
               </ProtectedRoute>
             }
           />

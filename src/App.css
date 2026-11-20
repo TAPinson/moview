@@ -233,6 +233,84 @@ nav a.active {
 .watchlist-page,
 .likes-page,
 .browse-page,
+.movie-night-card {
+  overflow-wrap: anywhere;
+}
+
+.movie-night-card-content.movie-night-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.movie-night-participant {
+  gap: 8px;
+  margin: 3px 0;
+}
+
+.movie-night-participant .friend-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+.movie-night-card-content p {
+  margin: 0;
+}
+
+.movie-night-card-content .movie-night-message {
+  margin-top: 4px;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+.movie-night-actions,
+.movie-night-status {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.movie-night-actions {
+  flex-wrap: wrap;
+}
+
+.movie-night-actions .movie-night-accept {
+  color: #0f172a;
+  background: var(--accent);
+}
+
+.movie-night-actions .movie-night-accept:hover {
+  background: var(--accent-strong);
+}
+
+.movie-night-actions .movie-night-decline {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.movie-night-actions .movie-night-decline:hover {
+  background: var(--surface);
+  border-color: var(--text-muted);
+}
+
+.movie-night-actions .Mui-disabled {
+  opacity: 0.5;
+}
+
+.movie-night-status {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.movie-night-status[data-response="accepted"] {
+  color: var(--accent);
+}
+
 .shared-page {
   width: min(1080px, calc(100% - 40px));
 }
